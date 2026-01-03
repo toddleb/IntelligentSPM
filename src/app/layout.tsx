@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono, Cinzel } from "next/font/google";
 import "./globals.css";
 import { NavPrimary } from "@/components/layout/NavPrimary";
 import { FooterMega } from "@/components/layout/FooterMega";
+import { NoirOverlay } from "@/components/layout/NoirOverlay";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -62,10 +63,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} ${cinzel.variable} antialiased min-h-screen flex flex-col`}
+        className={`${inter.variable} ${jetbrainsMono.variable} ${cinzel.variable} antialiased min-h-screen flex flex-col bg-[#050506] text-[#E4E4E7]`}
       >
+        <NoirOverlay />
         <NavPrimary />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 relative z-10">{children}</main>
         <FooterMega />
       </body>
     </html>
