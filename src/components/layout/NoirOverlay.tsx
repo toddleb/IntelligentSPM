@@ -42,20 +42,6 @@ export function NoirOverlay() {
           backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.4) 2px, rgba(0,0,0,0.4) 4px)`,
         }}
       />
-
-      {/* Inline keyframes for smoke animation */}
-      <style jsx global>{`
-        @keyframes smoke-drift {
-          0%, 100% {
-            transform: scale(1) translate(0, 0);
-            opacity: 1;
-          }
-          50% {
-            transform: scale(1.05) translate(2%, -2%);
-            opacity: 0.9;
-          }
-        }
-      `}</style>
     </>
   );
 }

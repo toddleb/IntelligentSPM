@@ -4,6 +4,7 @@ import "./globals.css";
 import { NavPrimary } from "@/components/layout/NavPrimary";
 import { FooterMega } from "@/components/layout/FooterMega";
 import { NoirOverlay } from "@/components/layout/NoirOverlay";
+import { ThemeProvider } from "@/components/theme";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -65,10 +66,12 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} ${cinzel.variable} antialiased min-h-screen flex flex-col bg-[#050506] text-[#E4E4E7]`}
       >
-        <NoirOverlay />
-        <NavPrimary />
-        <main className="flex-1 relative z-10">{children}</main>
-        <FooterMega />
+        <ThemeProvider>
+          <NoirOverlay />
+          <NavPrimary />
+          <main className="flex-1 relative z-10">{children}</main>
+          <FooterMega />
+        </ThemeProvider>
       </body>
     </html>
   );
