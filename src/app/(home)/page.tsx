@@ -271,7 +271,7 @@ export default function HomePage() {
             Comprehensive sales performance management across every critical dimension.
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {[
               { name: "Sales Planning", abbr: "SP", color: "#2563eb", desc: "Territory, quota, capacity" },
               { name: "ICM", abbr: "ICM", color: "#16a34a", desc: "Plans, payments, statements" },
@@ -284,22 +284,22 @@ export default function HomePage() {
             ].map((pillar) => (
               <div
                 key={pillar.name}
-                className="bg-[#0F172A] rounded-xl p-4 text-center border transition-all hover:scale-105"
+                className="bg-[#0F172A] rounded-xl p-5 text-center border transition-all hover:scale-105"
                 style={{ borderColor: `${pillar.color}30` }}
               >
                 <div
-                  className="w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center text-sm font-bold text-white"
+                  className="w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center text-base font-bold text-white"
                   style={{ backgroundColor: pillar.color }}
                 >
                   {pillar.abbr}
                 </div>
                 <h3
-                  className="font-semibold text-xs mb-1"
+                  className="font-semibold text-sm mb-1"
                   style={{ color: pillar.color }}
                 >
                   {pillar.name}
                 </h3>
-                <p className="text-xs text-[#64748B]">{pillar.desc}</p>
+                <p className="text-sm text-[#E2E8F0]">{pillar.desc}</p>
               </div>
             ))}
           </div>
