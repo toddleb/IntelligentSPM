@@ -52,7 +52,7 @@ const heroes = [
     kicker: "AskSPM by The Toddfather",
     headlinePre: "Does your organization have a custom ",
     highlight: "SPM Expert",
-    headlinePost: " for immediate support?",
+    headlinePost: "?",
     subheadline: "The Toddfather's brain — minus the coffee addiction. Ask anything, anytime.",
     highlightColor: "#FF8737", // Orange
     primaryCta: "AskSPM →",
