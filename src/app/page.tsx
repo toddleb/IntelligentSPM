@@ -89,51 +89,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-[#0F172A]">
-      {/* Navbar */}
-      <nav
-        className="sticky top-0 z-50 bg-[#0F172A] shadow-sm border-b-4"
-        style={{
-          borderImage: `linear-gradient(to right, #38BDF8, #8241C8, #A3E635, #FF8737) 1`
-        }}
-      >
-        <div className="w-full px-6">
-          <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-baseline">
-              <span className="text-2xl font-light text-[#E2E8F0] tracking-tight">
-                Intelligent
-              </span>
-              <span
-                className="text-2xl font-bold tracking-tight"
-                style={{ color: hero.spmColor }}
-              >
-                SPM
-              </span>
-            </Link>
-
-            <div className="flex items-center gap-6">
-              <Link
-                href="/healthcheck"
-                className="text-sm text-[#94A3B8] hover:text-[#E2E8F0] transition-colors"
-              >
-                Healthchecks
-              </Link>
-              <Link
-                href="/askspm"
-                className="text-sm text-[#94A3B8] hover:text-[#E2E8F0] transition-colors"
-              >
-                AskSPM
-              </Link>
-              <Link
-                href="/contact"
-                className="text-sm text-[#94A3B8] hover:text-[#E2E8F0] transition-colors"
-              >
-                Contact
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <section
         className="relative min-h-[80vh] flex items-center justify-center transition-all duration-500"
@@ -347,19 +302,6 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-8 px-6 bg-[#0F172A] border-t border-[#38BDF8]/10">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-baseline">
-            <span className="text-xl font-light text-[#E2E8F0]">Intelligent</span>
-            <span className="text-xl font-bold text-[#38BDF8]">SPM</span>
-          </div>
-          <p className="text-sm text-[#94A3B8]">
-            &copy; {new Date().getFullYear()} IntelligentSPM. All rights reserved.
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }

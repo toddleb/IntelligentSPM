@@ -1,0 +1,99 @@
+import Link from "next/link";
+
+export const metadata = {
+  title: "Learn | IntelligentSPM",
+  description: "SPM 101, 8 pillars framework, 17 policies, and glossary. Everything you need to master SPM.",
+};
+
+const sections = [
+  {
+    name: "SPM 101",
+    description: "New to SPM? Start here. The fundamentals of sales performance management without the vendor spin.",
+    href: "/learn/spm-101",
+    color: "#38BDF8",
+    count: "Foundation",
+  },
+  {
+    name: "The 8 Pillars",
+    description: "Deep dive into the SPM framework. 929 knowledge base cards organized by pillar.",
+    href: "/learn/framework",
+    color: "#9333ea",
+    count: "929 cards",
+  },
+  {
+    name: "17 SCP Policies",
+    description: "Sales Compensation Policies covering clawback, quota, windfall, 409A, and more.",
+    href: "/learn/policies",
+    color: "#A3E635",
+    count: "17 policies",
+  },
+  {
+    name: "Glossary",
+    description: "SPM terms defined. No jargon, no confusion. Plain language definitions.",
+    href: "/learn/glossary",
+    color: "#FF8737",
+    count: "50+ terms",
+  },
+];
+
+export default function LearnPage() {
+  return (
+    <div className="min-h-screen bg-[#0F172A]">
+      {/* Header */}
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#38BDF8] mb-4">
+            The SPM Clearing House
+          </p>
+          <h1 className="text-4xl md:text-5xl font-bold text-[#E2E8F0] mb-6">
+            Learn SPM
+          </h1>
+          <p className="text-lg text-[#94A3B8] max-w-2xl mx-auto">
+            30 years of sales compensation expertise, organized and accessible. No vendor agenda, no consultant spin.
+          </p>
+        </div>
+      </section>
+
+      {/* Sections Grid */}
+      <section className="py-12 px-6">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+          {sections.map((section) => (
+            <Link key={section.name} href={section.href}>
+              <div
+                className="bg-[#1E293B] rounded-xl p-8 border transition-all hover:scale-105 cursor-pointer h-full"
+                style={{ borderColor: `${section.color}30` }}
+              >
+                <div className="flex justify-between items-start mb-4">
+                  <h2 className="text-2xl font-bold text-[#E2E8F0]">
+                    {section.name}
+                  </h2>
+                  <span
+                    className="px-3 py-1 text-xs font-bold rounded-full"
+                    style={{ backgroundColor: `${section.color}20`, color: section.color }}
+                  >
+                    {section.count}
+                  </span>
+                </div>
+                <p className="text-[#94A3B8]">{section.description}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Quick Start */}
+      <section className="py-20 px-6">
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-[#64748B] mb-4">
+            New to SPM?
+          </p>
+          <Link href="/learn/spm-101">
+            <button className="px-8 py-4 rounded-xl text-white font-bold text-lg bg-[#38BDF8] hover:bg-[#38BDF8]/90 transition-all hover:scale-105">
+              Start with SPM 101
+            </button>
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}
