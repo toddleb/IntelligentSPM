@@ -184,7 +184,7 @@ export default function HomePage() {
 
       {/* Hero Section - fixed height, auto-rotating */}
       <section
-        className="relative min-h-[420px] md:min-h-[380px] flex flex-col justify-center transition-all duration-500"
+        className="relative py-12 md:py-16 min-h-[480px] md:min-h-[450px] flex flex-col justify-center transition-all duration-500"
         style={{ background: hero.bgGradient }}
       >
         {/* Subtle grid pattern overlay */}
