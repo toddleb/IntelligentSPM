@@ -11,6 +11,7 @@ const heroes = [
     headlinePre: "The ",
     highlight: "Clearing House",
     headlinePost: " for SPM",
+    subheadline: "No vendor agenda. No consultant spin. Just 30 years of sales compensation expertise.",
     highlightColor: "#38BDF8", // Teal
     primaryCta: "Run SPM Healthcheck →",
     primaryHref: "/healthcheck/spm",
@@ -24,6 +25,7 @@ const heroes = [
     headlinePre: "Your ",
     highlight: "Comp Plan",
     headlinePost: " has an opinion. Now you can hear it.",
+    subheadline: "Upload your plan. Get instant AI analysis. No consultants required.",
     highlightColor: "#8241C8", // Purple
     primaryCta: "Run Comp Plan Healthcheck →",
     primaryHref: "/healthcheck/comp-plan",
@@ -37,6 +39,7 @@ const heroes = [
     headlinePre: "Your ",
     highlight: "Comp Oversight",
     headlinePost: " is held together with duct tape.",
+    subheadline: "17 governance policies. Zero ambiguity. Finally, controls that make sense.",
     highlightColor: "#A3E635", // Lime
     primaryCta: "Run Governance Healthcheck →",
     primaryHref: "/healthcheck/governance",
@@ -50,6 +53,7 @@ const heroes = [
     headlinePre: "Does your organization have a custom ",
     highlight: "SPM Expert",
     headlinePost: " for immediate support?",
+    subheadline: "The Toddfather's brain — minus the coffee addiction. Ask anything, anytime.",
     highlightColor: "#FF8737", // Orange
     primaryCta: "AskSPM →",
     primaryHref: "/healthcheck/askspm",
@@ -221,7 +225,7 @@ export default function HomePage() {
 
           {/* Subheadline */}
           <p className="text-base md:text-lg text-[#94A3B8] max-w-2xl mx-auto mb-6">
-            No vendor agenda. No consultant spin. Just 30 years of sales compensation expertise.
+            {hero.subheadline}
           </p>
 
           {/* CTA Buttons */}
