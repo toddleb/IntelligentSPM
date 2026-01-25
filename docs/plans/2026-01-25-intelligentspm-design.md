@@ -123,6 +123,53 @@ Video (Toddfather avatar via HeyGen)
 
 ---
 
+## Social Distribution Engine
+
+Custom-built tool integrated with blog system to auto-distribute content.
+
+### Target Platforms
+
+**Social (short-form):**
+| Platform | Content Type |
+|----------|--------------|
+| Twitter/X | Thread from blog + link |
+| LinkedIn | Post with key insights |
+| Instagram | Quote cards, carousel |
+| TikTok | Video clips from popular content |
+| YouTube Shorts | Video clips from popular content |
+
+**Content Platforms (long-form republish):**
+| Platform | Strategy |
+|----------|----------|
+| Substack | Mirror of Syndicate for discovery (free tier, links back) |
+| Medium | Republish blogs 1 week after original (SEO boost, canonical link) |
+| Reddit | Manual, selective - r/sales, r/salesops when relevant |
+
+### Flow
+```
+Blog publishes
+    ↓
+Auto-generate social snippets (title + hook + link)
+    ↓
+Queue to: Twitter, LinkedIn, Instagram
+    ↓
+Manual approve or auto-post (configurable)
+    ↓
+Track engagement metrics back to content
+```
+
+### APIs Required
+- Twitter/X API (free tier or Basic $100/mo)
+- LinkedIn API (free via Marketing API)
+- Instagram via Meta Business API
+- TikTok API (for video uploads)
+- YouTube Data API (for Shorts)
+
+### Priority
+**MEDIUM** - Build after core tools are live, before video content ramps up.
+
+---
+
 ## First 4 Content Pieces
 
 | # | Title | Type |
@@ -258,14 +305,15 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 | Week 3 | Blog #4: "From Chaos to Control" + SGM soft launch |
 
 ### Phase 3: Tools (1 per week after blogs stabilize)
-| Week | Feature |
-|------|---------|
-| 4 | SPM Healthcheck (8-pillar quiz) |
-| 5 | AskSPM RAG |
-| 6 | Comp Plan Healthcheck (port from thetoddfather) |
-| 7 | Governance Healthcheck (port gap analysis from SGM) |
-| 8 | The Syndicate newsletter |
-| 9+ | Magic Wave, The Sit-Down, Vendor Scorecards |
+| Week | Feature | Priority |
+|------|---------|----------|
+| 4 | SPM Healthcheck (8-pillar quiz) | HIGH |
+| 5 | AskSPM RAG | HIGH |
+| 6 | Comp Plan Healthcheck (port from thetoddfather) | HIGH |
+| 7 | Governance Healthcheck (port gap analysis from SGM) | HIGH |
+| 8 | The Syndicate newsletter | HIGH |
+| 9 | Social Distribution Engine | MEDIUM |
+| 10+ | Magic Wave, The Sit-Down, Vendor Scorecards | LOW |
 
 ---
 
