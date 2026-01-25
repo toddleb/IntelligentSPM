@@ -82,7 +82,7 @@ export default function HomePage() {
         setCurrentHero((prev) => (prev + 1) % heroes.length);
         setIsTransitioning(false);
       }, 300);
-    }, 6000);
+    }, 8000);
     return () => clearInterval(interval);
   }, [isPaused]);
 
@@ -258,8 +258,8 @@ export default function HomePage() {
                 />
               ))}
             </div>
-            <p className="text-sm text-[#94A3B8]">
-              Powered by <span className="text-[#FF8737] font-semibold">The Toddfather</span> — 30 years of comp expertise
+            <p className="text-base md:text-lg text-[#E2E8F0]">
+              Powered by <span className="text-[#FF8737] font-bold">The Toddfather</span> — 30 years of comp expertise
             </p>
           </div>
         </div>
