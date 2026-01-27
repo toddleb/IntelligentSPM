@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import SPMHealthcheckContent from "./spm-content";
+import SPMHealthcheckClient from "./spm-client";
 
 export const metadata: Metadata = {
   title: "SPM Healthcheck | IntelligentSPM",
@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function SPMHealthcheckPage() {
-  return <SPMHealthcheckContent />;
+  return <SPMHealthcheckClient />;
 }

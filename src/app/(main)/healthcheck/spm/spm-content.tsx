@@ -22,7 +22,11 @@ function isPersonalEmail(email: string): boolean {
   return PERSONAL_DOMAINS.includes(domain);
 }
 
-type Phase = "gate" | "quiz" | "results";
+type Phase = "quiz" | "results";
+
+interface SPMContentProps {
+  userEmail?: string | null;
+}
 
 interface HealthcheckState {
   email: string;
@@ -838,33 +842,32 @@ function Results({
 }
 
 // Main Component
-export default function SPMHealthcheckContent() {
-  const [phase, setPhase] = useState<Phase>("gate");
+export default function SPMContent({ userEmail }: SPMContentProps) {
+  const [phase, setPhase] = useState<Phase>("quiz");
   const [state, setState] = useState<HealthcheckState>({
-    email: "",
+    email: userEmail || "",
     answers: {},
     currentPillar: 0,
     currentQuestion: 0,
   });
 
-  // Load saved state on mount
+  // Load saved state on mount or use userEmail
   useEffect(() => {
     const saved = loadState();
-    if (saved && saved.email) {
+    if (saved && saved.email === userEmail) {
       setState(saved);
-      // If they have answers, go to quiz
-      if (Object.keys(saved.answers).length > 0) {
-        setPhase("quiz");
+      // If they have answers and completed, show results
+      const allAnswered = pillars.every((p) =>
+        p.questions.every((_, i) => saved.answers[`${p.id}-${i}`] !== undefined)
+      );
+      if (allAnswered) {
+        setPhase("results");
       }
+    } else if (userEmail) {
+      // New email, start fresh
+      setState((prev) => ({ ...prev, email: userEmail }));
     }
-  }, []);
-
-  const handleGateSubmit = (email: string) => {
-    const newState = { ...state, email };
-    setState(newState);
-    saveState(newState);
-    setPhase("quiz");
-  };
+  }, [userEmail]);
 
   const handleAnswer = (pillarIndex: number, questionIndex: number, value: number) => {
     const pillar = pillars[pillarIndex];
@@ -894,10 +897,6 @@ export default function SPMHealthcheckContent() {
     });
     setPhase("quiz");
   };
-
-  if (phase === "gate") {
-    return <GateScreen onSubmit={handleGateSubmit} savedEmail={state.email} />;
-  }
 
   if (phase === "quiz") {
     return (

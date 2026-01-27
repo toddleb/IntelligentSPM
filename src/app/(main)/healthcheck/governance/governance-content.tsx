@@ -57,7 +57,11 @@ const ALL_POLICIES = [
 // Theme color for Governance healthcheck
 const THEME_COLOR = "#A3E635";
 
-export default function GovernanceContent() {
+interface GovernanceContentProps {
+  userEmail?: string | null;
+}
+
+export default function GovernanceContent({ userEmail }: GovernanceContentProps) {
   const [file, setFile] = useState<File | null>(null);
   const [textInput, setTextInput] = useState("");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -161,13 +165,13 @@ export default function GovernanceContent() {
     setResult(null);
 
     try {
-      let body: { documentText?: string; documentBase64?: string; tier: string; context: string };
+      let body: { documentText?: string; documentBase64?: string; tier: string; context: string; email?: string };
 
       if (inputMode === "paste" && textInput.trim()) {
-        body = { documentText: textInput, tier: "quick", context: "sgm-governance" };
+        body = { documentText: textInput, tier: "quick", context: "sgm-governance", email: userEmail || undefined };
       } else if (file) {
         const base64 = await fileToBase64(file);
-        body = { documentBase64: base64, tier: "quick", context: "sgm-governance" };
+        body = { documentBase64: base64, tier: "quick", context: "sgm-governance", email: userEmail || undefined };
       } else {
         throw new Error("No document provided");
       }
@@ -180,6 +184,10 @@ export default function GovernanceContent() {
 
       if (!response.ok) {
         const errorData = await response.json();
+        // Check for gate block
+        if (errorData.code === 'USER_LIMIT' || errorData.code === 'COMPANY_LIMIT') {
+          throw new Error(errorData.message || "Analysis limit reached");
+        }
         throw new Error(errorData.message || "Analysis failed");
       }
 

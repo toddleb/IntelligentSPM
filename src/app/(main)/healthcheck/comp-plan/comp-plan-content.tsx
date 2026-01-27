@@ -49,7 +49,11 @@ const ALL_PILLARS = [
 // Theme color for Comp Plan healthcheck
 const THEME_COLOR = "#8241C8";
 
-export default function CompPlanContent() {
+interface CompPlanContentProps {
+  userEmail?: string | null;
+}
+
+export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
   const [file, setFile] = useState<File | null>(null);
   const [textInput, setTextInput] = useState("");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -141,13 +145,13 @@ export default function CompPlanContent() {
     setResult(null);
 
     try {
-      let body: { documentText?: string; documentBase64?: string; tier: string; context: string };
+      let body: { documentText?: string; documentBase64?: string; tier: string; context: string; email?: string };
 
       if (inputMode === "paste" && textInput.trim()) {
-        body = { documentText: textInput, tier: "quick", context: "scm-comp-plan" };
+        body = { documentText: textInput, tier: "quick", context: "scm-comp-plan", email: userEmail || undefined };
       } else if (file) {
         const base64 = await fileToBase64(file);
-        body = { documentBase64: base64, tier: "quick", context: "scm-comp-plan" };
+        body = { documentBase64: base64, tier: "quick", context: "scm-comp-plan", email: userEmail || undefined };
       } else {
         throw new Error("No document provided");
       }
@@ -160,6 +164,10 @@ export default function CompPlanContent() {
 
       if (!response.ok) {
         const errorData = await response.json();
+        // Check for gate block
+        if (errorData.code === 'USER_LIMIT' || errorData.code === 'COMPANY_LIMIT') {
+          throw new Error(errorData.message || "Analysis limit reached");
+        }
         throw new Error(errorData.message || "Analysis failed");
       }
 

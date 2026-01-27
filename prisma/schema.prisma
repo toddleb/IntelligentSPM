@@ -1,0 +1,162 @@
+// IntelligentSPM Database Schema
+// Neon PostgreSQL with Prisma 7
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================================
+// COMPANY & USER MANAGEMENT
+// ============================================================================
+
+model Company {
+  id            String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  domain        String   @unique // e.g., "acme.com"
+  name          String?
+  analysisCount Int      @default(0) @map("analysis_count")
+  maxAnalyses   Int      @default(3) @map("max_analyses")
+  createdAt     DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt     DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  users         User[]
+
+  @@index([domain])
+  @@map("companies")
+}
+
+model User {
+  id            String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email         String    @unique
+  name          String?
+  linkedinId    String?   @unique @map("linkedin_id")
+  linkedinUrl   String?   @map("linkedin_url")
+  linkedinData  Json?     @map("linkedin_data") // Store profile info
+  companyId     String    @map("company_id") @db.Uuid
+  company       Company   @relation(fields: [companyId], references: [id])
+  verifiedAt    DateTime? @map("verified_at") @db.Timestamptz(6)
+  analysisUsed  Boolean   @default(false) @map("analysis_used")
+  createdAt     DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt     DateTime  @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  analyses      Analysis[]
+  sessions      Session[]
+  accounts      Account[]
+
+  @@index([email])
+  @@index([companyId])
+  @@index([linkedinId])
+  @@map("users")
+}
+
+// ============================================================================
+// NEXTAUTH MODELS
+// ============================================================================
+
+model Account {
+  id                String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId            String  @map("user_id") @db.Uuid
+  type              String
+  provider          String
+  providerAccountId String  @map("provider_account_id")
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id") @db.Uuid
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// ============================================================================
+// ANALYSIS TRACKING
+// ============================================================================
+
+model Analysis {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId      String   @map("user_id") @db.Uuid
+  user        User     @relation(fields: [userId], references: [id])
+
+  // Analysis type: "governance" | "comp-plan" | "spm-quiz" | "askspm"
+  type        String
+
+  // Results
+  score       Int?
+  tierResult  String?  @map("tier_result") // "Foundational" | "Operational" | "Optimized" | "Advanced"
+  coveragePercent Int? @map("coverage_percent")
+
+  // Raw data
+  rawInput    Json?    @map("raw_input")   // Document text or quiz answers
+  rawOutput   Json     @map("raw_output")  // Full API response
+
+  // Metadata
+  ipAddress   String?  @map("ip_address")
+  userAgent   String?  @map("user_agent")
+
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  @@index([userId])
+  @@index([type])
+  @@index([createdAt])
+  @@map("analyses")
+}
+
+// ============================================================================
+// AUDIT LOG
+// ============================================================================
+
+model AuditLog {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  eventType   String   @map("event_type") // "auth.login" | "auth.linkedin" | "analysis.run" | "analysis.blocked"
+  severity    String   @default("info") // "info" | "warn" | "error"
+  message     String
+
+  // Actor info
+  userId      String?  @map("user_id") @db.Uuid
+  email       String?
+  companyDomain String? @map("company_domain")
+
+  // Request info
+  ipAddress   String?  @map("ip_address")
+  userAgent   String?  @map("user_agent")
+
+  // Additional context
+  metadata    Json?
+
+  occurredAt  DateTime @default(now()) @map("occurred_at") @db.Timestamptz(6)
+
+  @@index([eventType])
+  @@index([userId])
+  @@index([occurredAt])
+  @@map("audit_logs")
+}

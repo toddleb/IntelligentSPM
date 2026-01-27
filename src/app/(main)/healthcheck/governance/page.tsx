@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import GovernanceContent from "./governance-content";
+import GovernanceHealthcheckClient from "./governance-client";
 
 export const metadata: Metadata = {
   title: "Governance Healthcheck | IntelligentSPM",
@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function GovernanceHealthcheckPage() {
-  return <GovernanceContent />;
+  return <GovernanceHealthcheckClient />;
 }
