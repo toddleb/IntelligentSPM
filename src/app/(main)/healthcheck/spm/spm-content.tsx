@@ -453,7 +453,12 @@ function Quiz({
           <button
             onClick={handleBack}
             disabled={state.currentPillar === 0}
-            className="px-6 py-3 text-[#94A3B8] hover:text-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            className="px-8 py-3 rounded-xl font-bold border-2 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            style={{
+              borderColor: state.currentPillar > 0 ? pillar.color : "#1E293B",
+              color: state.currentPillar > 0 ? pillar.color : "#64748B",
+              backgroundColor: "transparent",
+            }}
           >
             ← Back
           </button>
