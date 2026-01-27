@@ -473,6 +473,11 @@ function Results({
   const topPillar = sortedPillars[0];
   const bottomPillar = sortedPillars[sortedPillars.length - 1];
 
+  // Categorize pillars by risk level
+  const criticalPillars = pillarScores.filter((p) => p.percentage < 40);
+  const priorityPillars = pillarScores.filter((p) => p.percentage >= 40 && p.percentage < 60);
+  const monitorPillars = pillarScores.filter((p) => p.percentage >= 60 && p.percentage < 80);
+
   const [expandedPillar, setExpandedPillar] = useState<string | null>(null);
 
   return (
@@ -480,6 +485,9 @@ function Results({
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
+          <div className="w-16 h-16 rounded-xl bg-[#38BDF8] flex items-center justify-center text-xl font-bold text-[#0F172A] mx-auto mb-4">
+            SPM
+          </div>
           <h1 className="text-3xl font-bold text-[#E2E8F0] mb-2">
             Your SPM Healthcheck Results
           </h1>
@@ -490,26 +498,35 @@ function Results({
 
         {/* 4-Quadrant Grid */}
         <div className="grid md:grid-cols-2 gap-6 mb-10">
-          {/* Top Left: Spider Chart */}
-          <div className="bg-[#1E293B] rounded-xl p-6 border border-white/10">
-            <h3 className="text-sm font-semibold text-[#64748B] uppercase tracking-wider mb-4">
-              Pillar Overview
-            </h3>
-            <SpiderChart answers={answers} />
-          </div>
-
-          {/* Top Right: Overall Score + Badge */}
-          <div className="bg-[#1E293B] rounded-xl p-6 border border-white/10 flex flex-col items-center justify-center">
-            <h3 className="text-sm font-semibold text-[#64748B] uppercase tracking-wider mb-4">
+          {/* Top Left: Overall Score + Badge */}
+          <div className="bg-[#1E293B]/80 backdrop-blur-sm rounded-xl p-6 border border-[#38BDF8]/20 flex flex-col items-center justify-center">
+            <h3 className="text-sm font-semibold text-[#38BDF8] uppercase tracking-wider mb-4">
               Overall Score
             </h3>
-            <div
-              className="text-6xl font-bold mb-2"
-              style={{ color: tier.color }}
-            >
-              {percentage}
+            <div className="relative w-32 h-32 mb-4">
+              <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                <path
+                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  fill="none"
+                  stroke="#1E293B"
+                  strokeWidth="3"
+                />
+                <path
+                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  fill="none"
+                  stroke={tier.color}
+                  strokeWidth="3"
+                  strokeDasharray={`${percentage}, 100`}
+                  strokeLinecap="round"
+                />
+              </svg>
+              <div className="absolute inset-0 flex flex-col items-center justify-center">
+                <span className="text-3xl font-bold" style={{ color: tier.color }}>
+                  {percentage}
+                </span>
+                <span className="text-xs text-[#94A3B8]">out of 100</span>
+              </div>
             </div>
-            <div className="text-[#94A3B8] mb-4">out of 100</div>
             <div
               className="px-4 py-2 rounded-full font-bold text-white mb-3"
               style={{ backgroundColor: tier.color }}
@@ -517,173 +534,269 @@ function Results({
               {tier.label}
             </div>
             <p className="text-sm text-[#94A3B8] text-center">{tier.description}</p>
-            <div className="mt-4 pt-4 border-t border-white/10 w-full text-center">
-              <p className="text-sm text-[#94A3B8]">
-                <span className="font-semibold" style={{ color: topPillar.color }}>
-                  Strongest:
-                </span>{" "}
-                {topPillar.name}
-              </p>
-              <p className="text-sm text-[#94A3B8] mt-1">
-                <span className="font-semibold" style={{ color: bottomPillar.color }}>
-                  Needs Work:
-                </span>{" "}
-                {bottomPillar.name}
-              </p>
+          </div>
+
+          {/* Top Right: Spider Chart */}
+          <div className="bg-[#1E293B]/80 backdrop-blur-sm rounded-xl p-6 border border-[#38BDF8]/20">
+            <h3 className="text-sm font-semibold text-[#38BDF8] uppercase tracking-wider mb-4">
+              Pillar Overview
+            </h3>
+            <SpiderChart answers={answers} />
+          </div>
+
+          {/* Bottom Left: Risk Snapshot */}
+          <div className="bg-[#1E293B]/80 backdrop-blur-sm rounded-xl p-6 border border-[#38BDF8]/20">
+            <h3 className="text-sm font-semibold text-[#38BDF8] uppercase tracking-wider mb-4">
+              Risk Snapshot
+            </h3>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-3 bg-[#dc2626]/10 rounded-lg border border-[#dc2626]/30">
+                <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 rounded-full bg-[#dc2626]" />
+                  <span className="text-[#E2E8F0] font-medium">Critical</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl font-bold text-[#dc2626]">{criticalPillars.length}</span>
+                  <span className="text-xs text-[#94A3B8]">pillars &lt;40%</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-[#F59E0B]/10 rounded-lg border border-[#F59E0B]/30">
+                <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 rounded-full bg-[#F59E0B]" />
+                  <span className="text-[#E2E8F0] font-medium">Priority</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl font-bold text-[#F59E0B]">{priorityPillars.length}</span>
+                  <span className="text-xs text-[#94A3B8]">pillars 40-60%</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-[#3B82F6]/10 rounded-lg border border-[#3B82F6]/30">
+                <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 rounded-full bg-[#3B82F6]" />
+                  <span className="text-[#E2E8F0] font-medium">Monitor</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl font-bold text-[#3B82F6]">{monitorPillars.length}</span>
+                  <span className="text-xs text-[#94A3B8]">pillars 60-80%</span>
+                </div>
+              </div>
+              <div className="pt-3 border-t border-white/10 text-center">
+                <p className="text-sm text-[#94A3B8]">
+                  <span className="font-semibold text-[#10B981]">Strongest:</span>{" "}
+                  <span style={{ color: topPillar.color }}>{topPillar.name}</span>
+                </p>
+                <p className="text-sm text-[#94A3B8] mt-1">
+                  <span className="font-semibold text-[#dc2626]">Needs Work:</span>{" "}
+                  <span style={{ color: bottomPillar.color }}>{bottomPillar.name}</span>
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* Bottom Left: Bar Chart */}
-          <div className="bg-[#1E293B] rounded-xl p-6 border border-white/10">
-            <h3 className="text-sm font-semibold text-[#64748B] uppercase tracking-wider mb-4">
-              Scores by Pillar
+          {/* Bottom Right: Action Plan */}
+          <div className="bg-[#1E293B]/80 backdrop-blur-sm rounded-xl p-6 border border-[#38BDF8]/20">
+            <h3 className="text-sm font-semibold text-[#38BDF8] uppercase tracking-wider mb-4">
+              Action Plan
             </h3>
             <div className="space-y-3">
               {[...pillarScores]
                 .sort((a, b) => a.score - b.score)
-                .map((pillar) => (
-                  <div key={pillar.id} className="flex items-center gap-3">
+                .slice(0, 3)
+                .map((pillar, i) => (
+                  <div
+                    key={pillar.id}
+                    className="flex items-center gap-3 p-3 bg-[#0F172A] rounded-lg"
+                  >
                     <div
-                      className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0"
-                      style={{ backgroundColor: pillar.color }}
+                      className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0"
+                      style={{
+                        backgroundColor:
+                          i === 0 ? "#dc2626" : i === 1 ? "#F59E0B" : "#3B82F6",
+                      }}
                     >
-                      {pillar.id}
+                      {i + 1}
                     </div>
-                    <div className="flex-1">
-                      <div className="flex justify-between text-sm mb-1">
-                        <span className="text-[#E2E8F0]">{pillar.name}</span>
-                        <span className="text-[#94A3B8]">
-                          {pillar.score}/12
-                        </span>
-                      </div>
-                      <div className="h-2 bg-[#0F172A] rounded-full overflow-hidden">
-                        <div
-                          className="h-full rounded-full transition-all"
-                          style={{
-                            width: `${pillar.percentage}%`,
-                            backgroundColor:
-                              pillar.percentage < 40
-                                ? "#dc2626"
-                                : pillar.percentage < 70
-                                ? "#ca8a04"
-                                : "#16a34a",
-                          }}
-                        />
-                      </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-[#E2E8F0] truncate">
+                        {pillar.name}
+                      </p>
+                      <p className="text-xs text-[#64748B]">
+                        {pillar.percentage}% - Needs attention
+                      </p>
                     </div>
+                    <Link
+                      href={pillar.learnLink}
+                      className="text-xs font-medium px-2 py-1 rounded-lg hover:bg-white/10 transition-colors"
+                      style={{ color: pillar.color }}
+                    >
+                      Learn →
+                    </Link>
                   </div>
                 ))}
             </div>
-          </div>
-
-          {/* Bottom Right: Pillar Cards */}
-          <div className="bg-[#1E293B] rounded-xl p-6 border border-white/10 max-h-[400px] overflow-y-auto">
-            <h3 className="text-sm font-semibold text-[#64748B] uppercase tracking-wider mb-4">
-              Detailed Breakdown
-            </h3>
-            <div className="space-y-3">
-              {pillarScores.map((pillar) => {
-                const Icon = pillar.icon;
-                const isExpanded = expandedPillar === pillar.id;
-                return (
-                  <div
-                    key={pillar.id}
-                    className="bg-[#0F172A] rounded-xl p-4 cursor-pointer transition-all"
-                    onClick={() =>
-                      setExpandedPillar(isExpanded ? null : pillar.id)
-                    }
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div
-                          className="w-8 h-8 rounded-full flex items-center justify-center"
-                          style={{ backgroundColor: pillar.color }}
-                        >
-                          <Icon className="w-4 h-4 text-white" />
-                        </div>
-                        <div>
-                          <p
-                            className="font-semibold text-sm"
-                            style={{ color: pillar.color }}
-                          >
-                            {pillar.name}
-                          </p>
-                          <p className="text-xs text-[#64748B]">
-                            {pillar.percentage}% ({pillar.score}/12)
-                          </p>
-                        </div>
-                      </div>
-                      <svg
-                        className={`w-5 h-5 text-[#64748B] transition-transform ${
-                          isExpanded ? "rotate-180" : ""
-                        }`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    </div>
-                    {isExpanded && (
-                      <div className="mt-4 pt-4 border-t border-white/10 space-y-2">
-                        {pillar.questions.map((q, i) => {
-                          const answer = answers[`${pillar.id}-${i}`] ?? 0;
-                          const level = maturityLevels[answer];
-                          return (
-                            <div key={i} className="text-sm">
-                              <p className="text-[#94A3B8] mb-1">{q}</p>
-                              <p
-                                className="font-medium"
-                                style={{
-                                  color:
-                                    answer < 2
-                                      ? "#dc2626"
-                                      : answer < 3
-                                      ? "#ca8a04"
-                                      : "#16a34a",
-                                }}
-                              >
-                                → {level.label}
-                              </p>
-                            </div>
-                          );
-                        })}
-                        <Link
-                          href={pillar.learnLink}
-                          onClick={(e) => e.stopPropagation()}
-                          className="inline-block mt-2 text-sm font-medium hover:underline"
-                          style={{ color: pillar.color }}
-                        >
-                          Learn more →
-                        </Link>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+            <div className="mt-4 pt-4 border-t border-white/10">
+              <p className="text-sm text-[#94A3B8] mb-3">
+                {percentage < 50
+                  ? "Your SPM program has significant gaps. A comprehensive review is recommended."
+                  : percentage < 75
+                  ? "Solid foundation with room to improve. Focus on the pillars above."
+                  : "Strong SPM program! Fine-tune the areas above for excellence."}
+              </p>
             </div>
           </div>
         </div>
 
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link href="/toddfather/contact?topic=healthcheck-review">
-            <button className="px-8 py-4 bg-[#FF8737] text-white font-bold rounded-xl hover:bg-[#FF8737]/90 transition-all hover:scale-105">
-              Book a Toddfather Review
-            </button>
-          </Link>
-          <Link href="/syndicate">
-            <button className="px-8 py-4 border-2 border-white/30 text-white font-bold rounded-xl hover:border-white/60 transition-all">
-              Join The Syndicate
-            </button>
-          </Link>
+        {/* Detailed Pillar Breakdown */}
+        <div className="bg-[#1E293B]/80 backdrop-blur-sm rounded-xl p-6 border border-[#38BDF8]/20 mb-10">
+          <h3 className="text-sm font-semibold text-[#38BDF8] uppercase tracking-wider mb-4">
+            Detailed Breakdown
+          </h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            {pillarScores.map((pillar) => {
+              const Icon = pillar.icon;
+              const isExpanded = expandedPillar === pillar.id;
+              return (
+                <div
+                  key={pillar.id}
+                  className="bg-[#0F172A] rounded-xl p-4 cursor-pointer transition-all hover:bg-[#0F172A]/80"
+                  onClick={() =>
+                    setExpandedPillar(isExpanded ? null : pillar.id)
+                  }
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="w-10 h-10 rounded-full flex items-center justify-center"
+                        style={{ backgroundColor: pillar.color }}
+                      >
+                        <Icon className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <p
+                          className="font-semibold"
+                          style={{ color: pillar.color }}
+                        >
+                          {pillar.name}
+                        </p>
+                        <div className="flex items-center gap-2">
+                          <div className="w-16 h-1.5 bg-[#1E293B] rounded-full overflow-hidden">
+                            <div
+                              className="h-full rounded-full"
+                              style={{
+                                width: `${pillar.percentage}%`,
+                                backgroundColor:
+                                  pillar.percentage < 40
+                                    ? "#dc2626"
+                                    : pillar.percentage < 70
+                                    ? "#ca8a04"
+                                    : "#16a34a",
+                              }}
+                            />
+                          </div>
+                          <span className="text-xs text-[#64748B]">
+                            {pillar.percentage}%
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <svg
+                      className={`w-5 h-5 text-[#64748B] transition-transform ${
+                        isExpanded ? "rotate-180" : ""
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </div>
+                  {isExpanded && (
+                    <div className="mt-4 pt-4 border-t border-white/10 space-y-3">
+                      {pillar.questions.map((q, i) => {
+                        const answer = answers[`${pillar.id}-${i}`] ?? 0;
+                        const level = maturityLevels[answer];
+                        return (
+                          <div key={i} className="text-sm">
+                            <p className="text-[#94A3B8] mb-1">{q}</p>
+                            <p
+                              className="font-medium"
+                              style={{
+                                color:
+                                  answer < 2
+                                    ? "#dc2626"
+                                    : answer < 3
+                                    ? "#ca8a04"
+                                    : "#16a34a",
+                              }}
+                            >
+                              → {level.label}
+                            </p>
+                          </div>
+                        );
+                      })}
+                      <Link
+                        href={pillar.learnLink}
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-block mt-2 text-sm font-medium hover:underline"
+                        style={{ color: pillar.color }}
+                      >
+                        Learn more →
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
-        <div className="text-center mt-6">
+
+        {/* Consulting CTA Section */}
+        <div className="bg-gradient-to-r from-[#38BDF8]/10 to-[#0891B2]/10 rounded-xl p-8 border border-[#38BDF8]/30 mb-10">
+          <div className="text-center mb-6">
+            <h2 className="text-2xl font-bold text-[#E2E8F0] mb-2">
+              Turn Insights Into Action
+            </h2>
+            <p className="text-[#94A3B8] max-w-2xl mx-auto">
+              Your assessment reveals opportunities for improvement. Get expert guidance to build a world-class SPM program.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-4 mb-6">
+            <div className="bg-[#0F172A]/50 rounded-lg p-4 text-center">
+              <div className="text-3xl font-bold text-[#38BDF8] mb-1">40%</div>
+              <p className="text-sm text-[#94A3B8]">Average efficiency gain</p>
+            </div>
+            <div className="bg-[#0F172A]/50 rounded-lg p-4 text-center">
+              <div className="text-3xl font-bold text-[#38BDF8] mb-1">2.5x</div>
+              <p className="text-sm text-[#94A3B8]">Typical ROI in Year 1</p>
+            </div>
+            <div className="bg-[#0F172A]/50 rounded-lg p-4 text-center">
+              <div className="text-3xl font-bold text-[#38BDF8] mb-1">60%</div>
+              <p className="text-sm text-[#94A3B8]">Dispute reduction</p>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/toddfather/contact?topic=healthcheck-review">
+              <button className="px-8 py-4 bg-[#38BDF8] text-[#0F172A] font-bold rounded-xl hover:bg-[#38BDF8]/90 transition-all hover:scale-105">
+                Schedule SPM Review
+              </button>
+            </Link>
+            <Link href="/syndicate">
+              <button className="px-8 py-4 border-2 border-[#38BDF8]/50 text-[#38BDF8] font-bold rounded-xl hover:border-[#38BDF8] transition-all">
+                Join The Syndicate
+              </button>
+            </Link>
+          </div>
+        </div>
+
+        {/* Retake */}
+        <div className="text-center">
           <button
             onClick={onRetake}
             className="text-[#94A3B8] hover:text-white text-sm transition-colors"
