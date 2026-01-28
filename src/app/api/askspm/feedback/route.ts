@@ -20,30 +20,42 @@ export async function POST(request: NextRequest) {
     const body = (await request.json()) as FeedbackRequest;
 
     // Validate required fields
-    if (!body.queryId || !body.feedbackType) {
+    if (!body.queryId || typeof body.queryId !== 'string') {
       return NextResponse.json(
-        { error: 'Missing required fields: queryId and feedbackType' },
+        { error: 'queryId is required' },
         { status: 400 }
       );
     }
 
-    if (!['thumbs_up', 'thumbs_down'].includes(body.feedbackType)) {
+    if (!body.feedbackType || !['thumbs_up', 'thumbs_down'].includes(body.feedbackType)) {
       return NextResponse.json(
-        { error: 'Invalid feedbackType. Must be "thumbs_up" or "thumbs_down"' },
+        { error: 'feedbackType must be "thumbs_up" or "thumbs_down"' },
         { status: 400 }
       );
     }
 
-    // Get IP address
+    // Verify queryId exists
+    const query = await prisma.askQuery.findUnique({
+      where: { id: body.queryId },
+    });
+
+    if (!query) {
+      return NextResponse.json(
+        { error: 'Query not found' },
+        { status: 404 }
+      );
+    }
+
+    // Get request metadata
     const ipAddress = request.headers.get('x-forwarded-for')?.split(',')[0] ||
       request.headers.get('x-real-ip') ||
-      'unknown';
+      undefined;
 
-    // Check if feedback already exists for this query from this IP
+    // Check if feedback already exists for this query from this IP (prevent duplicates)
     const existingFeedback = await prisma.queryFeedback.findFirst({
       where: {
         queryId: body.queryId,
-        ipAddress,
+        ipAddress: ipAddress || undefined,
       },
     });
 
@@ -58,19 +70,31 @@ export async function POST(request: NextRequest) {
     const feedback = await prisma.queryFeedback.create({
       data: {
         queryId: body.queryId,
-        answerLibraryId: body.answerLibraryId,
+        answerLibraryId: body.answerLibraryId || null,
         feedbackType: body.feedbackType,
-        feedbackText: body.feedbackText,
+        feedbackText: body.feedbackText || null,
         email: body.email,
         ipAddress,
       },
     });
 
-    // Update Answer Library confidence if libraryAnswerId provided
+    let newConfidence: number | undefined;
+
+    // Update library confidence if answerLibraryId provided
     if (body.answerLibraryId) {
       try {
         await updateAnswerConfidence(body.answerLibraryId, body.feedbackType);
         console.log(`[Feedback] Updated confidence for ${body.answerLibraryId}: ${body.feedbackType}`);
+
+        // Get the updated confidence score
+        const updatedAnswer = await prisma.answerLibrary.findUnique({
+          where: { id: body.answerLibraryId },
+          select: { confidenceScore: true },
+        });
+
+        if (updatedAnswer) {
+          newConfidence = Number(updatedAnswer.confidenceScore);
+        }
       } catch (error) {
         console.warn('[Feedback] Failed to update Answer Library confidence:', error);
         // Don't fail the request - feedback is still recorded
@@ -80,12 +104,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       feedbackId: feedback.id,
-      message: `Feedback recorded: ${body.feedbackType}`,
+      newConfidence,
     });
   } catch (error) {
     console.error('[Feedback API] Error:', error);
     return NextResponse.json(
-      { error: 'Failed to record feedback' },
+      { error: 'Failed to save feedback', message: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     );
   }
