@@ -103,7 +103,7 @@ export async function searchKnowledgeBase(
 
 /**
  * Generate LLM response using retrieved context
- * Tries Ollama first (free), falls back to OpenAI
+ * Priority: Gateway > Ollama (free) > OpenAI
  */
 async function generateLLMResponse(
   query: string,
@@ -130,7 +130,47 @@ Guidelines:
 - If asked about policies or governance, emphasize the importance of proper documentation
 - When discussing ICM topics, consider both plan design and operational aspects`;
 
-  // Try Ollama first
+  // Try AICR Gateway first if configured
+  const gatewayUrl = process.env.AICR_GATEWAY_URL;
+  const gatewayApiKey = process.env.AICR_API_KEY;
+
+  if (gatewayUrl && gatewayApiKey) {
+    try {
+      const response = await fetch(`${gatewayUrl}/api/v1/chat`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${gatewayApiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: process.env.GATEWAY_CHAT_MODEL || 'gpt-4o-mini',
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: query },
+          ],
+          temperature: 0.7,
+          max_tokens: 1024,
+        }),
+      });
+
+      if (response.ok) {
+        const data = (await response.json()) as {
+          model: string;
+          choices: Array<{ message: { content: string } }>;
+        };
+        return {
+          answer: data.choices[0]?.message?.content || 'No response generated',
+          model: data.model,
+          provider: 'gateway',
+          timeMs: Date.now() - startTime,
+        };
+      }
+    } catch (error) {
+      console.warn('[AskSPM] Gateway failed, falling back to local providers:', error);
+    }
+  }
+
+  // Try Ollama second (free, local)
   const ollamaUrl = process.env.OLLAMA_BASE_URL || 'http://localhost:11434';
   const ollamaAvailable = await isOllamaAvailable(ollamaUrl);
 
@@ -166,7 +206,7 @@ Guidelines:
   // Fallback to OpenAI
   const openaiKey = process.env.OPENAI_API_KEY;
   if (!openaiKey) {
-    throw new Error('No LLM provider available (Ollama down, no OpenAI key)');
+    throw new Error('No LLM provider available (Gateway down, Ollama down, no OpenAI key)');
   }
 
   const { default: OpenAI } = await import('openai');

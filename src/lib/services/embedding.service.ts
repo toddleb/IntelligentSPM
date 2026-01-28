@@ -1,6 +1,6 @@
 /**
  * Embedding Service for IntelligentSPM
- * Supports OpenAI (ada-002) and Ollama (nomic-embed-text)
+ * Supports OpenAI (ada-002), Ollama (nomic-embed-text), and AICR Gateway
  */
 
 import OpenAI from 'openai';
@@ -14,13 +14,15 @@ const EMBEDDING_DIMENSIONS = {
 };
 
 export type EmbeddingModel = keyof typeof EMBEDDING_DIMENSIONS;
-export type EmbeddingProvider = 'openai' | 'ollama';
+export type EmbeddingProvider = 'openai' | 'ollama' | 'gateway';
 
 interface EmbeddingConfig {
   provider: EmbeddingProvider;
   model: EmbeddingModel;
   ollamaBaseUrl?: string;
   openaiApiKey?: string;
+  gatewayUrl?: string;
+  gatewayApiKey?: string;
 }
 
 interface EmbeddingResult {
@@ -32,14 +34,25 @@ interface EmbeddingResult {
 
 /**
  * Get default embedding configuration
- * Prefers Ollama (free, local) - falls back to OpenAI if configured
+ * Priority: Gateway > Ollama (free, local) > OpenAI
  */
 export function getEmbeddingConfig(): EmbeddingConfig {
+  const gatewayUrl = process.env.AICR_GATEWAY_URL;
+  const gatewayApiKey = process.env.AICR_API_KEY;
   const ollamaUrl = process.env.OLLAMA_BASE_URL || 'http://localhost:11434';
   const openaiKey = process.env.OPENAI_API_KEY;
 
-  // Default to Ollama nomic-embed-text (768 dims, free, local)
-  // Only use OpenAI if explicitly configured and Ollama not available
+  // Use AICR Gateway if configured
+  if (gatewayUrl && gatewayApiKey) {
+    return {
+      provider: 'gateway',
+      model: 'nomic-embed-text', // Gateway will route to appropriate provider
+      gatewayUrl,
+      gatewayApiKey,
+    };
+  }
+
+  // Use OpenAI if explicitly configured
   if (process.env.USE_OPENAI_EMBEDDINGS === 'true' && openaiKey) {
     return {
       provider: 'openai',
@@ -48,6 +61,7 @@ export function getEmbeddingConfig(): EmbeddingConfig {
     };
   }
 
+  // Default to Ollama (free, local)
   return {
     provider: 'ollama',
     model: 'nomic-embed-text',
@@ -64,11 +78,57 @@ export async function generateEmbeddings(
 ): Promise<EmbeddingResult> {
   const finalConfig = { ...getEmbeddingConfig(), ...config };
 
+  if (finalConfig.provider === 'gateway') {
+    return generateGatewayEmbeddings(texts, finalConfig);
+  }
+
   if (finalConfig.provider === 'openai') {
     return generateOpenAIEmbeddings(texts, finalConfig);
   }
 
   return generateOllamaEmbeddings(texts, finalConfig);
+}
+
+/**
+ * Generate embeddings via AICR Gateway
+ */
+async function generateGatewayEmbeddings(
+  texts: string[],
+  config: EmbeddingConfig
+): Promise<EmbeddingResult> {
+  if (!config.gatewayUrl || !config.gatewayApiKey) {
+    throw new Error('Gateway URL and API key required for gateway embeddings');
+  }
+
+  const response = await fetch(`${config.gatewayUrl}/api/v1/embeddings`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${config.gatewayApiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: config.model,
+      input: texts,
+    }),
+  });
+
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({})) as { error?: { message?: string } };
+    throw new Error(error.error?.message || `Gateway embedding failed: ${response.status}`);
+  }
+
+  const data = await response.json() as {
+    model: string;
+    data: Array<{ embedding: number[]; dimensions: number }>;
+    usage: { total_tokens: number };
+  };
+
+  return {
+    embeddings: data.data.map(d => d.embedding),
+    model: data.model,
+    dimensions: data.data[0]?.dimensions || EMBEDDING_DIMENSIONS[config.model] || 768,
+    tokenCount: data.usage?.total_tokens,
+  };
 }
 
 /**
