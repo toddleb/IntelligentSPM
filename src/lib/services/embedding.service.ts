@@ -34,21 +34,22 @@ interface EmbeddingResult {
 
 /**
  * Get default embedding configuration
- * Priority: Gateway > Ollama (free, local) > OpenAI
+ * Priority: Ollama (free, local) > OpenAI (with 768-dim reduction)
+ *
+ * Database uses 768-dim vectors (nomic-embed-text).
+ * OpenAI text-embedding-3-small supports custom dimensions via API.
+ * Gateway is used for chat (LLM) calls via askspm.service.ts.
  */
 export function getEmbeddingConfig(): EmbeddingConfig {
-  const gatewayUrl = process.env.AICR_GATEWAY_URL;
-  const gatewayApiKey = process.env.AICR_API_KEY;
   const ollamaUrl = process.env.OLLAMA_BASE_URL || 'http://localhost:11434';
   const openaiKey = process.env.OPENAI_API_KEY;
 
-  // Use AICR Gateway if configured
-  if (gatewayUrl && gatewayApiKey) {
+  // On Vercel/production, use OpenAI with 768-dim reduction to match database
+  if (openaiKey && process.env.VERCEL) {
     return {
-      provider: 'gateway',
-      model: 'nomic-embed-text', // Gateway will route to appropriate provider
-      gatewayUrl,
-      gatewayApiKey,
+      provider: 'openai',
+      model: 'text-embedding-3-small',
+      openaiApiKey: openaiKey,
     };
   }
 
@@ -56,12 +57,12 @@ export function getEmbeddingConfig(): EmbeddingConfig {
   if (process.env.USE_OPENAI_EMBEDDINGS === 'true' && openaiKey) {
     return {
       provider: 'openai',
-      model: 'text-embedding-ada-002',
+      model: 'text-embedding-3-small',
       openaiApiKey: openaiKey,
     };
   }
 
-  // Default to Ollama (free, local)
+  // Default to Ollama (free, local, matches 768-dim database schema)
   return {
     provider: 'ollama',
     model: 'nomic-embed-text',
@@ -133,6 +134,7 @@ async function generateGatewayEmbeddings(
 
 /**
  * Generate embeddings via OpenAI
+ * Uses 768 dimensions to match database schema (compatible with nomic-embed-text)
  */
 async function generateOpenAIEmbeddings(
   texts: string[],
@@ -144,9 +146,14 @@ async function generateOpenAIEmbeddings(
 
   const client = new OpenAI({ apiKey: config.openaiApiKey });
 
+  // Request 768 dimensions to match database schema (nomic-embed-text compatible)
+  // text-embedding-3-small supports custom dimensions
+  const targetDimensions = 768;
+
   const response = await client.embeddings.create({
     model: config.model,
     input: texts,
+    dimensions: config.model === 'text-embedding-3-small' ? targetDimensions : undefined,
   });
 
   const embeddings = response.data.map((item) => item.embedding);
@@ -154,7 +161,7 @@ async function generateOpenAIEmbeddings(
   return {
     embeddings,
     model: config.model,
-    dimensions: EMBEDDING_DIMENSIONS[config.model] || 1536,
+    dimensions: config.model === 'text-embedding-3-small' ? targetDimensions : (EMBEDDING_DIMENSIONS[config.model] || 1536),
     tokenCount: response.usage?.total_tokens,
   };
 }
