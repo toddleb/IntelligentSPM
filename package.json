@@ -9,7 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@aicr/sda-core": "file:../aicr/packages/sda-core",
     "@auth/prisma-adapter": "^2.11.1",
     "@neondatabase/serverless": "^1.0.2",
     "@radix-ui/react-icons": "^1.3.2",
@@ -19,6 +18,9 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "resend": "^6.8.0"
+  },
+  "optionalDependencies": {
+    "@aicr/sda-core": "file:../aicr/packages/sda-core"
   },
   "devDependencies": {
     "@prisma/client": "^6.19.1",

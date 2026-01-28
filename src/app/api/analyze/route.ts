@@ -1,10 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { analyze } from '@aicr/sda-core';
 import {
   canRunAnalysis,
   recordAnalysisUsed,
   logBlockedAnalysis,
 } from '@/lib/services/analysis-gate';
+
+// Dynamic import for sda-core (optional dependency - may not be available on Vercel)
+let analyze: ((params: {
+  documentText?: string;
+  documentBase64?: string;
+  tier?: string;
+  context?: string;
+}) => Promise<{ quickCard?: { coverageScore?: number } }>) | null = null;
+
+try {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const sdaCore = require('@aicr/sda-core');
+  analyze = sdaCore.analyze;
+} catch {
+  console.warn('[Analyze API] @aicr/sda-core not available - analysis endpoint disabled');
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -38,6 +53,17 @@ export async function POST(request: NextRequest) {
           { status: 403 }
         );
       }
+    }
+
+    // Check if sda-core is available
+    if (!analyze) {
+      return NextResponse.json(
+        {
+          error: 'Analysis service unavailable',
+          message: 'Document analysis is not available in this environment. Please try again later.',
+        },
+        { status: 503 }
+      );
     }
 
     // Determine analysis type from context
