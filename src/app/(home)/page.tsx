@@ -82,6 +82,8 @@ const navItems = [
   { label: "The Toddfather", href: "/toddfather" },
 ];
 
+// Style 1: "background" = full image with overlay (dramatic)
+// Style 2: "accent" = accent strip at top (cleaner)
 const pillars = [
   {
     id: "sales-planning",
@@ -89,6 +91,8 @@ const pillars = [
     color: "#2563eb",
     desc: "Territory, quota, capacity",
     icon: TargetIcon,
+    image: "/images/pillars/sales-planning.jpg",
+    cardStyle: "background" as const,
     bullets: [
       "Territory design and alignment",
       "Quota setting methodology",
@@ -104,6 +108,8 @@ const pillars = [
     color: "#16a34a",
     desc: "Plans, payments, statements",
     icon: StackIcon,
+    image: "/images/pillars/icm.jpg",
+    cardStyle: "background" as const,
     bullets: [
       "Compensation plan design",
       "Commission calculations and payments",
@@ -119,6 +125,8 @@ const pillars = [
     color: "#9333ea",
     desc: "Analytics, forecasting, AI",
     icon: BarChartIcon,
+    image: "/images/pillars/sales-intelligence.jpg",
+    cardStyle: "background" as const,
     bullets: [
       "Pipeline analytics and forecasting",
       "Performance dashboards",
@@ -134,6 +142,8 @@ const pillars = [
     color: "#dc2626",
     desc: "SOX, 409A, controls",
     icon: LockClosedIcon,
+    image: "/images/pillars/governance.jpg",
+    cardStyle: "background" as const,
     bullets: [
       "Segregation of duties and approvals",
       "Audit trails and change management",
@@ -149,6 +159,8 @@ const pillars = [
     color: "#0891b2",
     desc: "Vendors, integrations",
     icon: GearIcon,
+    image: "/images/pillars/technology.jpg",
+    cardStyle: "background" as const,
     bullets: [
       "Vendor evaluation and selection",
       "System integrations (CRM, ERP, HRIS)",
@@ -164,6 +176,8 @@ const pillars = [
     color: "#ea580c",
     desc: "Pay philosophy, design",
     icon: MixerHorizontalIcon,
+    image: "/images/pillars/strategy.jpg",
+    cardStyle: "background" as const,
     bullets: [
       "Pay philosophy and positioning",
       "Plan design principles",
@@ -179,6 +193,8 @@ const pillars = [
     color: "#ca8a04",
     desc: "Change, training",
     icon: RocketIcon,
+    image: "/images/pillars/implementation.jpg",
+    cardStyle: "background" as const,
     bullets: [
       "Change management approach",
       "Training and enablement",
@@ -194,6 +210,8 @@ const pillars = [
     color: "#4f46e5",
     desc: "Wage laws, compliance",
     icon: ReaderIcon,
+    image: "/images/pillars/legal.jpg",
+    cardStyle: "background" as const,
     bullets: [
       "State wage law compliance",
       "Plan document requirements",
@@ -410,15 +428,100 @@ export default function HomePage() {
             {pillars.map((pillar) => {
               const Icon = pillar.icon;
               const isExpanded = expandedPillar === pillar.id;
+              const isBackgroundStyle = pillar.cardStyle === "background";
+
+              // Style 1: Background with overlay (dramatic)
+              if (isBackgroundStyle) {
+                return (
+                  <div
+                    key={pillar.id}
+                    onClick={() => setExpandedPillar(isExpanded ? null : pillar.id)}
+                    className={`
+                      relative overflow-hidden rounded-2xl cursor-pointer group
+                      border border-white/10 transition-all duration-300 ease-out
+                      hover:border-opacity-50 hover:shadow-lg
+                      ${isExpanded ? "col-span-2 md:col-span-2" : ""}
+                    `}
+                    style={{
+                      borderColor: isExpanded ? `${pillar.color}50` : undefined,
+                      boxShadow: isExpanded ? `0 10px 40px ${pillar.color}20` : undefined,
+                    }}
+                  >
+                    {/* Background Image */}
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                      style={{ backgroundImage: `url(${pillar.image})` }}
+                    />
+                    {/* Dark gradient overlay - subdued */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/75 to-black/60
+                                    group-hover:from-black/85 group-hover:via-black/65 transition-all duration-300" />
+
+                    {/* Content */}
+                    <div className="relative p-6 min-h-[160px] flex flex-col justify-end">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center gap-3">
+                          <div
+                            className="w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm transition-transform duration-300 group-hover:scale-110"
+                            style={{ backgroundColor: `${pillar.color}60` }}
+                          >
+                            <Icon className="w-5 h-5 text-white" />
+                          </div>
+                          <div className="text-left">
+                            <h3 className="font-semibold text-base text-white">
+                              {pillar.name}
+                            </h3>
+                            <p className="text-xs text-slate-300">{pillar.desc}</p>
+                          </div>
+                        </div>
+                        <ChevronDownIcon
+                          className={`w-5 h-5 text-white/70 transition-transform duration-300 ${
+                            isExpanded ? "rotate-180" : ""
+                          }`}
+                        />
+                      </div>
+
+                      {/* Expanded Content */}
+                      <div
+                        className={`overflow-hidden transition-all duration-300 ${
+                          isExpanded ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
+                        }`}
+                      >
+                        <div className="border-t border-white/20 pt-4 text-left">
+                          <ul className="space-y-2 mb-4">
+                            {pillar.bullets.map((bullet, idx) => (
+                              <li key={idx} className="text-sm text-slate-200 flex items-start gap-2">
+                                <span style={{ color: pillar.color }}>•</span>
+                                {bullet}
+                              </li>
+                            ))}
+                          </ul>
+                          <p className="text-sm text-slate-300 italic mb-4">
+                            Why it matters: {pillar.why}
+                          </p>
+                          <Link
+                            href={pillar.link}
+                            onClick={(e) => e.stopPropagation()}
+                            className="inline-flex items-center gap-1 text-sm font-medium transition-colors hover:underline"
+                            style={{ color: pillar.color }}
+                          >
+                            Learn more →
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
+              // Style 2: Accent strip (cleaner)
               return (
                 <div
                   key={pillar.id}
                   onClick={() => setExpandedPillar(isExpanded ? null : pillar.id)}
                   className={`
-                    bg-white/5 backdrop-blur-sm rounded-2xl p-6 text-center
-                    border border-white/10 cursor-pointer
-                    transition-all duration-300 ease-out
-                    hover:border-opacity-50 hover:shadow-lg
+                    bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden cursor-pointer
+                    border border-white/10 transition-all duration-300 ease-out
+                    hover:border-opacity-50 hover:shadow-lg group
                     ${isExpanded ? "col-span-2 md:col-span-2" : ""}
                   `}
                   style={{
@@ -426,58 +529,66 @@ export default function HomePage() {
                     boxShadow: isExpanded ? `0 10px 40px ${pillar.color}20` : undefined,
                   }}
                 >
-                  {/* Header */}
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-3">
-                      <div
-                        className="w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110"
-                        style={{ backgroundColor: pillar.color }}
-                      >
-                        <Icon className="w-5 h-5 text-white" />
+                  {/* Accent image strip at top */}
+                  <div
+                    className="h-20 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                    style={{ backgroundImage: `url(${pillar.image})` }}
+                  />
+
+                  {/* Content below */}
+                  <div className="p-5">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-3">
+                        <div
+                          className="w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                          style={{ backgroundColor: pillar.color }}
+                        >
+                          <Icon className="w-5 h-5 text-white" />
+                        </div>
+                        <div className="text-left">
+                          <h3
+                            className="font-semibold text-base"
+                            style={{ color: pillar.color }}
+                          >
+                            {pillar.name}
+                          </h3>
+                          <p className="text-xs text-slate-400">{pillar.desc}</p>
+                        </div>
                       </div>
-                      <div className="text-left">
-                        <h3
-                          className="font-semibold text-base"
+                      <ChevronDownIcon
+                        className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${
+                          isExpanded ? "rotate-180" : ""
+                        }`}
+                      />
+                    </div>
+
+                    {/* Expanded Content */}
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ${
+                        isExpanded ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      <div className="border-t border-white/10 pt-4 text-left">
+                        <ul className="space-y-2 mb-4">
+                          {pillar.bullets.map((bullet, idx) => (
+                            <li key={idx} className="text-sm text-slate-300 flex items-start gap-2">
+                              <span style={{ color: pillar.color }}>•</span>
+                              {bullet}
+                            </li>
+                          ))}
+                        </ul>
+                        <p className="text-sm text-slate-400 italic mb-4">
+                          Why it matters: {pillar.why}
+                        </p>
+                        <Link
+                          href={pillar.link}
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-1 text-sm font-medium transition-colors hover:underline"
                           style={{ color: pillar.color }}
                         >
-                          {pillar.name}
-                        </h3>
-                        <p className="text-xs text-slate-400">{pillar.desc}</p>
+                          Learn more →
+                        </Link>
                       </div>
-                    </div>
-                    <ChevronDownIcon
-                      className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${
-                        isExpanded ? "rotate-180" : ""
-                      }`}
-                    />
-                  </div>
-
-                  {/* Expanded Content */}
-                  <div
-                    className={`overflow-hidden transition-all duration-300 ${
-                      isExpanded ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
-                    }`}
-                  >
-                    <div className="border-t border-white/10 pt-4 text-left">
-                      <ul className="space-y-2 mb-4">
-                        {pillar.bullets.map((bullet, idx) => (
-                          <li key={idx} className="text-sm text-slate-300 flex items-start gap-2">
-                            <span style={{ color: pillar.color }}>•</span>
-                            {bullet}
-                          </li>
-                        ))}
-                      </ul>
-                      <p className="text-sm text-slate-400 italic mb-4">
-                        Why it matters: {pillar.why}
-                      </p>
-                      <Link
-                        href={pillar.link}
-                        onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-1 text-sm font-medium transition-colors hover:underline"
-                        style={{ color: pillar.color }}
-                      >
-                        Learn more →
-                      </Link>
                     </div>
                   </div>
                 </div>

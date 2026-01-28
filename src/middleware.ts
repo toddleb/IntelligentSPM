@@ -108,6 +108,11 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Skip session endpoint - called frequently by SessionProvider
+  if (path === '/api/auth/session') {
+    return NextResponse.next();
+  }
+
   const config = getConfigForPath(path);
   const { allowed, remaining, resetTime } = checkRateLimit(request, config);
 

@@ -5,10 +5,36 @@
  * Following aicr patterns with JWT strategy.
  */
 
-import type { NextAuthConfig } from 'next-auth';
+import type { NextAuthConfig, Provider } from 'next-auth';
 import LinkedIn from 'next-auth/providers/linkedin';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { prisma, isDatabaseConfigured } from '@/lib/db/prisma';
+
+// Check if LinkedIn OAuth is configured
+function isLinkedInConfigured(): boolean {
+  return !!(process.env.LINKEDIN_CLIENT_ID && process.env.LINKEDIN_CLIENT_SECRET);
+}
+
+// Build providers list conditionally
+function getProviders(): Provider[] {
+  const providers: Provider[] = [];
+
+  if (isLinkedInConfigured()) {
+    providers.push(
+      LinkedIn({
+        clientId: process.env.LINKEDIN_CLIENT_ID!,
+        clientSecret: process.env.LINKEDIN_CLIENT_SECRET!,
+        authorization: {
+          params: {
+            scope: 'openid profile email',
+          },
+        },
+      })
+    );
+  }
+
+  return providers;
+}
 
 // Personal email domains to reject
 const PERSONAL_DOMAINS = [
@@ -27,21 +53,28 @@ function extractDomain(email: string): string {
   return email.split('@')[1]?.toLowerCase() || '';
 }
 
+// Get secret with development fallback
+function getSecret(): string {
+  if (process.env.NEXTAUTH_SECRET) {
+    return process.env.NEXTAUTH_SECRET;
+  }
+  // Development fallback - DO NOT use in production
+  if (process.env.NODE_ENV === 'development') {
+    console.warn('[auth] NEXTAUTH_SECRET not set, using development fallback');
+    return 'dev-secret-do-not-use-in-production-12345';
+  }
+  throw new Error('NEXTAUTH_SECRET is required in production');
+}
+
 export const authConfig: NextAuthConfig = {
   // Only use database adapter if DATABASE_URL is configured
   adapter: isDatabaseConfigured() ? PrismaAdapter(prisma) : undefined,
 
-  providers: [
-    LinkedIn({
-      clientId: process.env.LINKEDIN_CLIENT_ID!,
-      clientSecret: process.env.LINKEDIN_CLIENT_SECRET!,
-      authorization: {
-        params: {
-          scope: 'openid profile email',
-        },
-      },
-    }),
-  ],
+  // Only include providers that are configured
+  providers: getProviders(),
+
+  // Secret for JWT encryption
+  secret: getSecret(),
 
   session: {
     strategy: 'jwt',
