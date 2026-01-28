@@ -17,11 +17,11 @@ interface Message {
   content: string;
   sources?: Source[];
   timing?: {
-    embeddingMs: number;
+    embeddingMs?: number;
     libraryMs?: number;
-    searchMs: number;
-    llmMs: number;
-    totalMs: number;
+    searchMs?: number;
+    llmMs?: number;
+    totalMs?: number;
   };
   model?: {
     embedding: string;
