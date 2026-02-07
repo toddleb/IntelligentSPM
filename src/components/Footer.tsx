@@ -29,7 +29,7 @@ export function Footer() {
           </p>
 
           <p className="text-xs text-[#888]">
-            Powered by <span className="text-[#FF8737] font-bold">The Toddfather</span> of IntelligentSPM
+            Powered by <span className="font-bold gradient-text">AICR</span> and <span className="text-[#FF8737] font-bold">The Toddfather</span> of IntelligentSPM
           </p>
 
           <div className="flex items-center gap-4">
