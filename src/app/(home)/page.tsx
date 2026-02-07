@@ -82,8 +82,6 @@ const navItems = [
   { label: "The Toddfather", href: "/toddfather" },
 ];
 
-// Style 1: "background" = full image with overlay (dramatic)
-// Style 2: "accent" = accent strip at top (cleaner)
 const pillars = [
   {
     id: "sales-planning",
@@ -92,7 +90,6 @@ const pillars = [
     desc: "Territory, quota, capacity",
     icon: TargetIcon,
     image: "/images/pillars/sales-planning.jpg",
-    cardStyle: "background" as const,
     bullets: [
       "Territory design and alignment",
       "Quota setting methodology",
@@ -109,7 +106,6 @@ const pillars = [
     desc: "Plans, payments, statements",
     icon: StackIcon,
     image: "/images/pillars/icm.jpg",
-    cardStyle: "background" as const,
     bullets: [
       "Compensation plan design",
       "Commission calculations and payments",
@@ -126,7 +122,6 @@ const pillars = [
     desc: "Analytics, forecasting, AI",
     icon: BarChartIcon,
     image: "/images/pillars/sales-intelligence.jpg",
-    cardStyle: "background" as const,
     bullets: [
       "Pipeline analytics and forecasting",
       "Performance dashboards",
@@ -143,7 +138,6 @@ const pillars = [
     desc: "SOX, 409A, controls",
     icon: LockClosedIcon,
     image: "/images/pillars/governance.jpg",
-    cardStyle: "background" as const,
     bullets: [
       "Segregation of duties and approvals",
       "Audit trails and change management",
@@ -160,7 +154,6 @@ const pillars = [
     desc: "Vendors, integrations",
     icon: GearIcon,
     image: "/images/pillars/technology.jpg",
-    cardStyle: "background" as const,
     bullets: [
       "Vendor evaluation and selection",
       "System integrations (CRM, ERP, HRIS)",
@@ -177,7 +170,6 @@ const pillars = [
     desc: "Pay philosophy, design",
     icon: MixerHorizontalIcon,
     image: "/images/pillars/strategy.jpg",
-    cardStyle: "background" as const,
     bullets: [
       "Pay philosophy and positioning",
       "Plan design principles",
@@ -194,7 +186,6 @@ const pillars = [
     desc: "Change, training",
     icon: RocketIcon,
     image: "/images/pillars/implementation.jpg",
-    cardStyle: "background" as const,
     bullets: [
       "Change management approach",
       "Training and enablement",
@@ -211,7 +202,6 @@ const pillars = [
     desc: "Wage laws, compliance",
     icon: ReaderIcon,
     image: "/images/pillars/legal.jpg",
-    cardStyle: "background" as const,
     bullets: [
       "State wage law compliance",
       "Plan document requirements",
@@ -262,16 +252,21 @@ export default function HomePage() {
       <nav className="sticky top-0 z-50 bg-[#0F172A]/95 backdrop-blur-sm border-b border-white/10">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">
-            {/* Logo - larger, brighter */}
-            <Link href="/" className="flex items-baseline">
-              <span className="text-2xl font-light text-white tracking-tight">
-                Intelligent
+            {/* Logo with tagline */}
+            <Link href="/" className="flex flex-col">
+              <span className="text-[10px] font-medium text-[#FF8737] tracking-wide">
+                Home of the Toddfather
               </span>
-              <span
-                className="text-2xl font-bold tracking-tight transition-colors duration-500"
-                style={{ color: hero.highlightColor }}
-              >
-                SPM
+              <span className="flex items-baseline -mt-0.5">
+                <span className="text-2xl font-light text-white tracking-tight">
+                  Intelligent
+                </span>
+                <span
+                  className="text-2xl font-bold tracking-tight transition-colors duration-500"
+                  style={{ color: hero.highlightColor }}
+                >
+                  SPM
+                </span>
               </span>
             </Link>
 
@@ -428,11 +423,8 @@ export default function HomePage() {
             {pillars.map((pillar) => {
               const Icon = pillar.icon;
               const isExpanded = expandedPillar === pillar.id;
-              const isBackgroundStyle = pillar.cardStyle === "background";
 
-              // Style 1: Background with overlay (dramatic)
-              if (isBackgroundStyle) {
-                return (
+              return (
                   <div
                     key={pillar.id}
                     onClick={() => setExpandedPillar(isExpanded ? null : pillar.id)}
@@ -510,128 +502,31 @@ export default function HomePage() {
                       </div>
                     </div>
                   </div>
-                );
-              }
-
-              // Style 2: Accent strip (cleaner)
-              return (
-                <div
-                  key={pillar.id}
-                  onClick={() => setExpandedPillar(isExpanded ? null : pillar.id)}
-                  className={`
-                    bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden cursor-pointer
-                    border border-white/10 transition-all duration-300 ease-out
-                    hover:border-opacity-50 hover:shadow-lg group
-                    ${isExpanded ? "col-span-2 md:col-span-2" : ""}
-                  `}
-                  style={{
-                    borderColor: isExpanded ? `${pillar.color}50` : undefined,
-                    boxShadow: isExpanded ? `0 10px 40px ${pillar.color}20` : undefined,
-                  }}
-                >
-                  {/* Accent image strip at top */}
-                  <div
-                    className="h-20 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                    style={{ backgroundImage: `url(${pillar.image})` }}
-                  />
-
-                  {/* Content below */}
-                  <div className="p-5">
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center gap-3">
-                        <div
-                          className="w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
-                          style={{ backgroundColor: pillar.color }}
-                        >
-                          <Icon className="w-5 h-5 text-white" />
-                        </div>
-                        <div className="text-left">
-                          <h3
-                            className="font-semibold text-base"
-                            style={{ color: pillar.color }}
-                          >
-                            {pillar.name}
-                          </h3>
-                          <p className="text-xs text-slate-400">{pillar.desc}</p>
-                        </div>
-                      </div>
-                      <ChevronDownIcon
-                        className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${
-                          isExpanded ? "rotate-180" : ""
-                        }`}
-                      />
-                    </div>
-
-                    {/* Expanded Content */}
-                    <div
-                      className={`overflow-hidden transition-all duration-300 ${
-                        isExpanded ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
-                      }`}
-                    >
-                      <div className="border-t border-white/10 pt-4 text-left">
-                        <ul className="space-y-2 mb-4">
-                          {pillar.bullets.map((bullet, idx) => (
-                            <li key={idx} className="text-sm text-slate-300 flex items-start gap-2">
-                              <span style={{ color: pillar.color }}>•</span>
-                              {bullet}
-                            </li>
-                          ))}
-                        </ul>
-                        <p className="text-sm text-slate-400 italic mb-4">
-                          Why it matters: {pillar.why}
-                        </p>
-                        <Link
-                          href={pillar.link}
-                          onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center gap-1 text-sm font-medium transition-colors hover:underline"
-                          style={{ color: pillar.color }}
-                        >
-                          Learn more →
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* Quick Access Cards */}
-      <section className="py-16 px-6 bg-[#0F172A]">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-[#E2E8F0] mb-10">
-            Quick Access
-          </h2>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {heroes.map((h) => (
-              <Link key={h.id} href={h.primaryHref}>
-                <div
-                  className="rounded-xl p-5 border border-white/10 hover:border-white/30 transition-all hover:scale-105 cursor-pointer h-full"
-                  style={{
-                    background: `linear-gradient(135deg, #1E293B 0%, ${h.highlightColor}15 100%)`,
-                  }}
-                >
-                  <p
-                    className="text-xs font-semibold uppercase tracking-wide mb-2"
-                    style={{ color: h.highlightColor }}
-                  >
-                    {h.kicker}
-                  </p>
-                  <h3 className="text-base font-bold text-[#E2E8F0] mb-2">
-                    {h.highlight}
-                  </h3>
-                  <p className="text-sm text-[#94A3B8]">
-                    {h.primaryCta.replace(" →", "")}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
+      {/* Footer */}
+      <footer className="py-12 px-6 bg-[#0F172A] border-t border-white/10">
+        <div className="max-w-6xl mx-auto text-center">
+          <p className="text-xs font-medium text-[#FF8737] tracking-wide mb-1">
+            Home of the Toddfather
+          </p>
+          <Link href="/" className="inline-flex items-baseline">
+            <span className="text-xl font-light text-white tracking-tight">
+              Intelligent
+            </span>
+            <span className="text-xl font-bold text-[#FF8737] tracking-tight">
+              SPM
+            </span>
+          </Link>
+          <p className="text-sm text-[#94A3B8] mt-4">
+            © {new Date().getFullYear()} IntelligentSPM. All rights reserved.
+          </p>
         </div>
-      </section>
+      </footer>
     </div>
   );
 }
