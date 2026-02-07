@@ -72,6 +72,20 @@ const heroes = [
     secondaryHref: "/toddfather/contact?topic=confab",
     bgGradient: "linear-gradient(135deg, #0F172A 0%, #3D2814 50%, #0F172A 100%)",
   },
+  {
+    id: 5,
+    kicker: "SPM 101",
+    headlinePre: "What the ",
+    highlight: "vendors",
+    headlinePost: " won't tell you.",
+    subheadline: "The real fundamentals of Sales Performance Management, from someone who's seen it all.",
+    highlightColor: "#F472B6", // Pink
+    primaryCta: "Learn SPM 101 →",
+    primaryHref: "/learn/spm-101",
+    secondaryCta: "Book an SPM Bootcamp",
+    secondaryHref: "/toddfather/contact?topic=bootcamp",
+    bgGradient: "linear-gradient(135deg, #0F172A 0%, #4A1942 50%, #0F172A 100%)",
+  },
 ];
 
 const navItems = [
@@ -252,11 +266,8 @@ export default function HomePage() {
       <nav className="sticky top-0 z-50 bg-[#0F172A]/95 backdrop-blur-sm border-b border-white/10">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">
-            {/* Logo with tagline - single line */}
-            <Link href="/" className="flex items-baseline gap-1.5">
-              <span className="text-sm font-medium text-[#FF8737]">
-                Home of the Toddfather for
-              </span>
+            {/* Logo */}
+            <Link href="/" className="flex items-baseline">
               <span className="text-2xl font-light text-white tracking-tight">
                 Intelligent
               </span>
@@ -401,7 +412,7 @@ export default function HomePage() {
               ))}
             </div>
             <p className="text-base md:text-lg text-[#E2E8F0]">
-              Powered by <span className="text-[#FF8737] font-bold">The Toddfather</span> — 30 years of comp expertise
+              Powered by <span className="text-[#FF8737] font-bold">The Toddfather</span> of IntelligentSPM — 30 years of comp expertise
             </p>
           </div>
         </div>
@@ -443,8 +454,9 @@ export default function HomePage() {
                       style={{ backgroundImage: `url(${pillar.image})` }}
                     />
                     {/* Dark gradient overlay - subdued */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/75 to-black/60
-                                    group-hover:from-black/85 group-hover:via-black/65 transition-all duration-300" />
+                    {/* Dark overlay - faded images */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/85 to-black/80
+                                    group-hover:from-black/90 group-hover:via-black/80 transition-all duration-300" />
 
                     {/* Content */}
                     <div className="relative p-6 min-h-[160px] flex flex-col justify-end">

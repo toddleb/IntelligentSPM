@@ -7,9 +7,6 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <p className="text-[12px] font-medium text-[#FF8737] tracking-wide mb-1">
-              Home of the Toddfather for
-            </p>
             <Link href="/" className="flex items-baseline mb-4">
               <span className="text-lg font-light text-[#E2E8F0]">Intelligent</span>
               <span className="text-lg font-bold text-[#38BDF8]">SPM</span>
@@ -18,7 +15,7 @@ export function Footer() {
               The Clearing House for Sales Performance Management.
             </p>
             <p className="text-xs text-[#64748B] mt-2">
-              Powered by <span className="text-[#FF8737]">AICR</span>
+              Powered by <span className="text-[#FF8737]">The Toddfather</span> of IntelligentSPM
             </p>
           </div>
 
