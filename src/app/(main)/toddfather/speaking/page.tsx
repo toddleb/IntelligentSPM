@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { PrimaryButton, SectionLabel } from "@/components/ui";
 
 export const metadata = {
