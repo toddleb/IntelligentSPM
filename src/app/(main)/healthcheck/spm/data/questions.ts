@@ -1,13 +1,4 @@
-import {
-  TargetIcon,
-  StackIcon,
-  BarChartIcon,
-  LockClosedIcon,
-  GearIcon,
-  MixerHorizontalIcon,
-  RocketIcon,
-  ReaderIcon,
-} from "@radix-ui/react-icons";
+import { leverConfig, leverOrder } from "@/lib/levers";
 
 export const maturityLevels = [
   { value: 0, label: "Not Started", description: "We haven't addressed this" },
@@ -17,110 +8,68 @@ export const maturityLevels = [
   { value: 4, label: "Optimized", description: "This is a strength for us" },
 ];
 
-export const pillars = [
-  {
-    id: "SP",
-    name: "Sales Planning",
-    color: "#2563eb",
-    icon: TargetIcon,
-    questions: [
-      "We have documented territory design criteria and review them annually",
-      "Quota setting follows a defined methodology with clear inputs",
-      "Capacity planning is tied to headcount and coverage models",
-    ],
-    learnLink: "/learn/spm-101",
-  },
-  {
-    id: "ICM",
-    name: "ICM",
-    color: "#16a34a",
-    icon: StackIcon,
-    questions: [
-      "Compensation plans have clear definitions for all key terms",
-      "Commission calculations are automated with audit trails",
-      "Reps can independently verify their own paycheck accuracy",
-    ],
-    learnLink: "/learn/spm-101",
-  },
-  {
-    id: "SI",
-    name: "Sales Intelligence",
-    color: "#9333ea",
-    icon: BarChartIcon,
-    questions: [
-      "We have dashboards that show real-time attainment and forecasts",
-      "Analytics inform territory and quota decisions",
-      "We track leading indicators, not just lagging results",
-    ],
-    learnLink: "/learn/spm-101",
-  },
-  {
-    id: "GC",
-    name: "Governance",
-    color: "#dc2626",
-    icon: LockClosedIcon,
-    questions: [
-      "Exception requests follow a documented approval workflow",
-      "Plan changes have version control and effective dates",
-      "We can answer audit questions in under 5 minutes",
-    ],
-    learnLink: "/healthcheck/governance",
-  },
-  {
-    id: "TP",
-    name: "Technology",
-    color: "#0891b2",
-    icon: GearIcon,
-    questions: [
-      "Our ICM system integrates cleanly with CRM and finance",
-      "We evaluate vendors against defined requirements",
-      "Data flows are documented and validated",
-    ],
-    learnLink: "/vendors",
-  },
-  {
-    id: "SD",
-    name: "Strategy",
-    color: "#ea580c",
-    icon: MixerHorizontalIcon,
-    questions: [
-      "We have a documented pay philosophy",
-      "Plan design starts with business objectives, not last year's plan",
-      "We benchmark compensation against market data",
-    ],
-    learnLink: "/learn/framework",
-  },
-  {
-    id: "IC",
-    name: "Implementation",
-    color: "#ca8a04",
-    icon: RocketIcon,
-    questions: [
-      "Plan rollouts include training and manager enablement",
-      "We track plan comprehension and adoption",
-      "Change communications are planned and documented",
-    ],
-    learnLink: "/learn/spm-101",
-  },
-  {
-    id: "LR",
-    name: "Legal",
-    color: "#4f46e5",
-    icon: ReaderIcon,
-    questions: [
-      "We review plans against state wage law requirements",
-      "Plan documents meet legal standards",
-      "Clawback and forfeiture rules are clearly defined",
-    ],
-    learnLink: "/learn/policies",
-  },
-];
+// Quiz questions mapped to levers - using shared lever config for colors and icons
+const leverQuestions: Record<string, string[]> = {
+  "incentive-architecture": [
+    "We have a documented pay philosophy",
+    "Plan design starts with business objectives, not last year's plan",
+    "We benchmark compensation against market data",
+  ],
+  "compliance-guardrails": [
+    "We review plans against state wage law requirements",
+    "Plan documents meet legal standards",
+    "Clawback and forfeiture rules are clearly defined",
+  ],
+  "capacity-coverage": [
+    "We have documented territory design criteria and review them annually",
+    "Quota setting follows a defined methodology with clear inputs",
+    "Capacity planning is tied to headcount and coverage models",
+  ],
+  "systems-spine": [
+    "Our ICM system integrates cleanly with CRM and finance",
+    "We evaluate vendors against defined requirements",
+    "Data flows are documented and validated",
+  ],
+  "payout-engine": [
+    "Compensation plans have clear definitions for all key terms",
+    "Commission calculations are automated with audit trails",
+    "Reps can independently verify their own paycheck accuracy",
+  ],
+  "signal-forecast": [
+    "We have dashboards that show real-time attainment and forecasts",
+    "Analytics inform territory and quota decisions",
+    "We track leading indicators, not just lagging results",
+  ],
+  "controls-evidence": [
+    "Exception requests follow a documented approval workflow",
+    "Plan changes have version control and effective dates",
+    "We can answer audit questions in under 5 minutes",
+  ],
+  "enablement-loop": [
+    "Plan rollouts include training and manager enablement",
+    "We track plan comprehension and adoption",
+    "Change communications are planned and documented",
+  ],
+};
+
+// Build pillars array from shared lever config (maintains compatibility with existing quiz logic)
+export const pillars = leverOrder.map((slug) => {
+  const lever = leverConfig[slug];
+  return {
+    id: lever.id.toUpperCase(), // e.g., "strategy" → "STRATEGY"
+    name: lever.name,
+    color: lever.color,
+    icon: lever.icon,
+    questions: leverQuestions[slug],
+    learnLink: `/levers/${slug}`,
+  };
+});
 
 export const tierBadges = [
-  { min: 0, max: 25, label: "Foundational", color: "#dc2626", description: "Significant gaps across most pillars" },
+  { min: 0, max: 25, label: "Foundational", color: "#dc2626", description: "Significant gaps across most levers" },
   { min: 26, max: 50, label: "Developing", color: "#ea580c", description: "Some processes in place, many opportunities" },
   { min: 51, max: 75, label: "Mature", color: "#ca8a04", description: "Solid foundation with room to optimize" },
-  { min: 76, max: 100, label: "Advanced", color: "#16a34a", description: "Strong SPM practice across pillars" },
+  { min: 76, max: 100, label: "Advanced", color: "#16a34a", description: "Strong SPM practice across levers" },
 ];
 
 export function getTierBadge(percentage: number) {

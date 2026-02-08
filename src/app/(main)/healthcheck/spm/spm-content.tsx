@@ -272,7 +272,7 @@ function GateScreen({
   );
 }
 
-// Quiz Component - 1 page per pillar with table layout
+// Quiz Component - 1 page per lever with table layout
 function Quiz({
   state,
   onAnswer,
@@ -326,7 +326,7 @@ function Quiz({
               </div>
               <div>
                 <p className="text-sm text-[#64748B]">
-                  Pillar {state.currentPillar + 1} of {pillars.length}
+                  Lever {state.currentPillar + 1} of {pillars.length}
                 </p>
                 <p className="text-xl font-bold" style={{ color: pillar.color }}>
                   {pillar.name}
@@ -341,7 +341,7 @@ function Quiz({
               style={{ width: `${progress}%`, backgroundColor: pillar.color }}
             />
           </div>
-          {/* Pillar dots */}
+          {/* Lever dots */}
           <div className="flex justify-between mt-3">
             {pillars.map((p, i) => {
               const PIcon = p.icon;
@@ -475,7 +475,7 @@ function Quiz({
               color: allAnswered ? "white" : "#64748B",
             }}
           >
-            {isLastPillar ? "See Results" : "Next Pillar →"}
+            {isLastPillar ? "See Results" : "Next Lever →"}
           </button>
         </div>
       </div>
@@ -571,7 +571,7 @@ function Results({
           {/* Top Right: Spider Chart */}
           <div className="bg-white/5/80 backdrop-blur-sm rounded-xl p-6 border border-[#38BDF8]/20">
             <h3 className="text-sm font-semibold text-[#38BDF8] uppercase tracking-wider mb-4">
-              Pillar Overview
+              Lever Overview
             </h3>
             <SpiderChart answers={answers} />
           </div>
@@ -589,7 +589,7 @@ function Results({
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-2xl font-bold text-[#dc2626]">{criticalPillars.length}</span>
-                  <span className="text-xs text-[#94A3B8]">pillars &lt;40%</span>
+                  <span className="text-xs text-[#94A3B8]">levers &lt;40%</span>
                 </div>
               </div>
               <div className="flex items-center justify-between p-3 bg-[#F59E0B]/10 rounded-lg border border-[#F59E0B]/30">
@@ -599,7 +599,7 @@ function Results({
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-2xl font-bold text-[#F59E0B]">{priorityPillars.length}</span>
-                  <span className="text-xs text-[#94A3B8]">pillars 40-60%</span>
+                  <span className="text-xs text-[#94A3B8]">levers 40-60%</span>
                 </div>
               </div>
               <div className="flex items-center justify-between p-3 bg-[#3B82F6]/10 rounded-lg border border-[#3B82F6]/30">
@@ -609,7 +609,7 @@ function Results({
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-2xl font-bold text-[#3B82F6]">{monitorPillars.length}</span>
-                  <span className="text-xs text-[#94A3B8]">pillars 60-80%</span>
+                  <span className="text-xs text-[#94A3B8]">levers 60-80%</span>
                 </div>
               </div>
               <div className="pt-3 border-t border-white/10 text-center">
@@ -671,14 +671,14 @@ function Results({
                 {percentage < 50
                   ? "Your SPM program has significant gaps. A comprehensive review is recommended."
                   : percentage < 75
-                  ? "Solid foundation with room to improve. Focus on the pillars above."
+                  ? "Solid foundation with room to improve. Focus on the levers above."
                   : "Strong SPM program! Fine-tune the areas above for excellence."}
               </p>
             </div>
           </div>
         </div>
 
-        {/* Detailed Pillar Breakdown */}
+        {/* Detailed Lever Breakdown */}
         <div className="bg-white/5/80 backdrop-blur-sm rounded-xl p-6 border border-[#38BDF8]/20 mb-10">
           <h3 className="text-sm font-semibold text-[#38BDF8] uppercase tracking-wider mb-4">
             Detailed Breakdown
