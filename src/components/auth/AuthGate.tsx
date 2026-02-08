@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useSession, signIn } from 'next-auth/react';
 import { isPersonalEmail } from '@/lib/services/analysis-gate';
 
@@ -40,14 +40,7 @@ export function AuthGate({
   const [gateStatus, setGateStatus] = useState<GateStatus | null>(null);
   const [isCheckingGate, setIsCheckingGate] = useState(false);
 
-  // Check gate status when session is available
-  useEffect(() => {
-    if (session?.user?.email) {
-      checkGateStatus(session.user.email);
-    }
-  }, [session?.user?.email]);
-
-  const checkGateStatus = async (emailToCheck: string) => {
+  const checkGateStatus = useCallback(async (emailToCheck: string) => {
     setIsCheckingGate(true);
     try {
       const response = await fetch('/api/auth/check-gate', {
@@ -72,7 +65,14 @@ export function AuthGate({
     } finally {
       setIsCheckingGate(false);
     }
-  };
+  }, [onAuthComplete]);
+
+  // Check gate status when session is available
+  useEffect(() => {
+    if (session?.user?.email) {
+      checkGateStatus(session.user.email);
+    }
+  }, [session?.user?.email, checkGateStatus]);
 
   const handleLinkedInSignIn = async () => {
     setIsLoading(true);

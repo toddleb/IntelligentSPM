@@ -738,32 +738,56 @@ function Results({
   );
 }
 
+// Initialize state from localStorage (lazy initialization)
+function getInitialState(userEmail: string | null | undefined): { state: HealthcheckState; phase: Phase } {
+  const saved = loadState();
+  if (saved && saved.email === userEmail) {
+    const allAnswered = pillars.every((p) =>
+      p.questions.every((_, i) => saved.answers[`${p.id}-${i}`] !== undefined)
+    );
+    return {
+      state: saved,
+      phase: allAnswered ? "results" : "quiz",
+    };
+  }
+  return {
+    state: {
+      email: userEmail || "",
+      answers: {},
+      currentPillar: 0,
+      currentQuestion: 0,
+    },
+    phase: "quiz",
+  };
+}
+
 // Main Component
 export default function SPMContent({ userEmail }: SPMContentProps) {
-  const [phase, setPhase] = useState<Phase>("quiz");
-  const [state, setState] = useState<HealthcheckState>({
-    email: userEmail || "",
-    answers: {},
-    currentPillar: 0,
-    currentQuestion: 0,
-  });
+  // Use lazy initialization to avoid setState in useEffect
+  const [{ state: initialState, phase: initialPhase }] = useState(() =>
+    getInitialState(userEmail)
+  );
+  const [phase, setPhase] = useState<Phase>(initialPhase);
+  const [state, setState] = useState<HealthcheckState>(initialState);
 
-  // Load saved state on mount or use userEmail
+  // Handle userEmail prop changes after initial render
   useEffect(() => {
-    const saved = loadState();
-    if (saved && saved.email === userEmail) {
-      setState(saved);
-      // If they have answers and completed, show results
-      const allAnswered = pillars.every((p) =>
-        p.questions.every((_, i) => saved.answers[`${p.id}-${i}`] !== undefined)
-      );
-      if (allAnswered) {
-        setPhase("results");
+    // Only run if userEmail changes and differs from current state
+    if (userEmail && userEmail !== state.email) {
+      const saved = loadState();
+      if (saved && saved.email === userEmail) {
+        setState(saved);
+        const allAnswered = pillars.every((p) =>
+          p.questions.every((_, i) => saved.answers[`${p.id}-${i}`] !== undefined)
+        );
+        if (allAnswered) {
+          setPhase("results");
+        }
+      } else {
+        setState((prev) => ({ ...prev, email: userEmail }));
       }
-    } else if (userEmail) {
-      // New email, start fresh
-      setState((prev) => ({ ...prev, email: userEmail }));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userEmail]);
 
   const handleAnswer = (pillarIndex: number, questionIndex: number, value: number) => {
