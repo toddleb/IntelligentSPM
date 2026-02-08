@@ -39,7 +39,7 @@ const leverData: Record<string, {
     header: "Strategy",
     name: "Incentive Architecture",
     tagline: "Reward intent. Predict behavior.",
-    color: "#D97706",
+    color: "#A39080",
     icon: MixerHorizontalIcon,
     whatItIs: "The design layer that turns company goals into rep behavior—by shaping upside, effort, and tradeoffs.",
     whenToPullBullets: [
@@ -85,7 +85,7 @@ const leverData: Record<string, {
     header: "Legal",
     name: "Compliance Guardrails",
     tagline: "What you're allowed to do.",
-    color: "#6366F1",
+    color: "#7E8A9A",
     icon: ReaderIcon,
     whatItIs: "The constraint layer—what you can promise, pay, claw back, and enforce… by jurisdiction and role.",
     whenToPullBullets: [
@@ -131,7 +131,7 @@ const leverData: Record<string, {
     header: "Planning",
     name: "Capacity & Coverage",
     tagline: "Who sells what—and what's actually possible.",
-    color: "#3B82F6",
+    color: "#6B8A9E",
     icon: TargetIcon,
     whatItIs: "The feasibility layer—turning market potential into territory design, quotas, and staffing that humans can actually hit.",
     whenToPullBullets: [
@@ -177,7 +177,7 @@ const leverData: Record<string, {
     header: "Technology",
     name: "Systems Spine",
     tagline: "Where data breaks—and how you stop it from breaking.",
-    color: "#38BDF8",
+    color: "#6A9A9A",
     icon: GearIcon,
     whatItIs: "The reliability layer—data contracts, integrations, and lineage that keep crediting and payouts defensible and fast.",
     whenToPullBullets: [
@@ -223,7 +223,7 @@ const leverData: Record<string, {
     header: "Operations",
     name: "Payout Engine",
     tagline: "How money actually moves.",
-    color: "#34D399",
+    color: "#7A9A85",
     icon: StackIcon,
     whatItIs: "The execution layer—crediting rules, calculation cycles, statements, adjustments, and payment timing.",
     whenToPullBullets: [
@@ -269,7 +269,7 @@ const leverData: Record<string, {
     header: "Analytics",
     name: "Signal & Forecast",
     tagline: "What's real. What's next.",
-    color: "#A78BFA",
+    color: "#8A7E9A",
     icon: BarChartIcon,
     whatItIs: "The decision layer—metrics, leading indicators, and forecasts that tell you what's real and what's about to break.",
     whenToPullBullets: [
@@ -315,7 +315,7 @@ const leverData: Record<string, {
     header: "Governance",
     name: "Controls & Evidence",
     tagline: "Prove it. Audit it. Defend it.",
-    color: "#F87171",
+    color: "#9A7E7E",
     icon: LockClosedIcon,
     whatItIs: "The defensibility layer—approvals, change control, audit trails, and evidence that proves calculations and decisions were valid.",
     whenToPullBullets: [
@@ -361,7 +361,7 @@ const leverData: Record<string, {
     header: "Enablement",
     name: "Enablement Loop",
     tagline: "Make it understood. Make it stick.",
-    color: "#FBBF24",
+    color: "#9A9070",
     icon: RocketIcon,
     whatItIs: "The adoption layer—training, manager coaching, communications, and feedback loops that prevent plan drift and rep confusion.",
     whenToPullBullets: [
