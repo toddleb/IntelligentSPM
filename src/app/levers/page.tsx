@@ -101,7 +101,7 @@ export default function LeversPage() {
       {/* Header */}
       <header className="border-b border-white/10">
         <div className="max-w-6xl mx-auto px-6 py-4">
-          <Link href="/" className="text-xl font-extrabold tracking-tight">
+          <Link href="/" className="text-xl font-extrabold tracking-tight font-logo">
             <span className="text-white">Intelligent</span>
             <span
               className="text-[#38BDF8]"
@@ -114,7 +114,7 @@ export default function LeversPage() {
       {/* Intro Section */}
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 font-logo">
             <span className="text-white">The 8 Levers of </span>
             <span className="text-white">Intelligent</span>
             <span
