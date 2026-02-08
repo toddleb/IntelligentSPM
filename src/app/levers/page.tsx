@@ -103,7 +103,10 @@ export default function LeversPage() {
         <div className="max-w-6xl mx-auto px-6 py-4">
           <Link href="/" className="text-xl font-extrabold tracking-tight">
             <span className="text-white">Intelligent</span>
-            <span className="text-[#38BDF8]">SPM</span>
+            <span
+              className="text-[#38BDF8]"
+              style={{ textShadow: '0 0 20px rgba(56, 189, 248, 0.6), 0 0 40px rgba(56, 189, 248, 0.3)' }}
+            >SPM</span>
           </Link>
         </div>
       </header>
@@ -114,7 +117,10 @@ export default function LeversPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-white">The 8 Levers of </span>
             <span className="text-white">Intelligent</span>
-            <span className="text-[#38BDF8]">SPM</span>
+            <span
+              className="text-[#38BDF8]"
+              style={{ textShadow: '0 0 20px rgba(56, 189, 248, 0.6), 0 0 40px rgba(56, 189, 248, 0.3)' }}
+            >SPM</span>
           </h1>
           <p className="text-xl text-slate-300 mb-8">
             Pull a lever. See the consequences.

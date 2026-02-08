@@ -56,6 +56,12 @@ body {
 .text-hot-pink { color: var(--hot-pink); }
 .text-muted { color: var(--text-muted); }
 
+/* SPM Brand Glow - the signature "control room" look */
+.spm-glow {
+  color: var(--teal);
+  text-shadow: 0 0 20px rgba(56, 189, 248, 0.6), 0 0 40px rgba(56, 189, 248, 0.3);
+}
+
 .bg-teal { background-color: var(--teal); }
 .bg-orange { background-color: var(--orange); }
 .bg-ai-purple { background-color: var(--ai-purple); }
