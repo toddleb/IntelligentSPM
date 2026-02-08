@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { PrimaryButton, SectionLabel } from "@/components/ui";
-import { CheckIcon } from "@/components/icons";
+import { CheckIcon, MicrophoneIcon } from "@/components/icons";
 
 const credentials = [
   "Led SPM transformations at 50+ enterprises",
@@ -203,19 +203,7 @@ export default function ToddfatherPage() {
           <Link href="/toddfather/speaking">
             <div className="bg-white/5 rounded-xl p-6 border border-[#A3E635]/20 hover:border-[#A3E635]/40 transition-all cursor-pointer h-full">
               <div className="w-10 h-10 rounded-lg bg-[#A3E635]/20 flex items-center justify-center mb-4">
-                <svg
-                  className="w-5 h-5 text-[#A3E635]"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
-                  />
-                </svg>
+                <MicrophoneIcon className="w-5 h-5 text-[#A3E635]" />
               </div>
               <h3 className="text-lg font-bold text-[#E2E8F0] mb-2">Speaking</h3>
               <p className="text-[#94A3B8] text-sm">Keynotes & workshops.</p>

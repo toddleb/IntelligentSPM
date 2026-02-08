@@ -11,3 +11,4 @@ export { ChevronRightIcon } from "./ChevronRightIcon";
 export { EmailIcon } from "./EmailIcon";
 export { EyeIcon } from "./EyeIcon";
 export { LinkedInIcon } from "./LinkedInIcon";
+export { MicrophoneIcon } from "./MicrophoneIcon";
