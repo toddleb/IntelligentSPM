@@ -1,6 +1,20 @@
 import type { Metadata } from "next";
+import { Inter, Outfit } from "next/font/google";
 import { SessionProvider } from "@/components/providers/SessionProvider";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-logo",
+  display: "swap",
+  weight: ["700", "800"],
+});
 
 export const metadata: Metadata = {
   title: {
@@ -49,8 +63,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased min-h-screen flex flex-col">
+    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
+      <body className="font-sans antialiased min-h-screen flex flex-col">
         <SessionProvider>
           {children}
         </SessionProvider>

@@ -20,7 +20,7 @@ export function Nav() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo with SPM glow */}
-          <Link href="/" className="flex items-baseline">
+          <Link href="/" className="flex items-baseline font-logo">
             <span className="text-2xl font-extrabold text-white tracking-tight">
               Intelligent
             </span>
