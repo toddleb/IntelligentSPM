@@ -23,14 +23,14 @@ import {
   systemActor,
   isGOCCConfigured,
 } from '@/lib/gocc';
+import {
+  isPersonalEmail,
+  extractDomain,
+  PERSONAL_DOMAINS,
+} from '@/lib/email-utils';
 
-// Personal email domains to reject
-const PERSONAL_DOMAINS = [
-  'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com',
-  'icloud.com', 'me.com', 'mac.com', 'live.com', 'msn.com',
-  'protonmail.com', 'proton.me', 'mail.com', 'ymail.com', 'gmx.com',
-  'gmx.net', 'zoho.com', 'fastmail.com', 'tutanota.com', 'hey.com',
-];
+// Re-export for backward compatibility
+export { isPersonalEmail, extractDomain, PERSONAL_DOMAINS };
 
 export interface GateResult {
   allowed: boolean;
@@ -38,21 +38,6 @@ export interface GateResult {
   code?: 'PERSONAL_EMAIL' | 'USER_LIMIT' | 'COMPANY_LIMIT' | 'NO_DATABASE' | 'USER_NOT_FOUND';
   user?: User & { company: Company };
   remainingCompanyAnalyses?: number;
-}
-
-/**
- * Check if an email is a personal email domain
- */
-export function isPersonalEmail(email: string): boolean {
-  const domain = email.split('@')[1]?.toLowerCase();
-  return PERSONAL_DOMAINS.includes(domain);
-}
-
-/**
- * Extract domain from email
- */
-export function extractDomain(email: string): string {
-  return email.split('@')[1]?.toLowerCase() || '';
 }
 
 /**

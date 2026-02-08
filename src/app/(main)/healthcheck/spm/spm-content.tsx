@@ -9,18 +9,7 @@ import {
   calculatePercentage,
   getTierBadge,
 } from "./data/questions";
-
-const PERSONAL_DOMAINS = [
-  "gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "aol.com",
-  "icloud.com", "me.com", "mac.com", "live.com", "msn.com",
-  "protonmail.com", "proton.me", "mail.com", "ymail.com", "gmx.com",
-  "gmx.net", "zoho.com", "fastmail.com", "tutanota.com", "hey.com",
-];
-
-function isPersonalEmail(email: string): boolean {
-  const domain = email.split("@")[1]?.toLowerCase();
-  return PERSONAL_DOMAINS.includes(domain);
-}
+import { isPersonalEmail } from "@/lib/email-utils";
 
 type Phase = "quiz" | "results";
 
