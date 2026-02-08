@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // Lazy initialization to avoid build-time errors
-function getResend() {
-  const { Resend } = require("resend");
+async function getResend() {
+  const { Resend } = await import("resend");
   return new Resend(process.env.RESEND_API_KEY);
 }
 
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true });
     }
 
-    const resend = getResend();
+    const resend = await getResend();
 
     // Add to Resend audience
     if (SYNDICATE_AUDIENCE_ID) {
