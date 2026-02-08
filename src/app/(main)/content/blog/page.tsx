@@ -5,6 +5,7 @@ import Link from "next/link";
 import blogData from "@/data/blog-posts.json";
 import { PrimaryButton, SectionLabel } from "@/components/ui";
 import { EyeIcon } from "@/components/icons";
+import { formatDate, formatViews } from "@/lib/format";
 
 type BlogPost = {
   id: string;
@@ -45,18 +46,6 @@ export default function BlogPage() {
 
   // Featured posts
   const featuredPosts = posts.filter((p) => p.featured);
-
-  // Format date
-  const formatDate = (dateStr: string) => {
-    const date = new Date(dateStr);
-    return date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-  };
-
-  // Format view count
-  const formatViews = (views: number) => {
-    if (views >= 1000) return `${(views / 1000).toFixed(1)}k`;
-    return views.toString();
-  };
 
   return (
     <div className="min-h-screen bg-[#0F172A]">

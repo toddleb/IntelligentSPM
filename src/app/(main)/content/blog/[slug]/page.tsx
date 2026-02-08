@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import blogData from "@/data/blog-posts.json";
 import { PrimaryButton } from "@/components/ui";
 import { ChevronLeftIcon, ChevronRightIcon, EyeIcon } from "@/components/icons";
+import { formatDate, formatViews } from "@/lib/format";
 
 type BlogPost = {
   id: string;
@@ -189,18 +190,6 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
     notFound();
   }
 
-  // Format date
-  const formatDate = (dateStr: string) => {
-    const date = new Date(dateStr);
-    return date.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
-  };
-
-  // Format view count
-  const formatViews = (views: number) => {
-    if (views >= 1000) return `${(views / 1000).toFixed(1)}k`;
-    return views.toString();
-  };
-
   return (
     <div className="min-h-screen bg-[#0F172A]">
       {/* Hero Header */}
@@ -249,7 +238,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
               </div>
               <div>
                 <p className="text-[#E2E8F0] font-medium">{post.author}</p>
-                <p>{formatDate(post.publishedAt)}</p>
+                <p>{formatDate(post.publishedAt, "long")}</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
