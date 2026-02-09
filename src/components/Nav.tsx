@@ -35,7 +35,7 @@ export function Nav() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-base font-medium text-[#E2E8F0] hover:text-white transition-colors"
+                className="text-base font-medium text-[#0F172A]"
               >
                 {item.label}
               </Link>
@@ -71,7 +71,7 @@ export function Nav() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-lg text-[#E2E8F0] hover:text-white transition-colors py-2"
+                  className="text-lg text-[#0F172A] py-2"
                 >
                   {item.label}
                 </Link>

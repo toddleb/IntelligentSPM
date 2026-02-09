@@ -493,6 +493,18 @@ export default function GovernanceContent({ userEmail }: GovernanceContentProps)
             Upload any document. We&apos;ll scan it against the 17 SCP (Sales Compensation Policy) standards and show you what&apos;s covered and what&apos;s missing.
           </p>
 
+          <div className="max-w-2xl mx-auto mb-10 rounded-2xl border border-[#38BDF8]/30 bg-[#0B1220] p-5 text-left">
+            <p className="text-sm text-[#CBD5F5]">
+              The automated analyzer is temporarily offline. If you need a readout now, email your policy to
+              {" "}
+              <a href="mailto:todd@intelligentspm.com" className="text-[#38BDF8] font-semibold hover:underline">
+                todd@intelligentspm.com
+              </a>
+              {" "}
+              and we&apos;ll run it manually.
+            </p>
+          </div>
+
           {/* Input Mode Toggle */}
           <div className="flex justify-center gap-2 mb-8">
             <button
