@@ -21,10 +21,10 @@ export function Nav() {
         <div className="flex items-center justify-between h-16">
           {/* Logo with SPM glow */}
           <Link href="/" className="flex items-baseline font-logo">
-            <span className="text-2xl font-extrabold text-white tracking-tight">
+            <span className="text-3xl font-extrabold text-white tracking-tight">
               Intelligent
             </span>
-            <span className="text-2xl font-extrabold tracking-tight spm-glow">
+            <span className="text-3xl font-extrabold tracking-tight spm-glow">
               SPM
             </span>
           </Link>
@@ -41,7 +41,7 @@ export function Nav() {
               </Link>
             ))}
             <Link href="/syndicate">
-              <button className="px-5 py-2.5 text-base font-bold text-white bg-[#FF8737] rounded-lg hover:bg-[#FF8737]/90 hover:scale-105 transition-all">
+              <button className="px-5 py-2.5 text-base font-bold text-white bg-[#38BDF8] rounded-lg hover:bg-[#38BDF8]/90 hover:scale-105 transition-all">
                 Join The Syndicate
               </button>
             </Link>
@@ -77,7 +77,7 @@ export function Nav() {
                 </Link>
               ))}
               <Link href="/syndicate" onClick={() => setMobileOpen(false)}>
-                <button className="w-full px-4 py-3 text-base font-bold text-white bg-[#FF8737] rounded-lg hover:bg-[#FF8737]/90 transition-all mt-2">
+                <button className="w-full px-4 py-3 text-base font-bold text-white bg-[#38BDF8] rounded-lg hover:bg-[#38BDF8]/90 transition-all mt-2">
                   Join The Syndicate
                 </button>
               </Link>

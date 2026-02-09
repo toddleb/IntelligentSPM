@@ -1,13 +1,14 @@
 import { Footer } from "@/components/Footer";
+import { Nav } from "@/components/Nav";
 
 export default function HomeLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // Homepage has its own dynamic nav - don't include shared Nav here
   return (
     <>
+      <Nav />
       {children}
       <Footer />
     </>

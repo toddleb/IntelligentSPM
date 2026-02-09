@@ -18,7 +18,7 @@ export const leverConfig = {
     name: "Incentive Architecture",
     tagline: "Reward intent. Predict behavior.",
     consequence: "Pull wrong → behavior + cost drift.",
-    color: "#A39080", // warm taupe
+    color: "#F59E0B", // amber
     icon: MixerHorizontalIcon,
     oldPillarKey: "STRATEGY_DESIGN",
     whatItIs: "The design layer that turns company goals into rep behavior—by shaping upside, effort, and tradeoffs.",
@@ -67,7 +67,7 @@ export const leverConfig = {
     name: "Compliance Guardrails",
     tagline: "What you're allowed to do.",
     consequence: "Pull wrong → legal exposure.",
-    color: "#7E8A9A", // steel blue
+    color: "#38BDF8", // sky
     icon: ReaderIcon,
     oldPillarKey: "LEGAL_REGULATORY",
     whatItIs: "The constraint layer—what you can promise, pay, claw back, and enforce… by jurisdiction and role.",
@@ -116,7 +116,7 @@ export const leverConfig = {
     name: "Capacity & Coverage",
     tagline: "Who sells what—and what's possible.",
     consequence: "Pull wrong → unfair quotas + gaps.",
-    color: "#6B8A9E", // slate blue
+    color: "#22D3EE", // cyan
     icon: TargetIcon,
     oldPillarKey: "SALES_PLANNING",
     whatItIs: "The allocation layer—matching capacity to opportunity, territories to potential, and quotas to attainability.",
@@ -165,7 +165,7 @@ export const leverConfig = {
     name: "Systems Spine",
     tagline: "Stop data breaks before payouts do.",
     consequence: "Pull wrong → spreadsheets + distrust.",
-    color: "#6A9A9A", // muted teal
+    color: "#22C55E", // emerald
     icon: GearIcon,
     oldPillarKey: "TECHNOLOGY_PLATFORMS",
     whatItIs: "The integration layer—how data flows from CRM to payout, and where it breaks.",
@@ -214,7 +214,7 @@ export const leverConfig = {
     name: "Payout Engine",
     tagline: "How money actually moves.",
     consequence: "Pull wrong → late pay + disputes.",
-    color: "#7A9A85", // sage
+    color: "#F97316", // orange
     icon: StackIcon,
     oldPillarKey: "ICM",
     whatItIs: "The execution layer—calculating, validating, approving, and paying commissions accurately and on time.",
@@ -263,7 +263,7 @@ export const leverConfig = {
     name: "Signal & Forecast",
     tagline: "What's real. What's next.",
     consequence: "Pull wrong → bad calls + missed quarters.",
-    color: "#8A7E9A", // dusty lavender
+    color: "#8B5CF6", // violet
     icon: BarChartIcon,
     oldPillarKey: "SALES_INTELLIGENCE",
     whatItIs: "The insight layer—turning comp data into signals for forecasting, planning, and behavior change.",
@@ -312,7 +312,7 @@ export const leverConfig = {
     name: "Controls & Evidence",
     tagline: "Prove it. Audit it. Defend it.",
     consequence: "Pull wrong → findings + liability.",
-    color: "#9A7E7E", // dusty rose
+    color: "#A3E635", // lime
     icon: LockClosedIcon,
     oldPillarKey: "GOVERNANCE_COMPLIANCE",
     whatItIs: "The control layer—policies, approvals, exceptions, and audit trails that prove you're doing it right.",
@@ -361,7 +361,7 @@ export const leverConfig = {
     name: "Enablement Loop",
     tagline: "Make it understood. Make it stick.",
     consequence: "Pull wrong → confusion + gaming.",
-    color: "#9A9070", // olive gold
+    color: "#F43F5E", // rose
     icon: RocketIcon,
     oldPillarKey: "IMPLEMENTATION_CHANGE",
     whatItIs: "The adoption layer—communication, training, and feedback loops that turn plans into understood behavior.",
