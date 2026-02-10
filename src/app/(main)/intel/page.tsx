@@ -15,29 +15,36 @@ import {
 } from "./constants";
 
 function buildFeed(): IntelItem[] {
-  const blogItems: IntelItem[] = (blogData.posts as any[]).map((p) => ({
-    id: p.id,
-    type: "blog" as const,
-    title: p.title,
-    excerpt: p.excerpt,
-    date: p.publishedAt,
-    readTime: p.readTime,
-    href: `/content/blog/${p.id}`,
-    featured: p.featured,
-    author: p.author,
-  }));
+  const now = new Date();
+  now.setHours(23, 59, 59, 999); // Include all of today
 
-  const newsletterItems: IntelItem[] = newsletterData.issues.map((n) => ({
-    id: `newsletter-${n.slug}`,
-    type: "newsletter" as const,
-    title: n.title,
-    excerpt: n.excerpt,
-    date: n.publishedAt,
-    readTime: "5 min",
-    href: `/newsletter/${n.slug}`,
-    featured: false,
-    author: "The Toddfather",
-  }));
+  const blogItems: IntelItem[] = (blogData.posts as any[])
+    .filter((p) => new Date(p.publishedAt) <= now)
+    .map((p) => ({
+      id: p.id,
+      type: "blog" as const,
+      title: p.title,
+      excerpt: p.excerpt,
+      date: p.publishedAt,
+      readTime: p.readTime,
+      href: `/content/blog/${p.id}`,
+      featured: p.featured,
+      author: p.author,
+    }));
+
+  const newsletterItems: IntelItem[] = newsletterData.issues
+    .filter((n) => new Date(n.publishedAt) <= now)
+    .map((n) => ({
+      id: `newsletter-${n.slug}`,
+      type: "newsletter" as const,
+      title: n.title,
+      excerpt: n.excerpt,
+      date: n.publishedAt,
+      readTime: "5 min",
+      href: `/newsletter/${n.slug}`,
+      featured: false,
+      author: "The Toddfather",
+    }));
 
   const all = [...blogItems, ...newsletterItems];
   return all.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());

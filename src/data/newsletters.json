@@ -10,6 +10,26 @@
       "templateFile": "syndicate-issue-001.html",
       "blogPostId": "your-spm-vendor-just-added-ai-now-what",
       "promptPackId": "01"
+    },
+    {
+      "slug": "002",
+      "number": 2,
+      "title": "The Governance Gap: What Auditors Find and You Don't",
+      "excerpt": "Your calculations are accurate. Your governance is missing. Here's what auditors look for, why most teams fail, and how to fix it in 30 days.",
+      "publishedAt": "2026-02-25",
+      "topics": ["Audit Readiness", "Exception Management", "17 SCP Policies", "Controls & Evidence"],
+      "templateFile": "syndicate-issue-002.html",
+      "blogPostId": "3-questions-comp-admin-fears-audit"
+    },
+    {
+      "slug": "003",
+      "number": 3,
+      "title": "The Trust Equation: Why Reps Don't Believe Their Paychecks",
+      "excerpt": "Accuracy without transparency is worthless. Your calculations are right — but can your reps prove it? The trust gap that drives attrition, disputes, and gaming.",
+      "publishedAt": "2026-03-11",
+      "topics": ["Rep Trust", "Commission Transparency", "Statement Design", "Evidence-Based SPM"],
+      "templateFile": "syndicate-issue-003.html",
+      "blogPostId": "reps-cant-verify-paycheck-youve-lost"
     }
   ]
 }
