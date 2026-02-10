@@ -62,8 +62,8 @@ export default async function NewsletterIssuePage({ params }: Props) {
       {/* Issue Header */}
       <section className="py-12 px-6 bg-gradient-to-b from-[#1a0e2e] via-[#130a24] to-[#1a0e2e] border-b border-white/10">
         <div className="max-w-4xl mx-auto">
-          <Link href="/newsletter" className="text-[#CBD5E1] hover:text-white transition-colors text-sm mb-6 inline-block">
-            ← Back to Archive
+          <Link href="/intel" className="text-[#CBD5E1] hover:text-white transition-colors text-sm mb-6 inline-block">
+            ← Back to Intel
           </Link>
           <div className="flex items-center gap-3 mb-4">
             <span className="px-3 py-1 text-xs font-bold rounded-full bg-[#FE9200]/20 text-[#FE9200]">

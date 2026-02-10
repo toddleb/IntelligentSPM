@@ -175,11 +175,11 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
       >
         <div className="max-w-3xl mx-auto">
           <Link
-            href="/content/blog"
+            href="/intel"
             className="text-[#64748B] hover:text-[#CBD5E1] text-sm mb-6 inline-flex items-center gap-2"
           >
             <ChevronLeftIcon />
-            Back to Blog
+            Back to Intel
           </Link>
 
           <div className="flex items-center gap-3 mb-4">
