@@ -21,11 +21,6 @@ const nextConfig: NextConfig = {
         destination: "/intel?type=newsletter",
         permanent: true,
       },
-      {
-        source: "/learn",
-        destination: "/intel?type=learn",
-        permanent: true,
-      },
     ];
   },
 };

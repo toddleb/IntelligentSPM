@@ -12,7 +12,6 @@ import {
   IntelType,
   typeColors,
   typeLabels,
-  learnItems,
 } from "./constants";
 
 function buildFeed(): IntelItem[] {
@@ -40,7 +39,7 @@ function buildFeed(): IntelItem[] {
     author: "The Toddfather",
   }));
 
-  const all = [...blogItems, ...newsletterItems, ...learnItems];
+  const all = [...blogItems, ...newsletterItems];
   return all.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
@@ -72,7 +71,6 @@ function IntelContent() {
     all: feed.length,
     blog: feed.filter((i) => i.type === "blog").length,
     newsletter: feed.filter((i) => i.type === "newsletter").length,
-    learn: feed.filter((i) => i.type === "learn").length,
   };
 
   return (
@@ -139,7 +137,7 @@ function IntelContent() {
             >
               All ({counts.all})
             </button>
-            {(["blog", "newsletter", "learn"] as IntelType[]).map((type) => (
+            {(["blog", "newsletter"] as IntelType[]).map((type) => (
               <button
                 key={type}
                 onClick={() => setSelectedType(type)}

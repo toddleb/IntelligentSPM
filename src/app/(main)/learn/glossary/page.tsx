@@ -78,8 +78,8 @@ export default function GlossaryPage() {
       {/* Header */}
       <section className="py-12 px-6 border-b border-white/10">
         <div className="max-w-5xl mx-auto">
-          <Link href="/intel" className="text-[#64748B] hover:text-[#CBD5E1] text-sm mb-4 inline-block">
-            &larr; Back to Intel
+          <Link href="/learn" className="text-[#64748B] hover:text-[#CBD5E1] text-sm mb-4 inline-block">
+            &larr; Back to The Vault
           </Link>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>

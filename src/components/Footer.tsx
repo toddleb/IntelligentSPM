@@ -13,8 +13,9 @@ export function Footer() {
           </Link>
 
           <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-[#CBD5E1]">
-            <Link href="/healthcheck" className="hover:text-white transition-colors">Healthchecks</Link>
             <Link href="/intel" className="hover:text-white transition-colors">Intel</Link>
+            <Link href="/healthcheck" className="hover:text-white transition-colors">The Checkup</Link>
+            <Link href="/learn" className="hover:text-white transition-colors">The Vault</Link>
             <Link href="/toddfather" className="hover:text-white transition-colors">The Toddfather</Link>
             <Link href="/prompt-pack" className="hover:text-white transition-colors">Prompt Pack</Link>
           </nav>
