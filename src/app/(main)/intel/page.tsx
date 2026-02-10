@@ -83,40 +83,31 @@ function IntelContent() {
           <div className="max-w-6xl mx-auto">
             <SectionLabel color="#38BDF8">Featured</SectionLabel>
             <Link href={heroItem.href}>
-              <div className="group relative bg-white/5 rounded-2xl overflow-hidden border border-[#38BDF8]/20 hover:border-[#38BDF8]/50 transition-all cursor-pointer">
-                <div
-                  className="h-56 md:h-64 relative"
-                  style={{
-                    background: `linear-gradient(135deg, ${typeColors[heroItem.type]}40, ${typeColors[heroItem.type]}10)`,
-                  }}
-                >
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-8xl font-bold opacity-10 text-white">SPM</span>
-                  </div>
-                  <div className="absolute top-4 left-4">
-                    <span
-                      className="px-3 py-1 text-xs font-bold rounded-full"
-                      style={{
-                        backgroundColor: `${typeColors[heroItem.type]}20`,
-                        color: typeColors[heroItem.type],
-                      }}
-                    >
-                      {typeLabels[heroItem.type]}
-                    </span>
-                  </div>
+              <div
+                className="group relative bg-white/5 rounded-2xl border border-[#38BDF8]/20 hover:border-[#38BDF8]/50 transition-all cursor-pointer p-8"
+                style={{ borderTopColor: typeColors[heroItem.type], borderTopWidth: 3 }}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <span
+                    className="px-3 py-1 text-xs font-bold rounded-full"
+                    style={{
+                      backgroundColor: `${typeColors[heroItem.type]}20`,
+                      color: typeColors[heroItem.type],
+                    }}
+                  >
+                    {typeLabels[heroItem.type]}
+                  </span>
+                  <span className="text-xs text-[#64748B]">{heroItem.readTime}</span>
                 </div>
-                <div className="p-8">
-                  <h2 className="text-2xl md:text-3xl font-bold text-[#E2E8F0] mb-3 group-hover:text-[#38BDF8] transition-colors">
-                    {heroItem.title}
-                  </h2>
-                  <p className="text-[#CBD5E1] text-lg mb-4 line-clamp-2">
-                    {heroItem.excerpt}
-                  </p>
-                  <div className="flex items-center gap-6 text-sm text-[#64748B]">
-                    <span>{heroItem.author}</span>
-                    <span>{formatDate(heroItem.date)}</span>
-                    <span>{heroItem.readTime}</span>
-                  </div>
+                <h2 className="text-2xl md:text-3xl font-bold text-[#E2E8F0] mb-3 group-hover:text-[#38BDF8] transition-colors">
+                  {heroItem.title}
+                </h2>
+                <p className="text-[#CBD5E1] text-lg mb-4 line-clamp-2">
+                  {heroItem.excerpt}
+                </p>
+                <div className="flex items-center gap-6 text-sm text-[#64748B]">
+                  <span>{heroItem.author}</span>
+                  <span>{formatDate(heroItem.date)}</span>
                 </div>
               </div>
             </Link>
@@ -172,48 +163,31 @@ function IntelContent() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {gridItems.map((item) => (
               <Link key={item.id} href={item.href}>
-                <article className="group bg-white/5 rounded-xl overflow-hidden border border-[#64748B]/20 hover:border-[#38BDF8]/30 transition-all cursor-pointer h-full flex flex-col">
-                  {/* Gradient header */}
-                  <div
-                    className="h-40 relative"
-                    style={{
-                      background: `linear-gradient(135deg, ${typeColors[item.type]}30, ${typeColors[item.type]}05)`,
-                    }}
-                  >
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-4xl font-bold opacity-10 text-white">SPM</span>
-                    </div>
-                    {item.featured && (
-                      <div className="absolute top-3 right-3">
-                        <span className="px-2 py-1 text-xs font-bold rounded bg-[#38BDF8] text-[#1a0e2e]">
-                          Featured
-                        </span>
-                      </div>
-                    )}
+                <article
+                  className="group bg-white/5 rounded-xl border border-[#64748B]/20 hover:border-[#38BDF8]/30 transition-all cursor-pointer h-full flex flex-col p-5"
+                  style={{ borderTopColor: typeColors[item.type], borderTopWidth: 2 }}
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <span
+                      className="px-2 py-0.5 text-xs font-bold rounded"
+                      style={{
+                        backgroundColor: `${typeColors[item.type]}20`,
+                        color: typeColors[item.type],
+                      }}
+                    >
+                      {typeLabels[item.type]}
+                    </span>
+                    <span className="text-xs text-[#64748B]">{item.readTime}</span>
                   </div>
-                  <div className="p-5 flex-1 flex flex-col">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span
-                        className="px-2 py-0.5 text-xs font-bold rounded"
-                        style={{
-                          backgroundColor: `${typeColors[item.type]}20`,
-                          color: typeColors[item.type],
-                        }}
-                      >
-                        {typeLabels[item.type]}
-                      </span>
-                      <span className="text-xs text-[#64748B]">{item.readTime}</span>
-                    </div>
-                    <h3 className="font-bold text-[#E2E8F0] mb-2 group-hover:text-[#38BDF8] transition-colors line-clamp-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-[#CBD5E1] mb-4 flex-1 line-clamp-2">
-                      {item.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between text-xs text-[#64748B] mt-auto pt-4 border-t border-[#64748B]/10">
-                      <span>{formatDate(item.date)}</span>
-                      <span>{item.author}</span>
-                    </div>
+                  <h3 className="font-bold text-[#E2E8F0] mb-2 group-hover:text-[#38BDF8] transition-colors line-clamp-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-[#CBD5E1] mb-4 flex-1 line-clamp-2">
+                    {item.excerpt}
+                  </p>
+                  <div className="flex items-center justify-between text-xs text-[#64748B] mt-auto pt-4 border-t border-[#64748B]/10">
+                    <span>{formatDate(item.date)}</span>
+                    <span>{item.author}</span>
                   </div>
                 </article>
               </Link>
