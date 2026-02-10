@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { Suspense, useState, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import blogData from "@/data/blog-posts.json";
@@ -45,6 +45,14 @@ function buildFeed(): IntelItem[] {
 }
 
 export default function IntelPage() {
+  return (
+    <Suspense>
+      <IntelContent />
+    </Suspense>
+  );
+}
+
+function IntelContent() {
   const searchParams = useSearchParams();
   const typeParam = searchParams.get("type") as IntelType | null;
   const [selectedType, setSelectedType] = useState<IntelType | null>(typeParam);
