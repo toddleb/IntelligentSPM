@@ -1,11 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { PrimaryButton, SectionLabel } from "@/components/ui";
 import { CheckIcon, MicrophoneIcon } from "@/components/icons";
 
 const credentials = [
-  "Led SPM transformations at 50+ enterprises",
+  "Led SPM transformations at 100+ enterprises",
   "Implemented every major ICM platform (Xactly, Varicent, Anaplan, CaptivateIQ, SAP, Oracle)",
   "Designed comp plans for sales teams from 50 to 50,000",
   "Survived 200+ plan year rollovers",
@@ -56,8 +57,15 @@ export default function ToddfatherPage() {
           <div className="flex flex-col md:flex-row items-center gap-10">
             {/* Avatar */}
             <div className="shrink-0">
-              <div className="w-40 h-40 rounded-full bg-gradient-to-br from-[#FE9200] to-[#FE9200]/50 flex items-center justify-center text-6xl font-bold text-white shadow-2xl">
-                TF
+              <div className="w-40 h-40 rounded-full overflow-hidden border-2 border-[#FE9200]/40 shadow-2xl">
+                <Image
+                  src="/images/toddfather-avatar.jpg"
+                  alt="The Toddfather"
+                  width={160}
+                  height={160}
+                  className="object-cover w-full h-full"
+                  priority
+                />
               </div>
             </div>
 

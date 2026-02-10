@@ -15,7 +15,7 @@ const hexToRgba = (hex: string, alpha: number) => {
 
 const credibility = [
   { label: "Years in SPM", value: "30" },
-  { label: "Enterprise Transformations", value: "50+" },
+  { label: "Enterprise Transformations", value: "100+" },
   { label: "Comp Plans Designed", value: "1,000+" },
   { label: "Plan Rollovers Survived", value: "200+" },
 ];
@@ -99,8 +99,15 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Fading Separator */}
+      <div className="px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="h-px" style={{ background: "linear-gradient(to right, transparent, rgba(255,255,255,0.25), transparent)" }} />
+        </div>
+      </div>
+
       {/* Credibility Strip */}
-      <section className="px-6 pb-12 bg-gradient-to-b from-[#1a0e2e] via-[#130a24] to-[#1a0e2e] border-t border-white/5">
+      <section className="px-6 py-12 bg-gradient-to-b from-[#1a0e2e] via-[#130a24] to-[#1a0e2e]">
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
           {credibility.map((item) => (
             <div key={item.label} className="rounded-xl border border-white/10 bg-white/5 p-5 text-center">
@@ -108,50 +115,6 @@ export default function HomePage() {
               <div className="text-sm text-[#94A3B8] mt-1">{item.label}</div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Tools */}
-      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#1a0e2e] via-[#150b26] to-[#1a0e2e]">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
-            <div>
-              <SectionLabel color="#38BDF8">The Toolset</SectionLabel>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#E2E8F0]">
-                IntelligentSPM Tools That Actually Work
-              </h2>
-            </div>
-            <p className="text-[#94A3B8] max-w-xl">
-              Practical, opinionated tools built from a career of fixing broken compensation programs.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {tools.map((tool) => (
-              <Link key={tool.name} href={tool.href} className="group">
-                <div
-                  className="h-full rounded-2xl border border-white/10 p-7 transition-all hover:border-white/30"
-                  style={{
-                    borderColor: `${tool.color}40`,
-                    background: `linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 55%), radial-gradient(600px 200px at 0% 0%, ${tool.color}22, transparent 60%)`,
-                  }}
-                >
-                  <div className="h-1.5 w-14 rounded-full mb-5" style={{ backgroundColor: tool.color }} />
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-bold text-[#E2E8F0]">{tool.name}</h3>
-                    <span className="text-sm font-semibold" style={{ color: tool.color }}>
-                      Explore →
-                    </span>
-                  </div>
-                  <p className="text-[#94A3B8] mb-5">{tool.description}</p>
-                  <div className="inline-flex items-center gap-2 text-sm text-[#94A3B8]">
-                    <span className="h-2 w-2 rounded-full" style={{ backgroundColor: tool.color }} />
-                    Built by The Toddfather
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -300,6 +263,48 @@ export default function HomePage() {
             >
               Read the deep dive in Issue #001 →
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Tools */}
+      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#1a0e2e] via-[#150b26] to-[#1a0e2e]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <SectionLabel color="#38BDF8" centered>The Toolset</SectionLabel>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#E2E8F0] mb-3">
+              IntelligentSPM Tools That Actually Work
+            </h2>
+            <p className="text-[#94A3B8] max-w-2xl mx-auto">
+              Practical, opinionated tools built from a career of fixing broken compensation programs.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {tools.map((tool) => (
+              <Link key={tool.name} href={tool.href} className="group">
+                <div
+                  className="h-full rounded-2xl border border-white/10 p-7 transition-all hover:border-white/30"
+                  style={{
+                    borderColor: `${tool.color}40`,
+                    background: `linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 55%), radial-gradient(600px 200px at 0% 0%, ${tool.color}22, transparent 60%)`,
+                  }}
+                >
+                  <div className="h-1.5 w-14 rounded-full mb-5" style={{ backgroundColor: tool.color }} />
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-xl font-bold text-[#E2E8F0]">{tool.name}</h3>
+                    <span className="text-sm font-semibold" style={{ color: tool.color }}>
+                      Coming Soon →
+                    </span>
+                  </div>
+                  <p className="text-[#94A3B8] mb-5">{tool.description}</p>
+                  <div className="inline-flex items-center gap-2 text-sm text-[#94A3B8]">
+                    <span className="h-2 w-2 rounded-full" style={{ backgroundColor: tool.color }} />
+                    Built by The Toddfather
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

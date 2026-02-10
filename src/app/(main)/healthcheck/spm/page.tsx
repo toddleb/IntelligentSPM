@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import SPMHealthcheckClient from "./spm-client";
+import { ComingSoon } from "@/components/ComingSoon";
 
 export const metadata: Metadata = {
   title: "SPM Healthcheck | IntelligentSPM",
@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function SPMHealthcheckPage() {
-  return <SPMHealthcheckClient />;
+  return <ComingSoon tool="spm" />;
 }

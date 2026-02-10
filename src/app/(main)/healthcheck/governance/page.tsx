@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import GovernanceHealthcheckClient from "./governance-client";
+import { ComingSoon } from "@/components/ComingSoon";
 
 export const metadata: Metadata = {
   title: "Governance Healthcheck | IntelligentSPM",
@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function GovernanceHealthcheckPage() {
-  return <GovernanceHealthcheckClient />;
+  return <ComingSoon tool="governance" />;
 }

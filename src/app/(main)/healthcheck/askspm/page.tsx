@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import AskSPMContent from "./askspm-content";
+import { ComingSoon } from "@/components/ComingSoon";
 
 export const metadata: Metadata = {
   title: "AskSPM | IntelligentSPM",
@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function AskSPMPage() {
-  return <AskSPMContent />;
+  return <ComingSoon tool="askspm" />;
 }

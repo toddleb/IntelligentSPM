@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import CompPlanHealthcheckClient from "./comp-plan-client";
+import { ComingSoon } from "@/components/ComingSoon";
 
 export const metadata: Metadata = {
   title: "Comp Plan Healthcheck | IntelligentSPM",
@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function CompPlanHealthcheckPage() {
-  return <CompPlanHealthcheckClient />;
+  return <ComingSoon tool="comp-plan" />;
 }
