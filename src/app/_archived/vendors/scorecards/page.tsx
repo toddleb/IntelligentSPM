@@ -29,7 +29,7 @@ const vendors = [
     strength: "Territory planning, analytics",
     weakness: "Aging architecture, slow innovation",
     bestFor: "Companies prioritizing territory optimization",
-    color: "#FF8737",
+    color: "#FE9200",
   },
   {
     name: "Spiff",
@@ -37,13 +37,13 @@ const vendors = [
     strength: "SMB friendly, intuitive UI",
     weakness: "Scale limitations, basic governance",
     bestFor: "Growing sales teams, SMB to lower mid-market",
-    color: "#8241C8",
+    color: "#58108E",
   },
 ];
 
 export default function ScorecardsPage() {
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       <section className="py-20 px-6">
         <div className="max-w-5xl mx-auto">
           <SectionLabel color="#38BDF8" centered>Honest Vendor Reviews</SectionLabel>
@@ -81,7 +81,7 @@ export default function ScorecardsPage() {
                     <span className="text-[#EA1B85] font-semibold">Weakness: </span>
                     <span className="text-[#94A3B8]">{vendor.weakness}</span>
                   </div>
-                  <div className="pt-2 border-t border-[#0F172A]">
+                  <div className="pt-2 border-t border-[#1a0e2e]">
                     <span className="text-[#64748B] font-semibold">Best for: </span>
                     <span className="text-[#94A3B8]">{vendor.bestFor}</span>
                   </div>
@@ -105,7 +105,7 @@ export default function ScorecardsPage() {
                 <span className="text-[#64748B]"> = Good</span>
               </div>
               <div>
-                <span className="text-[#FF8737] font-bold">C</span>
+                <span className="text-[#FE9200] font-bold">C</span>
                 <span className="text-[#64748B]"> = Acceptable</span>
               </div>
               <div>

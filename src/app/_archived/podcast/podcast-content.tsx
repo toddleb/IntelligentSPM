@@ -6,10 +6,10 @@ import { MicrophoneIcon } from "@/components/icons";
 
 export default function PodcastContent() {
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <SectionLabel color="#8241C8" centered>Coming Soon</SectionLabel>
+          <SectionLabel color="#58108E" centered>Coming Soon</SectionLabel>
           <h1 className="text-4xl md:text-5xl font-bold text-[#E2E8F0] mb-6">
             The Toddfather Podcast
           </h1>
@@ -19,8 +19,8 @@ export default function PodcastContent() {
           </p>
 
           {/* Preview Card */}
-          <div className="bg-white/5 rounded-xl p-8 md:p-12 border border-[#8241C8]/20 mb-8">
-            <div className="text-[#8241C8] mb-6">
+          <div className="bg-white/5 rounded-xl p-8 md:p-12 border border-[#58108E]/20 mb-8">
+            <div className="text-[#58108E] mb-6">
               <MicrophoneIcon className="w-20 h-20 mx-auto" />
             </div>
 
@@ -30,19 +30,19 @@ export default function PodcastContent() {
               gaps that sink SPM programs. Real stories from real implementations.
             </p>
 
-            <div className="border-t border-[#8241C8]/20 pt-8 max-w-sm mx-auto">
+            <div className="border-t border-[#58108E]/20 pt-8 max-w-sm mx-auto">
               <p className="text-[#64748B] text-sm mb-4">Get notified when we launch</p>
               <WaitlistForm
                 listName="podcast"
-                accentColor="#8241C8"
+                accentColor="#58108E"
                 successMessage="We'll notify you when we launch."
               />
             </div>
           </div>
 
           {/* Episode Preview */}
-          <div className="bg-white/5 rounded-xl p-6 border border-[#8241C8]/10 text-left">
-            <h4 className="text-sm font-semibold text-[#8241C8] uppercase tracking-wider mb-4">
+          <div className="bg-white/5 rounded-xl p-6 border border-[#58108E]/10 text-left">
+            <h4 className="text-sm font-semibold text-[#58108E] uppercase tracking-wider mb-4">
               First Episodes Preview
             </h4>
             <div className="space-y-4">
@@ -52,7 +52,7 @@ export default function PodcastContent() {
                 { num: "03", title: "Governance: The Layer Everyone Skips", duration: "~30 min" },
               ].map((ep) => (
                 <div key={ep.num} className="flex items-center gap-4 py-2">
-                  <span className="text-[#8241C8] font-mono text-sm">{ep.num}</span>
+                  <span className="text-[#58108E] font-mono text-sm">{ep.num}</span>
                   <span className="text-[#E2E8F0] flex-1">{ep.title}</span>
                   <span className="text-[#64748B] text-sm">{ep.duration}</span>
                 </div>

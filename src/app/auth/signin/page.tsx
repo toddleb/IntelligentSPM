@@ -18,7 +18,7 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0F172A] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#1a0e2e] flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="bg-white/5 rounded-2xl p-8 shadow-xl">
           {/* Header */}
@@ -42,7 +42,7 @@ export default function SignInPage() {
           </button>
 
           {/* Info */}
-          <div className="mt-6 p-4 bg-[#0F172A] rounded-lg">
+          <div className="mt-6 p-4 bg-[#1a0e2e] rounded-lg">
             <h3 className="text-sm font-medium text-[#38BDF8] mb-2">Why LinkedIn?</h3>
             <ul className="text-sm text-[#94A3B8] space-y-1">
               <li>• Verifies your professional identity</li>

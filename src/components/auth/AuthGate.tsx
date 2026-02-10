@@ -115,7 +115,7 @@ export function AuthGate({
   // Loading state while checking session
   if (status === 'loading' || isCheckingGate) {
     return (
-      <div className="min-h-screen bg-[#0F172A] flex items-center justify-center">
+      <div className="min-h-screen bg-[#1a0e2e] flex items-center justify-center">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-[#38BDF8] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-[#94A3B8]">Checking access...</p>
@@ -132,7 +132,7 @@ export function AuthGate({
   // User authenticated but blocked
   if (session?.user && gateStatus && !gateStatus.allowed) {
     return (
-      <div className="min-h-screen bg-[#0F172A] flex items-center justify-center px-6">
+      <div className="min-h-screen bg-[#1a0e2e] flex items-center justify-center px-6">
         <div className="max-w-md w-full">
           <div className="text-center mb-8">
             <div className="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -153,7 +153,7 @@ export function AuthGate({
 
             <a
               href="mailto:todd@intelligentspm.com?subject=Enterprise Access Request"
-              className="inline-block px-6 py-3 bg-[#38BDF8] text-[#0F172A] font-bold rounded-xl hover:bg-[#38BDF8]/90 transition-colors"
+              className="inline-block px-6 py-3 bg-[#38BDF8] text-[#1a0e2e] font-bold rounded-xl hover:bg-[#38BDF8]/90 transition-colors"
             >
               Request Enterprise Access
             </a>
@@ -165,10 +165,10 @@ export function AuthGate({
 
   // Gate screen - not authenticated
   return (
-    <div className="min-h-screen bg-[#0F172A] flex items-center justify-center px-6">
+    <div className="min-h-screen bg-[#1a0e2e] flex items-center justify-center px-6">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
-          <div className="w-20 h-20 rounded-2xl bg-[#38BDF8] flex items-center justify-center text-2xl font-bold text-[#0F172A] mx-auto mb-6">
+          <div className="w-20 h-20 rounded-2xl bg-[#38BDF8] flex items-center justify-center text-2xl font-bold text-[#1a0e2e] mx-auto mb-6">
             {healthcheckType.toUpperCase().slice(0, 3)}
           </div>
           <h1 className="text-3xl font-bold text-[#E2E8F0] mb-3">{title}</h1>
@@ -201,7 +201,7 @@ export function AuthGate({
                 placeholder="work@company.com"
                 required
                 disabled={isLoading}
-                className={`w-full bg-[#0F172A] border rounded-xl px-4 py-3 text-[#E2E8F0] placeholder-[#64748B] focus:outline-none focus:border-[#38BDF8]/50 disabled:opacity-50 ${
+                className={`w-full bg-[#1a0e2e] border rounded-xl px-4 py-3 text-[#E2E8F0] placeholder-[#64748B] focus:outline-none focus:border-[#38BDF8]/50 disabled:opacity-50 ${
                   error ? 'border-[#dc2626]' : 'border-[#38BDF8]/20'
                 }`}
               />
@@ -210,14 +210,14 @@ export function AuthGate({
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full px-6 py-3 bg-[#38BDF8] text-[#0F172A] font-bold rounded-xl hover:bg-[#38BDF8]/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full px-6 py-3 bg-[#38BDF8] text-[#1a0e2e] font-bold rounded-xl hover:bg-[#38BDF8]/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? 'Checking...' : 'Continue with Email'}
             </button>
           </form>
 
           {/* Info Box */}
-          <div className="mt-6 p-4 bg-[#0F172A] rounded-lg">
+          <div className="mt-6 p-4 bg-[#1a0e2e] rounded-lg">
             <h3 className="text-sm font-medium text-[#38BDF8] mb-2">Why sign in?</h3>
             <ul className="text-sm text-[#94A3B8] space-y-1">
               <li>• Verifies your professional identity</li>

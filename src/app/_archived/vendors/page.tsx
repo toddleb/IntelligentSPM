@@ -11,14 +11,14 @@ const sections = [
     name: "The Magic Wave",
     description: "Annual SPM vendor landscape analysis. Quadrant positioning, honest strengths/weaknesses, and where they break.",
     href: "/vendors/magic-wave",
-    color: "#8241C8",
+    color: "#58108E",
     tag: "Annual Report",
   },
   {
     name: "The Sit-Down",
     description: "When you need to sit down before picking a vendor. Comprehensive comparison and decision framework.",
     href: "/vendors/sit-down",
-    color: "#FF8737",
+    color: "#FE9200",
     tag: "Vendor Guide",
   },
   {
@@ -32,11 +32,11 @@ const sections = [
 
 export default function VendorsPage() {
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       {/* Header */}
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <SectionLabel color="#8241C8" centered>No Vendor Agenda</SectionLabel>
+          <SectionLabel color="#58108E" centered>No Vendor Agenda</SectionLabel>
           <h1 className="text-4xl md:text-5xl font-bold text-[#E2E8F0] mb-6">
             Vendor Intelligence
           </h1>

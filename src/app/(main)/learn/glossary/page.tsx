@@ -74,7 +74,7 @@ export default function GlossaryPage() {
   }, [filteredTerms]);
 
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       {/* Header */}
       <section className="py-12 px-6 border-b border-white/10">
         <div className="max-w-5xl mx-auto">
@@ -87,7 +87,7 @@ export default function GlossaryPage() {
                 SPM Glossary
               </h1>
               <p className="text-[#94A3B8]">
-                <span className="text-[#FF8737] font-bold">{glossaryTerms.length}</span> terms defined in plain language
+                <span className="text-[#FE9200] font-bold">{glossaryTerms.length}</span> terms defined in plain language
               </p>
             </div>
           </div>
@@ -105,7 +105,7 @@ export default function GlossaryPage() {
               setSelectedLetter(null);
             }}
             placeholder="Search terms..."
-            className="w-full bg-white/5 border border-[#FF8737]/20 rounded-xl px-4 py-3 text-[#E2E8F0] placeholder-[#64748B] focus:outline-none focus:border-[#FF8737]/50"
+            className="w-full bg-white/5 border border-[#FE9200]/20 rounded-xl px-4 py-3 text-[#E2E8F0] placeholder-[#64748B] focus:outline-none focus:border-[#FE9200]/50"
           />
         </div>
 
@@ -115,7 +115,7 @@ export default function GlossaryPage() {
             onClick={() => setSelectedLetter(null)}
             className={`w-8 h-8 rounded text-sm font-medium transition-all ${
               !selectedLetter
-                ? "bg-[#FF8737] text-white"
+                ? "bg-[#FE9200] text-white"
                 : "bg-white/5 text-[#94A3B8] hover:text-white"
             }`}
           >
@@ -128,7 +128,7 @@ export default function GlossaryPage() {
               disabled={!hasTerms}
               className={`w-8 h-8 rounded text-sm font-medium transition-all ${
                 selectedLetter === letter
-                  ? "bg-[#FF8737] text-white"
+                  ? "bg-[#FE9200] text-white"
                   : hasTerms
                   ? "bg-white/5 text-[#94A3B8] hover:text-white"
                   : "bg-white/5/50 text-[#64748B]/50 cursor-not-allowed"
@@ -153,14 +153,14 @@ export default function GlossaryPage() {
           <div className="space-y-10">
             {groupedTerms.map(([letter, terms]) => (
               <div key={letter}>
-                <h2 className="text-2xl font-bold text-[#FF8737] mb-4 sticky top-0 bg-[#0F172A] py-2">
+                <h2 className="text-2xl font-bold text-[#FE9200] mb-4 sticky top-0 bg-[#1a0e2e] py-2">
                   {letter}
                 </h2>
                 <div className="space-y-3">
                   {terms.map((item) => (
                     <div
                       key={item.term}
-                      className="bg-white/5 rounded-xl p-5 border border-[#FF8737]/10 hover:border-[#FF8737]/30 transition-all"
+                      className="bg-white/5 rounded-xl p-5 border border-[#FE9200]/10 hover:border-[#FE9200]/30 transition-all"
                     >
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">

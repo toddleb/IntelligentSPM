@@ -3,7 +3,7 @@ import { EmailIcon, LinkedInIcon } from "@/components/icons";
 
 export function Footer() {
   return (
-    <footer className="relative py-8 bg-[#0F172A] border-t border-white/10">
+    <footer className="relative py-8 bg-[#1a0e2e] border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Top row: Logo + Links */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-6">
@@ -15,9 +15,8 @@ export function Footer() {
           <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-[#94A3B8]">
             <Link href="/healthcheck" className="hover:text-white transition-colors">Healthchecks</Link>
             <Link href="/learn" className="hover:text-white transition-colors">Learn</Link>
-            <Link href="/vendors" className="hover:text-white transition-colors">Vendors</Link>
+            <Link href="/content/blog" className="hover:text-white transition-colors">Blog</Link>
             <Link href="/toddfather" className="hover:text-white transition-colors">The Toddfather</Link>
-            <Link href="/style-guide" className="hover:text-white transition-colors">Style Guide</Link>
             <Link href="/prompt-pack" className="hover:text-white transition-colors">Prompt Pack</Link>
           </nav>
         </div>
@@ -29,7 +28,7 @@ export function Footer() {
           </p>
 
           <p className="text-xs text-[#94A3B8]">
-            Powered by <span className="font-bold gradient-text">AICR</span> and <span className="text-[#FF8737] font-bold">The Toddfather</span> of IntelligentSPM
+            Powered by <span className="font-bold gradient-text">AICR</span> and <span className="text-[#FE9200] font-bold">The Toddfather</span> of IntelligentSPM
           </p>
 
           <div className="flex items-center gap-4">

@@ -5,7 +5,7 @@ import { SectionLabel } from "@/components/ui";
 
 export default function VideosContent() {
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <SectionLabel color="#A3E635" centered>Coming Soon</SectionLabel>
@@ -55,7 +55,7 @@ export default function VideosContent() {
               ].map((platform) => (
                 <div
                   key={platform.name}
-                  className="px-4 py-3 rounded-xl bg-[#0F172A] border border-[#A3E635]/10"
+                  className="px-4 py-3 rounded-xl bg-[#1a0e2e] border border-[#A3E635]/10"
                 >
                   <span className="text-[#E2E8F0] font-semibold">{platform.name}</span>
                   <p className="text-[#64748B] text-xs mt-1">{platform.desc}</p>

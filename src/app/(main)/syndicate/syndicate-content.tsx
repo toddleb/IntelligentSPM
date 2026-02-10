@@ -35,10 +35,10 @@ export default function SyndicateContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <SectionLabel color="#FF8737">By The Toddfather</SectionLabel>
+          <SectionLabel color="#FE9200">By The Toddfather</SectionLabel>
           <h1 className="text-4xl md:text-5xl font-bold text-[#E2E8F0] mb-6">
             The Syndicate
           </h1>
@@ -48,7 +48,7 @@ export default function SyndicateContent() {
           </p>
 
           {/* Signup Form */}
-          <div className="bg-white/5 rounded-xl p-8 border border-[#FF8737]/20 max-w-md mx-auto">
+          <div className="bg-white/5 rounded-xl p-8 border border-[#FE9200]/20 max-w-md mx-auto">
             {status === "success" ? (
               <div className="text-center py-4">
                 <div className="text-[#A3E635] text-4xl mb-4">✓</div>
@@ -68,8 +68,8 @@ export default function SyndicateContent() {
                       }}
                       placeholder="work@company.com"
                       required
-                      className={`w-full bg-[#0F172A] border rounded-xl px-4 py-3 text-[#E2E8F0] placeholder-[#64748B] focus:outline-none focus:border-[#FF8737]/50 ${
-                        status === "personal" ? "border-[#EA1B85]" : "border-[#FF8737]/20"
+                      className={`w-full bg-[#1a0e2e] border rounded-xl px-4 py-3 text-[#E2E8F0] placeholder-[#64748B] focus:outline-none focus:border-[#FE9200]/50 ${
+                        status === "personal" ? "border-[#EA1B85]" : "border-[#FE9200]/20"
                       }`}
                     />
                     {status === "personal" && (
@@ -81,7 +81,7 @@ export default function SyndicateContent() {
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="w-full px-6 py-3 bg-[#FF8737] text-white font-bold rounded-xl hover:bg-[#FF8737]/90 transition-all disabled:opacity-50"
+                    className="w-full px-6 py-3 bg-[#FE9200] text-white font-bold rounded-xl hover:bg-[#FE9200]/90 transition-all disabled:opacity-50"
                   >
                     {status === "loading" ? "Joining..." : "Join The Syndicate"}
                   </button>
@@ -110,7 +110,7 @@ export default function SyndicateContent() {
               { title: "The Network", desc: "Connect with SPM professionals" },
             ].map((item) => (
               <div key={item.title} className="flex items-start gap-3">
-                <span className="text-[#FF8737] mt-1">→</span>
+                <span className="text-[#FE9200] mt-1">→</span>
                 <div>
                   <h4 className="font-bold text-[#E2E8F0]">{item.title}</h4>
                   <p className="text-sm text-[#94A3B8]">{item.desc}</p>

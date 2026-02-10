@@ -155,7 +155,7 @@ export default function PolicyDetailPage({
   const color = categoryColors[policy.category] || "#A3E635";
 
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       {/* Header */}
       <section
         className="py-12 px-6 border-b border-white/10"
@@ -361,7 +361,7 @@ export default function PolicyDetailPage({
                             {prov.subProvisions.map((sub) => (
                               <div
                                 key={sub.id}
-                                className="bg-[#0F172A] rounded-lg p-4"
+                                className="bg-[#1a0e2e] rounded-lg p-4"
                               >
                                 <p className="font-medium text-[#E2E8F0] mb-2">
                                   {sub.title}
@@ -533,7 +533,7 @@ export default function PolicyDetailPage({
               Book a Toddfather consultation for customized governance guidance.
             </p>
             <Link href="/toddfather/contact?topic=policy-implementation">
-              <button className="px-8 py-3 bg-[#FF8737] text-white font-bold rounded-xl hover:bg-[#FF8737]/90 transition-all hover:scale-105">
+              <button className="px-8 py-3 bg-[#FE9200] text-white font-bold rounded-xl hover:bg-[#FE9200]/90 transition-all hover:scale-105">
                 Book a Consultation
               </button>
             </Link>

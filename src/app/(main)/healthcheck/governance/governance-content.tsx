@@ -239,12 +239,12 @@ export default function GovernanceContent({ userEmail }: GovernanceContentProps)
     const totalGaps = immediate + priority + monitor;
 
     return (
-      <div className="min-h-screen bg-[#0F172A] py-8 px-4">
+      <div className="min-h-screen bg-[#1a0e2e] py-8 px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-[#A3E635] flex items-center justify-center text-sm font-bold text-[#0F172A]">
+              <div className="w-10 h-10 rounded-lg bg-[#A3E635] flex items-center justify-center text-sm font-bold text-[#1a0e2e]">
                 GOV
               </div>
               <h1 className="text-2xl font-bold text-white">Governance Analysis</h1>
@@ -272,7 +272,7 @@ export default function GovernanceContent({ userEmail }: GovernanceContentProps)
 
           {/* Debug View - Raw API Response */}
           {showDebug && (
-            <div className="mb-6 bg-[#0F172A] rounded-xl p-6 border border-[#A3E635]/30">
+            <div className="mb-6 bg-[#1a0e2e] rounded-xl p-6 border border-[#A3E635]/30">
               <h3 className="text-[#A3E635] font-semibold mb-3">Raw API Response</h3>
               <pre className="text-white/80 text-sm overflow-auto max-h-96 bg-white/5 rounded-lg p-4">
                 {JSON.stringify(result, null, 2)}
@@ -411,9 +411,9 @@ export default function GovernanceContent({ userEmail }: GovernanceContentProps)
               {(() => {
                 const cta =
                   score >= 70
-                    ? { text: "Schedule Review", bg: "bg-[#A3E635]", textColor: "text-[#0F172A]" }
+                    ? { text: "Schedule Review", bg: "bg-[#A3E635]", textColor: "text-[#1a0e2e]" }
                     : score >= 40
-                    ? { text: "Get Expert Help", bg: "bg-[#F59E0B]", textColor: "text-[#0F172A]" }
+                    ? { text: "Get Expert Help", bg: "bg-[#F59E0B]", textColor: "text-[#1a0e2e]" }
                     : { text: "Request Full Audit", bg: "bg-[#DC2626]", textColor: "text-white" };
                 return (
                   <button className={`w-full py-3.5 rounded-xl font-bold text-base ${cta.bg} ${cta.textColor} hover:opacity-90 transition-opacity`}>
@@ -425,7 +425,7 @@ export default function GovernanceContent({ userEmail }: GovernanceContentProps)
           </div>
 
           {/* Consulting CTA Section */}
-          <div className="bg-gradient-to-br from-[#1E293B] to-[#0F172A] rounded-2xl p-8 border border-[#A3E635]/30">
+          <div className="bg-gradient-to-br from-[#1E293B] to-[#1a0e2e] rounded-2xl p-8 border border-[#A3E635]/30">
             <h2 className="text-2xl font-bold text-white mb-2">
               Gaps Like These Cost Companies <span className="text-[#DC2626]">$1.25M+</span> Annually
             </h2>
@@ -468,7 +468,7 @@ export default function GovernanceContent({ userEmail }: GovernanceContentProps)
 
             <a
               href="/toddfather/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#A3E635] text-[#0F172A] font-bold rounded-xl hover:bg-[#BEF264] transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#A3E635] text-[#1a0e2e] font-bold rounded-xl hover:bg-[#BEF264] transition-colors"
             >
               Schedule a Governance Assessment →
             </a>
@@ -480,10 +480,10 @@ export default function GovernanceContent({ userEmail }: GovernanceContentProps)
 
   // Upload view
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="w-20 h-20 rounded-2xl bg-[#A3E635] flex items-center justify-center text-2xl font-bold text-[#0F172A] mx-auto mb-8">
+          <div className="w-20 h-20 rounded-2xl bg-[#A3E635] flex items-center justify-center text-2xl font-bold text-[#1a0e2e] mx-auto mb-8">
             GOV
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-[#E2E8F0] mb-6">
@@ -493,8 +493,8 @@ export default function GovernanceContent({ userEmail }: GovernanceContentProps)
             Upload any document. We&apos;ll scan it against the 17 SCP (Sales Compensation Policy) standards and show you what&apos;s covered and what&apos;s missing.
           </p>
 
-          <div className="max-w-2xl mx-auto mb-10 rounded-2xl border border-[#38BDF8]/30 bg-[#0B1220] p-5 text-left">
-            <p className="text-sm text-[#CBD5F5]">
+          <div className="max-w-2xl mx-auto mb-10 rounded-2xl border border-[#38BDF8]/30 bg-[#130a24] p-5 text-left">
+            <p className="text-sm text-[#CBD5E1]">
               The automated analyzer is temporarily offline. If you need a readout now, email your policy to
               {" "}
               <a href="mailto:todd@intelligentspm.com" className="text-[#38BDF8] font-semibold hover:underline">
@@ -511,7 +511,7 @@ export default function GovernanceContent({ userEmail }: GovernanceContentProps)
               onClick={() => setInputMode("upload")}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 inputMode === "upload"
-                  ? "bg-[#A3E635] text-[#0F172A]"
+                  ? "bg-[#A3E635] text-[#1a0e2e]"
                   : "bg-white/5 text-[#94A3B8] hover:bg-[#334155]"
               }`}
             >
@@ -521,7 +521,7 @@ export default function GovernanceContent({ userEmail }: GovernanceContentProps)
               onClick={() => setInputMode("paste")}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 inputMode === "paste"
-                  ? "bg-[#A3E635] text-[#0F172A]"
+                  ? "bg-[#A3E635] text-[#1a0e2e]"
                   : "bg-white/5 text-[#94A3B8] hover:bg-[#334155]"
               }`}
             >
@@ -593,7 +593,7 @@ export default function GovernanceContent({ userEmail }: GovernanceContentProps)
             className={`px-8 py-4 rounded-xl font-bold text-lg transition-all ${
               isAnalyzing || (inputMode === "upload" ? !file : !textInput.trim())
                 ? "bg-[#334155] text-[#64748B] cursor-not-allowed"
-                : "bg-[#A3E635] text-[#0F172A] hover:bg-[#BEF264] hover:scale-105"
+                : "bg-[#A3E635] text-[#1a0e2e] hover:bg-[#BEF264] hover:scale-105"
             }`}
           >
             {isAnalyzing ? (

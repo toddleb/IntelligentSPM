@@ -80,8 +80,8 @@ const prompts = [
 
 export default function PromptPackPage() {
   return (
-    <div className="min-h-screen bg-[#0F172A]">
-      <section className="py-20 px-6 bg-gradient-to-b from-[#0F172A] via-[#0B1220] to-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
+      <section className="py-20 px-6 bg-gradient-to-b from-[#1a0e2e] via-[#130a24] to-[#1a0e2e]">
         <div className="max-w-5xl mx-auto">
           <SectionLabel color="#38BDF8">Prompt Pack</SectionLabel>
           <h1 className="text-4xl md:text-5xl font-bold text-[#E2E8F0] mb-4">
@@ -98,7 +98,7 @@ export default function PromptPackPage() {
         </div>
       </section>
 
-      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#0F172A] via-[#0E1627] to-[#0F172A]">
+      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#1a0e2e] via-[#150b26] to-[#1a0e2e]">
         <div className="max-w-5xl mx-auto grid gap-6">
           {prompts.map((prompt) => (
             <div key={prompt.title} className="rounded-2xl border border-white/10 bg-white/5 p-6">
@@ -110,7 +110,7 @@ export default function PromptPackPage() {
                 <div className="text-sm text-[#94A3B8]">Output: {prompt.output}</div>
               </div>
               <div className="mt-4 text-sm text-[#94A3B8]">Inputs: {prompt.input}</div>
-              <pre className="mt-4 whitespace-pre-wrap rounded-xl bg-[#0B1220] border border-white/10 p-4 text-sm text-[#CBD5F5]">
+              <pre className="mt-4 whitespace-pre-wrap rounded-xl bg-[#130a24] border border-white/10 p-4 text-sm text-[#CBD5E1]">
 {prompt.text}
               </pre>
             </div>
@@ -118,7 +118,7 @@ export default function PromptPackPage() {
         </div>
       </section>
 
-      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#0F172A] via-[#0E1728] to-[#0F172A]">
+      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#1a0e2e] via-[#150b27] to-[#1a0e2e]">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-[#E2E8F0] mb-4">Want a custom prompt pack?</h2>
           <p className="text-[#94A3B8] mb-8">Reply in the newsletter or contact The Toddfather for a tailored set.</p>

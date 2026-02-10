@@ -128,7 +128,7 @@ function renderInlineMarkdown(text: string): (string | React.ReactElement)[] {
       );
     } else if (firstMatch.type === "code") {
       parts.push(
-        <code key={keyIndex++} className="bg-[#0F172A] px-2 py-0.5 rounded text-[#38BDF8] text-sm font-mono">
+        <code key={keyIndex++} className="bg-[#1a0e2e] px-2 py-0.5 rounded text-[#38BDF8] text-sm font-mono">
           {matchObj[1]}
         </code>
       );
@@ -165,7 +165,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   }
 
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       {/* Hero Header */}
       <section
         className="py-16 px-6 border-b border-white/10"
@@ -207,7 +207,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
 
           <div className="flex flex-wrap items-center gap-6 text-sm text-[#64748B]">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-[#FF8737] flex items-center justify-center text-white font-bold">
+              <div className="w-10 h-10 rounded-full bg-[#FE9200] flex items-center justify-center text-white font-bold">
                 TF
               </div>
               <div>
@@ -300,7 +300,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
 
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
-        <section className="py-12 px-6 border-t border-white/10 bg-[#0F172A]/50">
+        <section className="py-12 px-6 border-t border-white/10 bg-[#1a0e2e]/50">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl font-bold text-[#E2E8F0] mb-8">More in {post.category}</h2>
             <div className="grid md:grid-cols-3 gap-6">

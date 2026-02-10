@@ -146,7 +146,7 @@ function SpiderChart({ answers }: { answers: Record<string, number> }) {
           cy={point.y}
           r="4"
           fill={pillars[i].color}
-          stroke="#0F172A"
+          stroke="#1a0e2e"
           strokeWidth="2"
         />
       ))}
@@ -210,7 +210,7 @@ function Quiz({
   };
 
   return (
-    <div className="min-h-screen bg-[#0F172A] px-6 py-8">
+    <div className="min-h-screen bg-[#1a0e2e] px-6 py-8">
       <div className="max-w-4xl mx-auto">
         {/* Progress Header */}
         <div className="mb-8">
@@ -272,7 +272,7 @@ function Quiz({
         {/* Questions Table */}
         <div className="bg-white/5 rounded-xl border border-[#38BDF8]/30 overflow-hidden mb-6">
           {/* Table Header */}
-          <div className="flex items-center p-4 bg-[#0F172A] border-b border-white/10">
+          <div className="flex items-center p-4 bg-[#1a0e2e] border-b border-white/10">
             <div className="flex-1 text-sm font-semibold text-[#94A3B8]">Question</div>
             <div className="flex gap-1">
               {maturityLevels.map((level) => (
@@ -288,7 +288,7 @@ function Quiz({
           </div>
 
           {/* Legend */}
-          <div className="flex flex-wrap gap-4 px-4 py-2 bg-[#0F172A]/80 border-b border-white/10 text-xs text-[#CBD5E1]">
+          <div className="flex flex-wrap gap-4 px-4 py-2 bg-[#1a0e2e]/80 border-b border-white/10 text-xs text-[#CBD5E1]">
             {maturityLevels.map((level) => (
               <span key={level.value}>
                 <span className="font-bold text-white">{level.value}</span> = {level.label}
@@ -397,11 +397,11 @@ function Results({
   const [expandedPillar, setExpandedPillar] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen bg-[#0F172A] px-6 py-12">
+    <div className="min-h-screen bg-[#1a0e2e] px-6 py-12">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
-          <div className="w-16 h-16 rounded-xl bg-[#38BDF8] flex items-center justify-center text-xl font-bold text-[#0F172A] mx-auto mb-4">
+          <div className="w-16 h-16 rounded-xl bg-[#38BDF8] flex items-center justify-center text-xl font-bold text-[#1a0e2e] mx-auto mb-4">
             SPM
           </div>
           <h1 className="text-3xl font-bold text-[#E2E8F0] mb-2">
@@ -521,7 +521,7 @@ function Results({
                 .map((pillar, i) => (
                   <div
                     key={pillar.id}
-                    className="flex items-center gap-3 p-3 bg-[#0F172A] rounded-lg"
+                    className="flex items-center gap-3 p-3 bg-[#1a0e2e] rounded-lg"
                   >
                     <div
                       className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0"
@@ -574,7 +574,7 @@ function Results({
               return (
                 <div
                   key={pillar.id}
-                  className="bg-[#0F172A] rounded-xl p-4 cursor-pointer transition-all hover:bg-[#0F172A]/80"
+                  className="bg-[#1a0e2e] rounded-xl p-4 cursor-pointer transition-all hover:bg-[#1a0e2e]/80"
                   onClick={() =>
                     setExpandedPillar(isExpanded ? null : pillar.id)
                   }
@@ -683,15 +683,15 @@ function Results({
           </div>
 
           <div className="grid md:grid-cols-3 gap-4 mb-6">
-            <div className="bg-[#0F172A]/50 rounded-lg p-4 text-center">
+            <div className="bg-[#1a0e2e]/50 rounded-lg p-4 text-center">
               <div className="text-3xl font-bold text-[#38BDF8] mb-1">40%</div>
               <p className="text-sm text-[#94A3B8]">Average efficiency gain</p>
             </div>
-            <div className="bg-[#0F172A]/50 rounded-lg p-4 text-center">
+            <div className="bg-[#1a0e2e]/50 rounded-lg p-4 text-center">
               <div className="text-3xl font-bold text-[#38BDF8] mb-1">2.5x</div>
               <p className="text-sm text-[#94A3B8]">Typical ROI in Year 1</p>
             </div>
-            <div className="bg-[#0F172A]/50 rounded-lg p-4 text-center">
+            <div className="bg-[#1a0e2e]/50 rounded-lg p-4 text-center">
               <div className="text-3xl font-bold text-[#38BDF8] mb-1">60%</div>
               <p className="text-sm text-[#94A3B8]">Dispute reduction</p>
             </div>
@@ -699,7 +699,7 @@ function Results({
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/toddfather/contact?topic=healthcheck-review">
-              <button className="px-8 py-4 bg-[#38BDF8] text-[#0F172A] font-bold rounded-xl hover:bg-[#38BDF8]/90 transition-all hover:scale-105">
+              <button className="px-8 py-4 bg-[#38BDF8] text-[#1a0e2e] font-bold rounded-xl hover:bg-[#38BDF8]/90 transition-all hover:scale-105">
                 Schedule SPM Review
               </button>
             </Link>

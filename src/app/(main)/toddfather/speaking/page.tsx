@@ -34,10 +34,10 @@ const topics = [
 
 export default function SpeakingPage() {
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
-          <SectionLabel color="#FF8737" centered>The Toddfather</SectionLabel>
+          <SectionLabel color="#FE9200" centered>The Toddfather</SectionLabel>
           <h1 className="text-4xl md:text-5xl font-bold text-[#E2E8F0] mb-6 text-center">
             Speaking
           </h1>
@@ -48,7 +48,7 @@ export default function SpeakingPage() {
           {/* Topics */}
           <div className="space-y-6 mb-12">
             {topics.map((topic) => (
-              <div key={topic.title} className="bg-white/5 rounded-xl p-6 border-l-4 border-[#FF8737]">
+              <div key={topic.title} className="bg-white/5 rounded-xl p-6 border-l-4 border-[#FE9200]">
                 <h3 className="text-xl font-bold text-[#E2E8F0] mb-2">{topic.title}</h3>
                 <p className="text-[#94A3B8] mb-3">{topic.description}</p>
                 <p className="text-sm text-[#64748B]">{topic.duration} • {topic.format}</p>
@@ -58,7 +58,7 @@ export default function SpeakingPage() {
 
           {/* Format & Audience */}
           <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <div className="bg-white/5 rounded-xl p-6 border border-[#FF8737]/10">
+            <div className="bg-white/5 rounded-xl p-6 border border-[#FE9200]/10">
               <h3 className="text-lg font-bold text-[#E2E8F0] mb-4">Format</h3>
               <ul className="space-y-2 text-[#94A3B8]">
                 <li>• No PowerPoint slides (conversation + whiteboard)</li>
@@ -67,7 +67,7 @@ export default function SpeakingPage() {
                 <li>• Real examples, real patterns, real truth</li>
               </ul>
             </div>
-            <div className="bg-white/5 rounded-xl p-6 border border-[#FF8737]/10">
+            <div className="bg-white/5 rounded-xl p-6 border border-[#FE9200]/10">
               <h3 className="text-lg font-bold text-[#E2E8F0] mb-4">Audience</h3>
               <ul className="space-y-2 text-[#94A3B8]">
                 <li>• Sales Performance Management teams</li>
@@ -79,7 +79,7 @@ export default function SpeakingPage() {
           </div>
 
           {/* CTA */}
-          <div className="bg-white/5 rounded-xl p-8 border border-[#FF8737]/20 text-center">
+          <div className="bg-white/5 rounded-xl p-8 border border-[#FE9200]/20 text-center">
             <h3 className="text-xl font-bold text-[#E2E8F0] mb-4">Book The Toddfather</h3>
             <p className="text-[#94A3B8] mb-6">
               Conference keynote, internal workshop, or executive briefing. Let&apos;s talk.

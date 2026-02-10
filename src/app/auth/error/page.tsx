@@ -35,7 +35,7 @@ function ErrorContent() {
   const errorInfo = errorMessages[error || ''] || errorMessages.Default;
 
   return (
-    <div className="min-h-screen bg-[#0F172A] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#1a0e2e] flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="bg-white/5 rounded-2xl p-8 shadow-xl text-center">
           {/* Error Icon */}
@@ -55,7 +55,7 @@ function ErrorContent() {
           <div className="space-y-3">
             <Link
               href="/auth/signin"
-              className="block w-full px-6 py-3 bg-[#38BDF8] text-[#0F172A] font-bold rounded-xl hover:bg-[#38BDF8]/90 transition-colors"
+              className="block w-full px-6 py-3 bg-[#38BDF8] text-[#1a0e2e] font-bold rounded-xl hover:bg-[#38BDF8]/90 transition-colors"
             >
               Try Again
             </Link>
@@ -85,7 +85,7 @@ function ErrorContent() {
 export default function AuthErrorPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-[#0F172A] flex items-center justify-center">
+      <div className="min-h-screen bg-[#1a0e2e] flex items-center justify-center">
         <div className="text-white">Loading...</div>
       </div>
     }>

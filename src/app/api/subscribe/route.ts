@@ -50,9 +50,9 @@ export async function POST(request: NextRequest) {
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
         </head>
-        <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0F172A; color: #E2E8F0; padding: 40px 20px;">
+        <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #1a0e2e; color: #E2E8F0; padding: 40px 20px;">
           <div style="max-width: 500px; margin: 0 auto;">
-            <h1 style="color: #FF8737; font-size: 28px; margin-bottom: 20px;">Welcome to The Syndicate.</h1>
+            <h1 style="color: #FE9200; font-size: 28px; margin-bottom: 20px;">Welcome to The Syndicate.</h1>
 
             <p style="color: #94A3B8; line-height: 1.6;">
               You're in. Every Tuesday, you'll get the real story on SPM—what works, what breaks,

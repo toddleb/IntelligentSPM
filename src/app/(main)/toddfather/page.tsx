@@ -42,21 +42,21 @@ const whatIveSeen = [
 
 export default function ToddfatherPage() {
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       {/* Hero */}
-      <section className="py-20 px-6 relative overflow-hidden bg-gradient-to-b from-[#0F172A] via-[#0B1220] to-[#0F172A]">
+      <section className="py-20 px-6 relative overflow-hidden bg-gradient-to-b from-[#1a0e2e] via-[#130a24] to-[#1a0e2e]">
         <div
           className="absolute inset-0 opacity-20"
           style={{
             background:
-              "radial-gradient(ellipse at 30% 0%, #FF873730 0%, transparent 50%)",
+              "radial-gradient(ellipse at 30% 0%, #FE920030 0%, transparent 50%)",
           }}
         />
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="flex flex-col md:flex-row items-center gap-10">
             {/* Avatar */}
             <div className="shrink-0">
-              <div className="w-40 h-40 rounded-full bg-gradient-to-br from-[#FF8737] to-[#FF8737]/50 flex items-center justify-center text-6xl font-bold text-white shadow-2xl">
+              <div className="w-40 h-40 rounded-full bg-gradient-to-br from-[#FE9200] to-[#FE9200]/50 flex items-center justify-center text-6xl font-bold text-white shadow-2xl">
                 TF
               </div>
             </div>
@@ -76,7 +76,7 @@ export default function ToddfatherPage() {
       </section>
 
       {/* The Story */}
-      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#0F172A] via-[#0E1627] to-[#0F172A]">
+      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#1a0e2e] via-[#150b26] to-[#1a0e2e]">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold text-[#E2E8F0] mb-8">The Short Version</h2>
           <div className="space-y-6 text-lg text-[#94A3B8] leading-relaxed">
@@ -99,7 +99,7 @@ export default function ToddfatherPage() {
       </section>
 
       {/* What I've Seen */}
-      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#0F172A] via-[#0D1626] to-[#0F172A]">
+      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#1a0e2e] via-[#140a25] to-[#1a0e2e]">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold text-[#E2E8F0] mb-4">What I&apos;ve Seen</h2>
           <p className="text-[#94A3B8] mb-10">
@@ -109,9 +109,9 @@ export default function ToddfatherPage() {
             {whatIveSeen.map((item, index) => (
               <div
                 key={index}
-                className="bg-white/5 rounded-xl p-6 border border-[#FF8737]/10 hover:border-[#FF8737]/30 transition-all"
+                className="bg-white/5 rounded-xl p-6 border border-[#FE9200]/10 hover:border-[#FE9200]/30 transition-all"
               >
-                <h3 className="text-lg font-bold text-[#FF8737] mb-2">{item.title}</h3>
+                <h3 className="text-lg font-bold text-[#FE9200] mb-2">{item.title}</h3>
                 <p className="text-[#94A3B8]">{item.description}</p>
               </div>
             ))}
@@ -120,14 +120,14 @@ export default function ToddfatherPage() {
       </section>
 
       {/* Credentials */}
-      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#0F172A] via-[#0E1627] to-[#0F172A]">
+      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#1a0e2e] via-[#150b26] to-[#1a0e2e]">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold text-[#E2E8F0] mb-8">The Resume Version</h2>
           <div className="space-y-4">
             {credentials.map((item, index) => (
               <div key={index} className="flex items-start gap-4">
-                <div className="w-6 h-6 rounded-full bg-[#FF8737]/20 flex items-center justify-center shrink-0 mt-0.5">
-                  <CheckIcon className="w-3.5 h-3.5 text-[#FF8737]" />
+                <div className="w-6 h-6 rounded-full bg-[#FE9200]/20 flex items-center justify-center shrink-0 mt-0.5">
+                  <CheckIcon className="w-3.5 h-3.5 text-[#FE9200]" />
                 </div>
                 <p className="text-[#94A3B8] text-lg">{item}</p>
               </div>
@@ -137,10 +137,10 @@ export default function ToddfatherPage() {
       </section>
 
       {/* The Promise */}
-      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#0F172A] via-[#0E1627] to-[#0F172A]">
+      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#1a0e2e] via-[#150b26] to-[#1a0e2e]">
         <div className="max-w-3xl mx-auto">
-          <div className="bg-gradient-to-br from-[#1E293B] to-[#0F172A] rounded-2xl p-10 border border-[#FF8737]/20 text-center">
-            <h2 className="text-3xl font-bold text-[#FF8737] mb-8">The Toddfather Promise</h2>
+          <div className="bg-gradient-to-br from-[#1E293B] to-[#1a0e2e] rounded-2xl p-10 border border-[#FE9200]/20 text-center">
+            <h2 className="text-3xl font-bold text-[#FE9200] mb-8">The Toddfather Promise</h2>
             <div className="space-y-4 text-xl">
               <p className="text-[#E2E8F0]">No vendor spin.</p>
               <p className="text-[#E2E8F0]">No consultant theater.</p>
@@ -156,7 +156,7 @@ export default function ToddfatherPage() {
       </section>
 
       {/* Why I Built This */}
-      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#0F172A] via-[#0E1627] to-[#0F172A]">
+      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#1a0e2e] via-[#150b26] to-[#1a0e2e]">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold text-[#E2E8F0] mb-8">Why I Built IntelligentSPM</h2>
           <div className="space-y-6 text-lg text-[#94A3B8] leading-relaxed">
@@ -177,7 +177,7 @@ export default function ToddfatherPage() {
       </section>
 
       {/* Links */}
-      <section className="py-12 px-6 border-t border-white/10 bg-gradient-to-b from-[#0F172A] via-[#0E1627] to-[#0F172A]">
+      <section className="py-12 px-6 border-t border-white/10 bg-gradient-to-b from-[#1a0e2e] via-[#150b26] to-[#1a0e2e]">
         <div className="max-w-3xl mx-auto grid md:grid-cols-3 gap-6">
           <Link href="/content/blog">
             <div className="bg-white/5 rounded-xl p-6 border border-[#38BDF8]/20 hover:border-[#38BDF8]/40 transition-all cursor-pointer h-full">
@@ -210,10 +210,10 @@ export default function ToddfatherPage() {
             </div>
           </Link>
           <Link href="/toddfather/contact">
-            <div className="bg-white/5 rounded-xl p-6 border border-[#FF8737]/20 hover:border-[#FF8737]/40 transition-all cursor-pointer h-full">
-              <div className="w-10 h-10 rounded-lg bg-[#FF8737]/20 flex items-center justify-center mb-4">
+            <div className="bg-white/5 rounded-xl p-6 border border-[#FE9200]/20 hover:border-[#FE9200]/40 transition-all cursor-pointer h-full">
+              <div className="w-10 h-10 rounded-lg bg-[#FE9200]/20 flex items-center justify-center mb-4">
                 <svg
-                  className="w-5 h-5 text-[#FF8737]"
+                  className="w-5 h-5 text-[#FE9200]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -234,7 +234,7 @@ export default function ToddfatherPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 border-t border-white/10 bg-gradient-to-b from-[#0F172A] via-[#0E1728] to-[#0F172A]">
+      <section className="py-20 px-6 border-t border-white/10 bg-gradient-to-b from-[#1a0e2e] via-[#150b27] to-[#1a0e2e]">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-2xl font-bold text-[#E2E8F0] mb-4">Stay Connected</h2>
           <p className="text-[#94A3B8] mb-8">

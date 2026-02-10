@@ -53,7 +53,7 @@ const mistakes = [
 
 export default function SPM101Page() {
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
@@ -125,7 +125,7 @@ export default function SPM101Page() {
           </div>
 
           {/* Why Governance Matters */}
-          <div className="bg-gradient-to-r from-[#8241C8]/20 to-[#38BDF8]/20 rounded-xl p-8 border border-[#8241C8]/20 mb-8">
+          <div className="bg-gradient-to-r from-[#58108E]/20 to-[#38BDF8]/20 rounded-xl p-8 border border-[#58108E]/20 mb-8">
             <h2 className="text-2xl font-bold text-[#E2E8F0] mb-4">Why Governance Matters</h2>
             <div className="space-y-4 text-[#94A3B8]">
               <p>
@@ -141,7 +141,7 @@ export default function SPM101Page() {
                 When a top performer disputes a commission, what happens? When someone leaves mid-quarter, how do you
                 calculate their final pay? When a deal gets clawed back 14 months later, who eats the cost?
               </p>
-              <p className="text-[#8241C8]">
+              <p className="text-[#58108E]">
                 If you don&apos;t have documented answers to these questions, you have a governance gap.
               </p>
             </div>
@@ -185,7 +185,7 @@ export default function SPM101Page() {
             </div>
             <Link
               href="/healthcheck/spm"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#A3E635] text-[#0F172A] font-bold rounded-xl hover:bg-[#A3E635]/90 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#A3E635] text-[#1a0e2e] font-bold rounded-xl hover:bg-[#A3E635]/90 transition-colors"
             >
               Take the SPM Healthcheck
               <span>→</span>

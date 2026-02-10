@@ -30,7 +30,7 @@ const categories = [...new Set(policies.map((p) => p.category))];
 
 export default function PoliciesPage() {
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       <section className="py-20 px-6">
         <div className="max-w-5xl mx-auto">
           <SectionLabel color="#A3E635" centered>Governance Framework</SectionLabel>
@@ -62,7 +62,7 @@ export default function PoliciesPage() {
                     <span className="text-[#A3E635] font-mono font-bold">{policy.code}</span>
                     <span className="text-[#E2E8F0] font-semibold">{policy.name}</span>
                   </div>
-                  <span className="text-xs text-[#64748B] bg-[#0F172A] px-3 py-1 rounded-full">
+                  <span className="text-xs text-[#64748B] bg-[#1a0e2e] px-3 py-1 rounded-full">
                     {policy.category}
                   </span>
                 </div>

@@ -6,7 +6,7 @@ const levers = leverOrder.map((slug) => leverConfig[slug]);
 
 export default function LeversPage() {
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       {/* Header */}
       <header className="border-b border-white/10">
         <div className="max-w-6xl mx-auto px-6 py-4">
@@ -25,19 +25,19 @@ export default function LeversPage() {
             <span className="text-white">Intelligent</span>
             <span className="spm-glow">SPM</span>
           </h1>
-          <p className="text-xl text-slate-300 mb-8">
+          <p className="text-xl text-[#CBD5E1] mb-8">
             Pull a lever. See the consequences.
           </p>
 
           {/* What this is */}
           <div className="text-left bg-white/5 rounded-xl p-8 border border-white/10 mb-12">
             <h2 className="text-lg font-bold text-white mb-4">What this is</h2>
-            <p className="text-slate-300 leading-relaxed mb-6">
+            <p className="text-[#CBD5E1] leading-relaxed mb-6">
               SPM isn&apos;t a department—it&apos;s a control system. These eight levers are the knobs that shape behavior, payout accuracy, audit defensibility, and forecast truth.
             </p>
 
             <h2 className="text-lg font-bold text-white mb-4">How to use it</h2>
-            <ul className="space-y-2 text-slate-300">
+            <ul className="space-y-2 text-[#CBD5E1]">
               <li className="flex items-start gap-2">
                 <span className="text-[#38BDF8] font-bold">Explore:</span>
                 Click a lever to see what it moves, the blast radius, the scoreboard, and the default artifacts.
@@ -56,35 +56,35 @@ export default function LeversPage() {
           {/* The Loop */}
           <div className="mb-12">
             <h2 className="text-lg font-bold text-white mb-4">The Map (how the levers work together)</h2>
-            <p className="text-slate-400 mb-4">SPM runs as a closed loop:</p>
-            <div className="bg-black/30 rounded-xl p-6 border border-white/10 overflow-x-auto">
+            <p className="text-[#94A3B8] mb-4">SPM runs as a closed loop:</p>
+            <div className="bg-white/5 rounded-xl p-6 border border-white/10 overflow-x-auto">
               <div className="flex items-center justify-center gap-4 text-sm font-mono min-w-max">
                 <div className="text-center">
                   <div className="text-[#ea580c] font-bold">DESIGN</div>
-                  <div className="text-slate-500 text-xs">(Intent)</div>
+                  <div className="text-[#64748B] text-xs">(Intent)</div>
                 </div>
-                <span className="text-slate-500">→</span>
+                <span className="text-[#64748B]">→</span>
                 <div className="text-center">
                   <div className="text-[#16a34a] font-bold">EXECUTE</div>
-                  <div className="text-slate-500 text-xs">(Payout)</div>
+                  <div className="text-[#64748B] text-xs">(Payout)</div>
                 </div>
-                <span className="text-slate-500">→</span>
+                <span className="text-[#64748B]">→</span>
                 <div className="text-center">
                   <div className="text-[#dc2626] font-bold">PROVE</div>
-                  <div className="text-slate-500 text-xs">(Audit)</div>
+                  <div className="text-[#64748B] text-xs">(Audit)</div>
                 </div>
-                <span className="text-slate-500">→</span>
+                <span className="text-[#64748B]">→</span>
                 <div className="text-center">
                   <div className="text-[#9333ea] font-bold">LEARN</div>
-                  <div className="text-slate-500 text-xs">(Signals)</div>
+                  <div className="text-[#64748B] text-xs">(Signals)</div>
                 </div>
-                <span className="text-slate-500">→</span>
+                <span className="text-[#64748B]">→</span>
                 <div className="text-center">
                   <div className="text-[#ca8a04] font-bold">ADOPT</div>
-                  <div className="text-slate-500 text-xs">(Field)</div>
+                  <div className="text-[#64748B] text-xs">(Field)</div>
                 </div>
               </div>
-              <div className="flex items-center justify-center gap-4 text-xs text-slate-500 mt-2 min-w-max">
+              <div className="flex items-center justify-center gap-4 text-xs text-[#64748B] mt-2 min-w-max">
                 <span>Strategy/Legal/Planning</span>
                 <span className="opacity-0">→</span>
                 <span>Ops/Tech</span>
@@ -101,7 +101,7 @@ export default function LeversPage() {
       </section>
 
       {/* Lever Grid */}
-      <section className="py-12 px-6 bg-black/20">
+      <section className="py-12 px-6 bg-white/5">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {levers.map((lever) => (
@@ -124,7 +124,7 @@ export default function LeversPage() {
                 </h3>
 
                 {/* Tagline */}
-                <p className="text-sm text-slate-300 mb-3">
+                <p className="text-sm text-[#CBD5E1] mb-3">
                   {lever.tagline}
                 </p>
 
@@ -137,7 +137,7 @@ export default function LeversPage() {
           </div>
 
           {/* Closing line */}
-          <p className="text-center text-slate-400 mt-10 text-sm">
+          <p className="text-center text-[#94A3B8] mt-10 text-sm">
             Each lever includes <span className="text-white font-medium">Moves / Blast Radius / Scoreboard / Artifacts</span> playbook.
           </p>
         </div>
@@ -147,30 +147,30 @@ export default function LeversPage() {
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold text-white mb-6 text-center">What &quot;good&quot; looks like</h2>
-          <p className="text-slate-400 text-center mb-8">When this works, you get:</p>
+          <p className="text-[#94A3B8] text-center mb-8">When this works, you get:</p>
           <ul className="grid md:grid-cols-2 gap-4">
             <li className="flex items-start gap-3 bg-white/5 rounded-xl p-4 border border-white/10">
               <span className="text-emerald-400">✓</span>
-              <span className="text-slate-200">Plans people understand and finance can defend</span>
+              <span className="text-[#E2E8F0]">Plans people understand and finance can defend</span>
             </li>
             <li className="flex items-start gap-3 bg-white/5 rounded-xl p-4 border border-white/10">
               <span className="text-emerald-400">✓</span>
-              <span className="text-slate-200">Payouts that are accurate and explainable</span>
+              <span className="text-[#E2E8F0]">Payouts that are accurate and explainable</span>
             </li>
             <li className="flex items-start gap-3 bg-white/5 rounded-xl p-4 border border-white/10">
               <span className="text-emerald-400">✓</span>
-              <span className="text-slate-200">Forecasts that don&apos;t rely on hope</span>
+              <span className="text-[#E2E8F0]">Forecasts that don&apos;t rely on hope</span>
             </li>
             <li className="flex items-start gap-3 bg-white/5 rounded-xl p-4 border border-white/10">
               <span className="text-emerald-400">✓</span>
-              <span className="text-slate-200">Exceptions that shrink over time (because causes get fixed)</span>
+              <span className="text-[#E2E8F0]">Exceptions that shrink over time (because causes get fixed)</span>
             </li>
           </ul>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-12 px-6 bg-black/20 border-t border-white/10">
+      <section className="py-12 px-6 bg-white/5 border-t border-white/10">
         <div className="max-w-4xl mx-auto text-center">
           <Link
             href="/healthcheck/spm"
@@ -183,7 +183,7 @@ export default function LeversPage() {
 
       {/* Footer */}
       <footer className="py-8 px-6 border-t border-white/10">
-        <div className="max-w-6xl mx-auto text-center text-slate-500 text-sm">
+        <div className="max-w-6xl mx-auto text-center text-[#64748B] text-sm">
           <Link href="/" className="hover:text-white transition-colors">
             ← Back to Home
           </Link>

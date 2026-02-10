@@ -310,16 +310,16 @@ export default function AskSPMContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       <section className="py-12 px-6">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="w-16 h-16 rounded-xl bg-[#FF8737] flex items-center justify-center text-xl font-bold text-white mx-auto mb-4">
+            <div className="w-16 h-16 rounded-xl bg-[#FE9200] flex items-center justify-center text-xl font-bold text-white mx-auto mb-4">
               ASK
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-[#E2E8F0] mb-2">
-              Ask<span className="text-[#FF8737]">SPM</span>
+              Ask<span className="text-[#FE9200]">SPM</span>
             </h1>
             <p className="text-sm text-[#94A3B8]">
               929 knowledge cards • Powered by RAG • The Toddfather&apos;s expertise
@@ -327,17 +327,17 @@ export default function AskSPMContent() {
           </div>
 
           {/* Chat Container */}
-          <div className="bg-white/5 rounded-xl overflow-hidden border border-[#FF8737]/20">
+          <div className="bg-white/5 rounded-xl overflow-hidden border border-[#FE9200]/20">
             {/* Header Bar with New Chat */}
             {messages.length > 0 && (
-              <div className="flex items-center justify-between px-4 py-2 border-b border-[#FF8737]/10 bg-white/5/50">
+              <div className="flex items-center justify-between px-4 py-2 border-b border-[#FE9200]/10 bg-white/5/50">
                 <span className="text-xs text-[#64748B]">
                   {messages.filter((m) => m.role === "user").length} question
                   {messages.filter((m) => m.role === "user").length !== 1 ? "s" : ""} in conversation
                 </span>
                 <button
                   onClick={handleNewChat}
-                  className="text-xs text-[#94A3B8] hover:text-[#FF8737] transition-colors flex items-center gap-1"
+                  className="text-xs text-[#94A3B8] hover:text-[#FE9200] transition-colors flex items-center gap-1"
                 >
                   <span>✨</span>
                   <span>New Chat</span>
@@ -356,7 +356,7 @@ export default function AskSPMContent() {
                         key={q}
                         onClick={() => handleStreamingSubmit(q)}
                         disabled={isStreaming}
-                        className="px-4 py-2 text-sm rounded-full bg-[#FF8737]/10 text-[#FF8737] hover:bg-[#FF8737]/20 transition-colors disabled:opacity-50"
+                        className="px-4 py-2 text-sm rounded-full bg-[#FE9200]/10 text-[#FE9200] hover:bg-[#FE9200]/20 transition-colors disabled:opacity-50"
                       >
                         {q}
                       </button>
@@ -372,13 +372,13 @@ export default function AskSPMContent() {
                     <div
                       className={`max-w-[85%] ${
                         message.role === "user"
-                          ? "bg-[#FF8737] text-white rounded-2xl rounded-tr-sm"
+                          ? "bg-[#FE9200] text-white rounded-2xl rounded-tr-sm"
                           : "bg-[#334155] text-[#E2E8F0] rounded-2xl rounded-tl-sm"
                       } px-4 py-3`}
                     >
                       {/* Library hit indicator */}
                       {message.role === "assistant" && message.fromLibrary && (
-                        <div className="flex items-center gap-1 mb-2 text-xs text-[#FF8737]">
+                        <div className="flex items-center gap-1 mb-2 text-xs text-[#FE9200]">
                           <span>⚡</span>
                           <span>Instant answer from cache</span>
                         </div>
@@ -418,7 +418,7 @@ export default function AskSPMContent() {
                                     className="text-xs bg-white/5 rounded-lg p-3"
                                   >
                                     <div className="flex items-center gap-2 mb-1">
-                                      <span className="font-semibold text-[#FF8737]">
+                                      <span className="font-semibold text-[#FE9200]">
                                         {source.keyword}
                                       </span>
                                       <span className="text-[#64748B]">
@@ -490,13 +490,13 @@ export default function AskSPMContent() {
                 <div className="flex justify-start">
                   <div className="bg-[#334155] text-[#94A3B8] rounded-2xl rounded-tl-sm px-4 py-3">
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-[#FF8737] rounded-full animate-pulse" />
+                      <div className="w-2 h-2 bg-[#FE9200] rounded-full animate-pulse" />
                       <div
-                        className="w-2 h-2 bg-[#FF8737] rounded-full animate-pulse"
+                        className="w-2 h-2 bg-[#FE9200] rounded-full animate-pulse"
                         style={{ animationDelay: "75ms" }}
                       />
                       <div
-                        className="w-2 h-2 bg-[#FF8737] rounded-full animate-pulse"
+                        className="w-2 h-2 bg-[#FE9200] rounded-full animate-pulse"
                         style={{ animationDelay: "150ms" }}
                       />
                       <span className="ml-2 text-sm">{streamingStatus || "Connecting..."}</span>
@@ -517,7 +517,7 @@ export default function AskSPMContent() {
             </div>
 
             {/* Input Area */}
-            <div className="border-t border-[#FF8737]/10 p-4">
+            <div className="border-t border-[#FE9200]/10 p-4">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -530,7 +530,7 @@ export default function AskSPMContent() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask about SPM, ICM, governance, quotas..."
-                  className="flex-1 bg-[#0F172A] border border-[#334155] rounded-lg px-4 py-3 text-[#E2E8F0] placeholder-[#64748B] focus:outline-none focus:border-[#FF8737] transition-colors"
+                  className="flex-1 bg-[#1a0e2e] border border-[#334155] rounded-lg px-4 py-3 text-[#E2E8F0] placeholder-[#64748B] focus:outline-none focus:border-[#FE9200] transition-colors"
                   disabled={isStreaming}
                 />
                 {isStreaming ? (
@@ -545,7 +545,7 @@ export default function AskSPMContent() {
                   <button
                     type="submit"
                     disabled={!input.trim()}
-                    className="px-6 py-3 bg-[#FF8737] text-white font-semibold rounded-lg hover:bg-[#FF8737]/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    className="px-6 py-3 bg-[#FE9200] text-white font-semibold rounded-lg hover:bg-[#FE9200]/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                   >
                     Ask
                   </button>
@@ -557,7 +557,7 @@ export default function AskSPMContent() {
           {/* Footer */}
           <p className="text-[#64748B] text-sm text-center mt-6">
             Want your own AskSPM for your organization?{" "}
-            <Link href="/toddfather/contact" className="text-[#FF8737] hover:underline">
+            <Link href="/toddfather/contact" className="text-[#FE9200] hover:underline">
               Contact The Toddfather
             </Link>
           </p>

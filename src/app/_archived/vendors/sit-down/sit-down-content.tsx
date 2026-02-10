@@ -44,10 +44,10 @@ const sections = [
 
 export default function SitDownContent() {
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <SectionLabel color="#FF8737" centered>Coming Soon</SectionLabel>
+          <SectionLabel color="#FE9200" centered>Coming Soon</SectionLabel>
           <h1 className="text-4xl md:text-5xl font-bold text-[#E2E8F0] mb-6">
             The Sit-Down
           </h1>
@@ -57,8 +57,8 @@ export default function SitDownContent() {
           </p>
 
           {/* Main teaser card */}
-          <div className="bg-white/5 rounded-xl p-8 md:p-12 border border-[#FF8737]/20 mb-8">
-            <div className="text-[#FF8737] mb-6">
+          <div className="bg-white/5 rounded-xl p-8 md:p-12 border border-[#FE9200]/20 mb-8">
+            <div className="text-[#FE9200] mb-6">
               <svg className="w-20 h-20 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
@@ -70,11 +70,11 @@ export default function SitDownContent() {
               and the questions you should ask that vendors hope you won&apos;t.
             </p>
 
-            <div className="border-t border-[#FF8737]/20 pt-8 max-w-sm mx-auto">
+            <div className="border-t border-[#FE9200]/20 pt-8 max-w-sm mx-auto">
               <p className="text-[#64748B] text-sm mb-4">Get notified when we publish</p>
               <WaitlistForm
                 listName="sit-down"
-                accentColor="#FF8737"
+                accentColor="#FE9200"
                 successMessage="We'll notify you when The Sit-Down is ready."
               />
             </div>
@@ -83,8 +83,8 @@ export default function SitDownContent() {
           {/* What it covers */}
           <div className="grid md:grid-cols-2 gap-6 text-left">
             {sections.map((item) => (
-              <div key={item.title} className="bg-white/5 rounded-xl p-6 border border-[#FF8737]/10">
-                <div className="text-[#FF8737] mb-3">
+              <div key={item.title} className="bg-white/5 rounded-xl p-6 border border-[#FE9200]/10">
+                <div className="text-[#FE9200] mb-3">
                   {item.icon}
                 </div>
                 <h4 className="font-bold text-[#E2E8F0] mb-2">{item.title}</h4>

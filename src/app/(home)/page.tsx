@@ -31,7 +31,7 @@ const tools = [
     name: "Comp Plan Healthcheck",
     description: "Upload your plan and get AI-backed analysis in minutes.",
     href: "/healthcheck/comp-plan",
-    color: "#8241C8",
+    color: "#58108E",
   },
   {
     name: "Governance Healthcheck",
@@ -43,7 +43,7 @@ const tools = [
     name: "AskSPM",
     description: "The Toddfather’s brain on demand. Precise, fast, no fluff.",
     href: "/healthcheck/askspm",
-    color: "#FF8737",
+    color: "#FE9200",
   },
 ];
 
@@ -60,14 +60,14 @@ const leverBlobs = [
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       {/* Hero */}
       <section className="relative pt-24 pb-16 px-6 overflow-hidden">
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 20% 10%, rgba(255,135,55,0.20) 0%, transparent 45%), radial-gradient(ellipse at 80% 20%, rgba(56,189,248,0.18) 0%, transparent 50%)",
+              "radial-gradient(ellipse at 20% 10%, rgba(254,146,0,0.20) 0%, transparent 45%), radial-gradient(ellipse at 80% 20%, rgba(56,189,248,0.18) 0%, transparent 50%)",
           }}
         />
         <div className="max-w-6xl mx-auto relative z-10 grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-start">
@@ -100,7 +100,7 @@ export default function HomePage() {
       </section>
 
       {/* Credibility Strip */}
-      <section className="px-6 pb-12 bg-gradient-to-b from-[#0F172A] via-[#0B1220] to-[#0F172A] border-t border-white/5">
+      <section className="px-6 pb-12 bg-gradient-to-b from-[#1a0e2e] via-[#130a24] to-[#1a0e2e] border-t border-white/5">
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
           {credibility.map((item) => (
             <div key={item.label} className="rounded-xl border border-white/10 bg-white/5 p-5 text-center">
@@ -112,7 +112,7 @@ export default function HomePage() {
       </section>
 
       {/* Tools */}
-      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#0F172A] via-[#0E1627] to-[#0F172A]">
+      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#1a0e2e] via-[#150b26] to-[#1a0e2e]">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
             <div>
@@ -156,7 +156,7 @@ export default function HomePage() {
       </section>
 
       {/* 8 Levers */}
-      <section id="levers" className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#0F172A] via-[#0B1322] to-[#0F172A]">
+      <section id="levers" className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#1a0e2e] via-[#130a24] to-[#1a0e2e]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10">
             <SectionLabel color="#38BDF8" centered>
@@ -215,7 +215,7 @@ export default function HomePage() {
                     {lever.header}
                   </div>
                   <h3 className="text-lg font-bold text-white mb-2">{lever.name}</h3>
-                  <p className="text-sm text-[#CBD5F5] mb-4">{lever.tagline}</p>
+                  <p className="text-sm text-[#CBD5E1] mb-4">{lever.tagline}</p>
                   <p className="text-sm text-red-300 italic mb-6">{lever.consequence}</p>
                   <span className="text-sm font-semibold" style={{ color: lever.color }}>
                     Learn more →
@@ -228,7 +228,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#0F172A] via-[#0E1728] to-[#0F172A]">
+      <section className="py-16 px-6 border-t border-white/10 bg-gradient-to-b from-[#1a0e2e] via-[#150b27] to-[#1a0e2e]">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-[#E2E8F0] mb-4">
             Want straight answers on your comp plan?

@@ -4,10 +4,8 @@ import Link from "next/link";
 import { useState } from "react";
 
 const navItems = [
-  { label: "Software", href: "/software" },
   { label: "Healthchecks", href: "/healthcheck" },
   { label: "Learn", href: "/learn" },
-  { label: "Vendors", href: "/vendors" },
   { label: "Blog", href: "/content/blog" },
   { label: "The Toddfather", href: "/toddfather" },
 ];
@@ -16,7 +14,7 @@ export function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#0F172A]/95 backdrop-blur-sm border-b border-white/10">
+    <nav className="sticky top-0 z-50 bg-[#1a0e2e]/95 backdrop-blur-sm border-b border-white/10">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo with SPM glow */}
@@ -35,7 +33,7 @@ export function Nav() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-base font-medium text-[#0F172A]"
+                className="text-base font-medium text-[#E2E8F0] hover:text-white transition-colors"
               >
                 {item.label}
               </Link>
@@ -71,7 +69,7 @@ export function Nav() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-lg text-[#0F172A] py-2"
+                  className="text-lg text-[#E2E8F0] hover:text-white transition-colors py-2"
                 >
                   {item.label}
                 </Link>

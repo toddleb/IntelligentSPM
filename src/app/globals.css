@@ -2,33 +2,47 @@
 
 :root {
   /* Backgrounds */
-  --bg-dark: #0F172A;
-  --bg-light: #1E293B;
+  --bg-dark: #1a0e2e;
+  --bg-light: #F1F5F9;
 
   /* Brand Colors */
   --teal: #38BDF8;
-  --orange: #FF8737;
-  --ai-purple: #8241C8;
-  --ai-purple-dark: #58108E;
+  --blue: #1D7ECA;
+  --green: #85A403;
+  --orange: #FE9200;
+  --ai-purple: #58108E;
+  --burgundy: #92278F;
 
   /* Semantic Colors */
   --lime: #A3E635;
   --hot-pink: #EA1B85;
 
-  /* 8 Lever Colors (Slate Palette) */
-  --lever-strategy: #A39080;           /* warm taupe - Incentive Architecture */
-  --lever-legal: #7E8A9A;              /* steel blue - Compliance Guardrails */
-  --lever-planning: #6B8A9E;           /* slate blue - Capacity & Coverage */
-  --lever-technology: #6A9A9A;         /* muted teal - Systems Spine */
-  --lever-operations: #7A9A85;         /* sage - Payout Engine */
-  --lever-analytics: #8A7E9A;          /* dusty lavender - Signal & Forecast */
-  --lever-governance: #9A7E7E;         /* dusty rose - Controls & Evidence */
-  --lever-enablement: #9A9070;         /* olive gold - Enablement Loop */
+  /* 8 Lever Colors — Semantic Dark UI Palette */
+  /* Gold = architecture/design */
+  --lever-incentive: #B45309; --lever-incentive-bg: #451A03; --lever-incentive-stroke: #FBBF24; --lever-incentive-tint: #FDE68A;
+  /* Red = policy/risk */
+  --lever-compliance: #B91C1C; --lever-compliance-bg: #450A0A; --lever-compliance-stroke: #F87171; --lever-compliance-tint: #FECACA;
+  /* Blue = capacity/coverage */
+  --lever-capacity: #0284C7; --lever-capacity-bg: #082F49; --lever-capacity-stroke: #38BDF8; --lever-capacity-tint: #BAE6FD;
+  /* Slate = platform/foundation */
+  --lever-spine: #334155; --lever-spine-bg: #0F172A; --lever-spine-stroke: #94A3B8; --lever-spine-tint: #E2E8F0;
+  /* Green = payouts/value */
+  --lever-payout: #16A34A; --lever-payout-bg: #052E16; --lever-payout-stroke: #4ADE80; --lever-payout-tint: #BBF7D0;
+  /* Violet = intelligence/forecast */
+  --lever-signal: #6D28D9; --lever-signal-bg: #2E1065; --lever-signal-stroke: #A78BFA; --lever-signal-tint: #DDD6FE;
+  /* Burgundy/Magenta = audit/proof */
+  --lever-evidence: #86198F; --lever-evidence-bg: #4A044E; --lever-evidence-stroke: #E879F9; --lever-evidence-tint: #FAE8FF;
+  /* Cyan = learning/momentum */
+  --lever-enablement: #0891B2; --lever-enablement-bg: #083344; --lever-enablement-stroke: #22D3EE; --lever-enablement-tint: #A5F3FC;
+
+  /* Utility */
+  --red: #DC2626;
+  --yellow: #EAB308;
 
   /* Text Colors */
   --text-primary: #E2E8F0;
   --text-muted: #94A3B8;
-  --text-dark: #64748B;
+  --text-dark: #334155;
 
   /* Legacy vars for compatibility */
   --background: var(--bg-dark);
@@ -56,8 +70,11 @@ body {
 
 /* Utility classes for brand colors */
 .text-teal { color: var(--teal); }
+.text-blue { color: var(--blue); }
+.text-green { color: var(--green); }
 .text-orange { color: var(--orange); }
 .text-ai-purple { color: var(--ai-purple); }
+.text-burgundy { color: var(--burgundy); }
 .text-lime { color: var(--lime); }
 .text-hot-pink { color: var(--hot-pink); }
 .text-muted { color: var(--text-muted); }
@@ -65,19 +82,21 @@ body {
 /* SPM Brand Glow - the signature "control room" look */
 .spm-glow {
   color: var(--teal);
-  text-shadow: 0 0 20px rgba(56, 189, 248, 0.6), 0 0 40px rgba(56, 189, 248, 0.3);
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.4), 0 0 20px rgba(56, 189, 248, 0.15);
 }
 
 .bg-teal { background-color: var(--teal); }
+.bg-blue { background-color: var(--blue); }
+.bg-green { background-color: var(--green); }
 .bg-orange { background-color: var(--orange); }
 .bg-ai-purple { background-color: var(--ai-purple); }
-.bg-ai-purple-dark { background-color: var(--ai-purple-dark); }
+.bg-burgundy { background-color: var(--burgundy); }
 .bg-lime { background-color: var(--lime); }
 .bg-hot-pink { background-color: var(--hot-pink); }
 
 /* AI badge gradient */
 .ai-badge {
-  background: linear-gradient(135deg, var(--ai-purple-dark), var(--ai-purple));
+  background: linear-gradient(135deg, var(--ai-purple), var(--burgundy));
   color: white;
   padding: 6px 14px;
   border-radius: 20px;
@@ -86,15 +105,15 @@ body {
   display: inline-block;
 }
 
-/* 8 Lever Utility Classes (Slate Palette) */
-.lever-strategy { background: rgba(163,144,128,0.15); border: 2px solid var(--lever-strategy); color: var(--lever-strategy); }
-.lever-legal { background: rgba(126,138,154,0.15); border: 2px solid var(--lever-legal); color: var(--lever-legal); }
-.lever-planning { background: rgba(107,138,158,0.15); border: 2px solid var(--lever-planning); color: var(--lever-planning); }
-.lever-technology { background: rgba(106,154,154,0.15); border: 2px solid var(--lever-technology); color: var(--lever-technology); }
-.lever-operations { background: rgba(122,154,133,0.15); border: 2px solid var(--lever-operations); color: var(--lever-operations); }
-.lever-analytics { background: rgba(138,126,154,0.15); border: 2px solid var(--lever-analytics); color: var(--lever-analytics); }
-.lever-governance { background: rgba(154,126,126,0.15); border: 2px solid var(--lever-governance); color: var(--lever-governance); }
-.lever-enablement { background: rgba(154,144,112,0.15); border: 2px solid var(--lever-enablement); color: var(--lever-enablement); }
+/* 8 Lever Utility Classes — Semantic 4-token system (base/bg/stroke/tint) */
+.lever-strategy { background: var(--lever-incentive-bg); border: 2px solid var(--lever-incentive-stroke); color: var(--lever-incentive-tint); }
+.lever-legal { background: var(--lever-compliance-bg); border: 2px solid var(--lever-compliance-stroke); color: var(--lever-compliance-tint); }
+.lever-planning { background: var(--lever-capacity-bg); border: 2px solid var(--lever-capacity-stroke); color: var(--lever-capacity-tint); }
+.lever-technology { background: var(--lever-spine-bg); border: 2px solid var(--lever-spine-stroke); color: var(--lever-spine-tint); }
+.lever-operations { background: var(--lever-payout-bg); border: 2px solid var(--lever-payout-stroke); color: var(--lever-payout-tint); }
+.lever-analytics { background: var(--lever-signal-bg); border: 2px solid var(--lever-signal-stroke); color: var(--lever-signal-tint); }
+.lever-governance { background: var(--lever-evidence-bg); border: 2px solid var(--lever-evidence-stroke); color: var(--lever-evidence-tint); }
+.lever-enablement { background: var(--lever-enablement-bg); border: 2px solid var(--lever-enablement-stroke); color: var(--lever-enablement-tint); }
 
 /* Animated gradient bar */
 @keyframes gradientRotate {
@@ -104,7 +123,7 @@ body {
 }
 
 .gradient-animate {
-  background: linear-gradient(90deg, #38BDF8, #8241C8, #A3E635, #FF8737, #F472B6, #38BDF8);
+  background: linear-gradient(90deg, #38BDF8, #58108E, #A3E635, #FE9200, #EA1B85, #38BDF8);
   background-size: 300% 100%;
   animation: gradientRotate 15s ease infinite;
 }

@@ -18,7 +18,7 @@ const tools = [
     name: "Comp Plan Healthcheck",
     description: "Upload your comp plan. AI analyzes, scores, and returns suggestions in card format.",
     href: "/healthcheck/comp-plan",
-    color: "#8241C8",
+    color: "#58108E",
     abbr: "AI",
     isAI: true,
   },
@@ -33,16 +33,16 @@ const tools = [
     name: "AskSPM",
     description: "Query The Toddfather's brain. RAG-powered answers from 929 knowledge base cards.",
     href: "/healthcheck/askspm",
-    color: "#FF8737",
+    color: "#FE9200",
     abbr: "ASK",
   },
 ];
 
 export default function HealthcheckPage() {
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       {/* Header */}
-      <section className="py-20 px-6 bg-gradient-to-b from-[#0F172A] via-[#0B1220] to-[#0F172A]">
+      <section className="py-20 px-6 bg-gradient-to-b from-[#1a0e2e] via-[#130a24] to-[#1a0e2e]">
         <div className="max-w-4xl mx-auto text-center">
           <SectionLabel color="#38BDF8" centered>Tools That Actually Work</SectionLabel>
           <h1 className="text-4xl md:text-5xl font-bold text-[#E2E8F0] mb-6">
@@ -55,7 +55,7 @@ export default function HealthcheckPage() {
       </section>
 
       {/* Tools Grid */}
-      <section className="py-12 px-6 border-t border-white/10 bg-gradient-to-b from-[#0F172A] via-[#0E1627] to-[#0F172A]">
+      <section className="py-12 px-6 border-t border-white/10 bg-gradient-to-b from-[#1a0e2e] via-[#150b26] to-[#1a0e2e]">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
           {tools.map((tool) => (
             <Link key={tool.name} href={tool.href}>
@@ -80,7 +80,7 @@ export default function HealthcheckPage() {
                         {tool.name}
                       </h2>
                       {tool.isAI && (
-                        <span className="px-2 py-1 text-xs font-bold rounded-full bg-[#8241C8]/20 text-[#8241C8]">
+                        <span className="px-2 py-1 text-xs font-bold rounded-full bg-[#58108E]/20 text-[#58108E]">
                           AI
                         </span>
                       )}
@@ -98,7 +98,7 @@ export default function HealthcheckPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 border-t border-white/10 bg-gradient-to-b from-[#0F172A] via-[#0E1728] to-[#0F172A]">
+      <section className="py-20 px-6 border-t border-white/10 bg-gradient-to-b from-[#1a0e2e] via-[#150b27] to-[#1a0e2e]">
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-[#64748B] mb-4">
             Not sure where to start?

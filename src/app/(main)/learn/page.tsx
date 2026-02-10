@@ -18,7 +18,7 @@ const sections = [
     name: "The 8 Levers",
     description: "Deep dive into the SPM framework. 929 knowledge base cards organized by lever.",
     href: "/levers",
-    color: "#F59E0B",
+    color: "#FE9200",
     count: "929 cards",
   },
   {
@@ -32,16 +32,16 @@ const sections = [
     name: "Glossary",
     description: "SPM terms defined. No jargon, no confusion. Plain language definitions.",
     href: "/learn/glossary",
-    color: "#FF8737",
+    color: "#FE9200",
     count: "50+ terms",
   },
 ];
 
 export default function LearnPage() {
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       {/* Header */}
-      <section className="py-20 px-6 bg-gradient-to-b from-[#0F172A] via-[#0B1220] to-[#0F172A]">
+      <section className="py-20 px-6 bg-gradient-to-b from-[#1a0e2e] via-[#130a24] to-[#1a0e2e]">
         <div className="max-w-4xl mx-auto text-center">
           <SectionLabel color="#38BDF8" centered>The SPM Clearing House</SectionLabel>
           <h1 className="text-4xl md:text-5xl font-bold text-[#E2E8F0] mb-6">
@@ -54,7 +54,7 @@ export default function LearnPage() {
       </section>
 
       {/* Sections Grid */}
-      <section className="py-12 px-6 border-t border-white/10 bg-gradient-to-b from-[#0F172A] via-[#0E1627] to-[#0F172A]">
+      <section className="py-12 px-6 border-t border-white/10 bg-gradient-to-b from-[#1a0e2e] via-[#150b26] to-[#1a0e2e]">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
           {sections.map((section) => (
             <Link key={section.name} href={section.href}>
@@ -85,7 +85,7 @@ export default function LearnPage() {
       </section>
 
       {/* Quick Start */}
-      <section className="py-20 px-6 border-t border-white/10 bg-gradient-to-b from-[#0F172A] via-[#0E1728] to-[#0F172A]">
+      <section className="py-20 px-6 border-t border-white/10 bg-gradient-to-b from-[#1a0e2e] via-[#150b27] to-[#1a0e2e]">
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-[#64748B] mb-4">
             New to SPM?

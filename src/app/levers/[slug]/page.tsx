@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { use, useState, useMemo } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeftIcon, ArrowRightIcon, ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
@@ -20,8 +20,8 @@ type KBCard = {
   };
 };
 
-export default function LeverPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default function LeverPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params);
   const lever = leverConfig[slug as keyof typeof leverConfig];
 
   const [kbExpanded, setKbExpanded] = useState(false);
@@ -61,11 +61,11 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
   }, [filteredCards]);
 
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       {/* Header */}
       <header className="border-b border-white/10">
         <div className="max-w-4xl mx-auto px-6 py-4">
-          <Link href="/levers" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
+          <Link href="/levers" className="inline-flex items-center gap-2 text-[#94A3B8] hover:text-white transition-colors">
             <ArrowLeftIcon className="w-4 h-4" />
             Back to Levers
           </Link>
@@ -89,12 +89,12 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
           </h1>
 
           {/* Tagline */}
-          <p className="text-xl text-slate-300 mb-6">
+          <p className="text-xl text-[#CBD5E1] mb-6">
             {lever.tagline}
           </p>
 
           {/* What it is */}
-          <p className="text-lg text-slate-400 leading-relaxed max-w-3xl mb-6">
+          <p className="text-lg text-[#94A3B8] leading-relaxed max-w-3xl mb-6">
             {lever.whatItIs}
           </p>
 
@@ -105,7 +105,7 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
             </h3>
             <ul className="space-y-2">
               {lever.whenToPullBullets.map((bullet, idx) => (
-                <li key={idx} className="flex items-start gap-2 text-slate-300">
+                <li key={idx} className="flex items-start gap-2 text-[#CBD5E1]">
                   <span style={{ color: lever.color }}>•</span>
                   {bullet}
                 </li>
@@ -116,7 +116,7 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
       </section>
 
       {/* The Consequences Section */}
-      <section className="py-12 px-6 bg-black/20">
+      <section className="py-12 px-6 bg-white/5">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold text-white mb-8">The Consequences</h2>
 
@@ -126,7 +126,7 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
               <h3 className="text-sm font-bold uppercase tracking-wide mb-3" style={{ color: lever.color }}>
                 What It Moves
               </h3>
-              <p className="text-slate-200 leading-relaxed">{lever.moves}</p>
+              <p className="text-[#E2E8F0] leading-relaxed">{lever.moves}</p>
             </div>
 
             {/* Blast Radius */}
@@ -134,7 +134,7 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
               <h3 className="text-sm font-bold uppercase tracking-wide mb-3 text-red-400">
                 Blast Radius
               </h3>
-              <p className="text-slate-200 leading-relaxed">{lever.blast}</p>
+              <p className="text-[#E2E8F0] leading-relaxed">{lever.blast}</p>
             </div>
 
             {/* Scoreboard */}
@@ -142,7 +142,7 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
               <h3 className="text-sm font-bold uppercase tracking-wide mb-3 text-emerald-400">
                 Scoreboard
               </h3>
-              <p className="text-slate-200 leading-relaxed">{lever.scoreboard}</p>
+              <p className="text-[#E2E8F0] leading-relaxed">{lever.scoreboard}</p>
             </div>
 
             {/* Default Artifacts */}
@@ -150,7 +150,7 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
               <h3 className="text-sm font-bold uppercase tracking-wide mb-3 text-sky-400">
                 Default Artifacts
               </h3>
-              <p className="text-slate-200 leading-relaxed">{lever.artifacts}</p>
+              <p className="text-[#E2E8F0] leading-relaxed">{lever.artifacts}</p>
             </div>
           </div>
         </div>
@@ -164,7 +164,7 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
             {lever.commonFailures.map((failure, idx) => (
               <li key={idx} className="flex items-start gap-3">
                 <span className="text-red-400 mt-1">•</span>
-                <span className="text-slate-300">{failure}</span>
+                <span className="text-[#CBD5E1]">{failure}</span>
               </li>
             ))}
           </ul>
@@ -172,14 +172,14 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
       </section>
 
       {/* Fast Wins */}
-      <section className="py-12 px-6 bg-black/20">
+      <section className="py-12 px-6 bg-white/5">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold text-white mb-6">Fast Wins</h2>
           <ul className="space-y-3">
             {lever.fastWins.map((win, idx) => (
               <li key={idx} className="flex items-start gap-3">
                 <span className="text-emerald-400 mt-1">•</span>
-                <span className="text-slate-300">{win}</span>
+                <span className="text-[#CBD5E1]">{win}</span>
               </li>
             ))}
           </ul>
@@ -203,9 +203,9 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
               </span>
             </div>
             {kbExpanded ? (
-              <ChevronUpIcon className="w-6 h-6 text-slate-400" />
+              <ChevronUpIcon className="w-6 h-6 text-[#94A3B8]" />
             ) : (
-              <ChevronDownIcon className="w-6 h-6 text-slate-400" />
+              <ChevronDownIcon className="w-6 h-6 text-[#94A3B8]" />
             )}
           </button>
 
@@ -221,7 +221,7 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
               />
 
               {/* Results count */}
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-[#64748B]">
                 Showing {filteredCards.length} of {leverCards.length} cards
               </p>
 
@@ -231,7 +231,7 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
                   <div key={category}>
                     <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
                       {category}
-                      <span className="text-xs text-slate-500 bg-white/5 px-2 py-1 rounded-full">
+                      <span className="text-xs text-[#64748B] bg-white/5 px-2 py-1 rounded-full">
                         {catCards.length}
                       </span>
                     </h3>
@@ -252,17 +252,17 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
                             >
                               {lever.header}
                             </span>
-                            <span className="text-xs text-slate-500">{card.metadata.cardType}</span>
+                            <span className="text-xs text-[#64748B]">{card.metadata.cardType}</span>
                           </div>
                           <h4 className="font-bold text-white mb-2">{card.keyword}</h4>
-                          <p className="text-sm text-slate-400 line-clamp-2">
+                          <p className="text-sm text-[#94A3B8] line-clamp-2">
                             {card.content.split(". ")[1] || card.content}
                           </p>
                         </div>
                       ))}
                     </div>
                     {catCards.length > 6 && (
-                      <p className="text-sm text-slate-500 mt-4">
+                      <p className="text-sm text-[#64748B] mt-4">
                         + {catCards.length - 6} more cards in this category
                       </p>
                     )}
@@ -275,25 +275,25 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
       </section>
 
       {/* Evidence Questions (Score This Lever) */}
-      <section className="py-12 px-6 bg-black/20">
+      <section className="py-12 px-6 bg-white/5">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold text-white mb-2">Score This Lever</h2>
-          <p className="text-slate-400 mb-6 text-sm">
+          <p className="text-[#94A3B8] mb-6 text-sm">
             If you can&apos;t answer &quot;yes&quot; with proof, you don&apos;t score above 2.
           </p>
           <div className="bg-white/5 rounded-xl p-6 border border-white/10">
             <ul className="space-y-4">
               {lever.evidenceQuestions.map((question, idx) => (
                 <li key={idx} className="flex items-center gap-4">
-                  <div className="w-6 h-6 rounded border-2 border-slate-500 shrink-0 flex items-center justify-center">
-                    <span className="text-slate-500 text-xs">{idx + 1}</span>
+                  <div className="w-6 h-6 rounded border-2 border-[#64748B] shrink-0 flex items-center justify-center">
+                    <span className="text-[#64748B] text-xs">{idx + 1}</span>
                   </div>
-                  <span className="text-slate-200">{question}</span>
+                  <span className="text-[#E2E8F0]">{question}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <p className="text-slate-500 text-xs mt-4 italic">
+          <p className="text-[#64748B] text-xs mt-4 italic">
             Score: 0 (Missing) → 1 (Documented) → 2 (Repeatable) → 3 (Controlled) → 4 (Optimized)
           </p>
         </div>
@@ -314,7 +314,7 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
                 </div>
                 <div>
                   <p className="text-white font-semibold">{level.name}</p>
-                  <p className="text-slate-400 text-sm">{level.desc}</p>
+                  <p className="text-[#94A3B8] text-sm">{level.desc}</p>
                 </div>
               </div>
             ))}
@@ -323,7 +323,7 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
       </section>
 
       {/* The Kit */}
-      <section className="py-12 px-6 bg-black/20">
+      <section className="py-12 px-6 bg-white/5">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold text-white mb-6">The Kit</h2>
 
@@ -331,7 +331,7 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
             <h3 className="text-sm font-bold uppercase tracking-wide mb-3 text-sky-400">
               Starter Artifacts
             </h3>
-            <p className="text-slate-200">{lever.starterArtifacts}</p>
+            <p className="text-[#E2E8F0]">{lever.starterArtifacts}</p>
           </div>
         </div>
       </section>
@@ -342,7 +342,7 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
           {lever.prevSlug ? (
             <Link
               href={`/levers/${lever.prevSlug}`}
-              className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 text-[#94A3B8] hover:text-white transition-colors"
             >
               <ArrowLeftIcon className="w-4 h-4" />
               Previous Lever
@@ -354,7 +354,7 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
           {lever.nextSlug ? (
             <Link
               href={`/levers/${lever.nextSlug}`}
-              className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 text-[#94A3B8] hover:text-white transition-colors"
             >
               Next Lever
               <ArrowRightIcon className="w-4 h-4" />
@@ -362,7 +362,7 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
           ) : (
             <Link
               href="/levers"
-              className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 text-[#94A3B8] hover:text-white transition-colors"
             >
               Back to All Levers
               <ArrowRightIcon className="w-4 h-4" />
@@ -378,7 +378,7 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
           onClick={() => setSelectedCard(null)}
         >
           <div
-            className="bg-[#0F172A] border border-white/20 rounded-2xl p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto"
+            className="bg-[#1a0e2e] border border-white/20 rounded-2xl p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center gap-3 mb-4">
@@ -388,22 +388,22 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
               >
                 {lever.header}
               </span>
-              <span className="text-sm text-slate-400">{selectedCard.metadata.category}</span>
+              <span className="text-sm text-[#94A3B8]">{selectedCard.metadata.category}</span>
             </div>
             <h2 className="text-2xl font-bold text-white mb-4">{selectedCard.keyword}</h2>
             <div className="prose prose-invert max-w-none">
-              <p className="text-slate-300 leading-relaxed whitespace-pre-wrap">
+              <p className="text-[#CBD5E1] leading-relaxed whitespace-pre-wrap">
                 {selectedCard.content}
               </p>
             </div>
             {selectedCard.metadata.tags && selectedCard.metadata.tags.length > 0 && (
               <div className="mt-6 pt-6 border-t border-white/10">
-                <p className="text-xs text-slate-500 uppercase tracking-wider mb-2">Tags</p>
+                <p className="text-xs text-[#64748B] uppercase tracking-wider mb-2">Tags</p>
                 <div className="flex flex-wrap gap-2">
                   {selectedCard.metadata.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-1 text-xs rounded bg-white/5 text-slate-400"
+                      className="px-2 py-1 text-xs rounded bg-white/5 text-[#94A3B8]"
                     >
                       {tag}
                     </span>
@@ -413,7 +413,7 @@ export default function LeverPage({ params }: { params: { slug: string } }) {
             )}
             <button
               onClick={() => setSelectedCard(null)}
-              className="mt-6 w-full py-3 rounded-xl bg-white/5 text-slate-300 hover:text-white transition-all"
+              className="mt-6 w-full py-3 rounded-xl bg-white/5 text-[#CBD5E1] hover:text-white transition-all"
             >
               Close
             </button>

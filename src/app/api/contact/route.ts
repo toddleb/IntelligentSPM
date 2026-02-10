@@ -42,31 +42,31 @@ export async function POST(request: NextRequest) {
           <meta charset="utf-8">
         </head>
         <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px;">
-          <h2 style="color: #0F172A;">New Contact Form Submission</h2>
+          <h2 style="color: #1a0e2e;">New Contact Form Submission</h2>
 
           <table style="border-collapse: collapse; width: 100%; max-width: 500px;">
             <tr>
               <td style="padding: 10px 0; border-bottom: 1px solid #E2E8F0; color: #64748B; width: 120px;">Name</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #E2E8F0; color: #0F172A;">${name}</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #E2E8F0; color: #1a0e2e;">${name}</td>
             </tr>
             <tr>
               <td style="padding: 10px 0; border-bottom: 1px solid #E2E8F0; color: #64748B;">Email</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #E2E8F0; color: #0F172A;">
+              <td style="padding: 10px 0; border-bottom: 1px solid #E2E8F0; color: #1a0e2e;">
                 <a href="mailto:${email}" style="color: #38BDF8;">${email}</a>
               </td>
             </tr>
             <tr>
               <td style="padding: 10px 0; border-bottom: 1px solid #E2E8F0; color: #64748B;">Company</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #E2E8F0; color: #0F172A;">${company || "Not provided"}</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #E2E8F0; color: #1a0e2e;">${company || "Not provided"}</td>
             </tr>
             <tr>
               <td style="padding: 10px 0; border-bottom: 1px solid #E2E8F0; color: #64748B;">Topic</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #E2E8F0; color: #0F172A;">${topicLabel}</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #E2E8F0; color: #1a0e2e;">${topicLabel}</td>
             </tr>
           </table>
 
-          <h3 style="color: #0F172A; margin-top: 30px;">Message</h3>
-          <div style="background: #F8FAFC; padding: 20px; border-radius: 8px; color: #0F172A; white-space: pre-wrap;">${message}</div>
+          <h3 style="color: #1a0e2e; margin-top: 30px;">Message</h3>
+          <div style="background: #F8FAFC; padding: 20px; border-radius: 8px; color: #1a0e2e; white-space: pre-wrap;">${message}</div>
 
           <p style="color: #64748B; font-size: 12px; margin-top: 30px;">
             Submitted at ${new Date().toISOString()}
@@ -88,7 +88,7 @@ export async function POST(request: NextRequest) {
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
         </head>
-        <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0F172A; color: #E2E8F0; padding: 40px 20px;">
+        <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #1a0e2e; color: #E2E8F0; padding: 40px 20px;">
           <div style="max-width: 500px; margin: 0 auto;">
             <h1 style="color: #E2E8F0; font-size: 24px; margin-bottom: 20px;">Got it, ${name.split(" ")[0]}.</h1>
 

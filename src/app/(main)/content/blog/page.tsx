@@ -24,7 +24,7 @@ export default function BlogPage() {
   const featuredPosts = posts.filter((p) => p.featured);
 
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       {/* Hero with Featured Post */}
       {featuredPosts.length > 0 && !selectedCategory && (
         <section className="px-6 pt-12">
@@ -97,7 +97,7 @@ export default function BlogPage() {
                 onClick={() => setViewMode("grid")}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   viewMode === "grid"
-                    ? "bg-[#38BDF8] text-[#0F172A]"
+                    ? "bg-[#38BDF8] text-[#1a0e2e]"
                     : "bg-white/5 text-[#94A3B8] hover:text-white"
                 }`}
               >
@@ -107,7 +107,7 @@ export default function BlogPage() {
                 onClick={() => setViewMode("list")}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   viewMode === "list"
-                    ? "bg-[#38BDF8] text-[#0F172A]"
+                    ? "bg-[#38BDF8] text-[#1a0e2e]"
                     : "bg-white/5 text-[#94A3B8] hover:text-white"
                 }`}
               >
@@ -122,7 +122,7 @@ export default function BlogPage() {
               onClick={() => setSelectedCategory(null)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 !selectedCategory
-                  ? "bg-white text-[#0F172A]"
+                  ? "bg-white text-[#1a0e2e]"
                   : "bg-white/5 text-[#94A3B8] hover:text-white"
               }`}
             >
@@ -165,7 +165,7 @@ export default function BlogPage() {
                       </div>
                       {post.featured && (
                         <div className="absolute top-3 right-3">
-                          <span className="px-2 py-1 text-xs font-bold rounded bg-[#38BDF8] text-[#0F172A]">
+                          <span className="px-2 py-1 text-xs font-bold rounded bg-[#38BDF8] text-[#1a0e2e]">
                             Featured
                           </span>
                         </div>

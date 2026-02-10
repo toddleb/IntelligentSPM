@@ -41,10 +41,10 @@ export default function ContactContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       <section className="py-20 px-6">
         <div className="max-w-2xl mx-auto">
-          <SectionLabel color="#FF8737" centered>Let&apos;s Talk</SectionLabel>
+          <SectionLabel color="#FE9200" centered>Let&apos;s Talk</SectionLabel>
           <h1 className="text-4xl md:text-5xl font-bold text-[#E2E8F0] mb-6 text-center">
             Contact The Toddfather
           </h1>
@@ -59,7 +59,7 @@ export default function ContactContent() {
               <p className="text-[#94A3B8]">The Toddfather will get back to you soon.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="bg-white/5 rounded-xl p-8 border border-[#FF8737]/20">
+            <form onSubmit={handleSubmit} className="bg-white/5 rounded-xl p-8 border border-[#FE9200]/20">
               <div className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
@@ -69,7 +69,7 @@ export default function ContactContent() {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-[#0F172A] border border-[#FF8737]/20 rounded-xl px-4 py-3 text-[#E2E8F0] focus:outline-none focus:border-[#FF8737]/50"
+                      className="w-full bg-[#1a0e2e] border border-[#FE9200]/20 rounded-xl px-4 py-3 text-[#E2E8F0] focus:outline-none focus:border-[#FE9200]/50"
                     />
                   </div>
                   <div>
@@ -82,8 +82,8 @@ export default function ContactContent() {
                         setFormData({ ...formData, email: e.target.value });
                         if (status === "personal") setStatus("idle");
                       }}
-                      className={`w-full bg-[#0F172A] border rounded-xl px-4 py-3 text-[#E2E8F0] focus:outline-none focus:border-[#FF8737]/50 ${
-                        status === "personal" ? "border-[#EA1B85]" : "border-[#FF8737]/20"
+                      className={`w-full bg-[#1a0e2e] border rounded-xl px-4 py-3 text-[#E2E8F0] focus:outline-none focus:border-[#FE9200]/50 ${
+                        status === "personal" ? "border-[#EA1B85]" : "border-[#FE9200]/20"
                       }`}
                     />
                     {status === "personal" && (
@@ -98,7 +98,7 @@ export default function ContactContent() {
                     type="text"
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    className="w-full bg-[#0F172A] border border-[#FF8737]/20 rounded-xl px-4 py-3 text-[#E2E8F0] focus:outline-none focus:border-[#FF8737]/50"
+                    className="w-full bg-[#1a0e2e] border border-[#FE9200]/20 rounded-xl px-4 py-3 text-[#E2E8F0] focus:outline-none focus:border-[#FE9200]/50"
                   />
                 </div>
 
@@ -107,7 +107,7 @@ export default function ContactContent() {
                   <select
                     value={formData.topic}
                     onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
-                    className="w-full bg-[#0F172A] border border-[#FF8737]/20 rounded-xl px-4 py-3 text-[#E2E8F0] focus:outline-none focus:border-[#FF8737]/50"
+                    className="w-full bg-[#1a0e2e] border border-[#FE9200]/20 rounded-xl px-4 py-3 text-[#E2E8F0] focus:outline-none focus:border-[#FE9200]/50"
                   >
                     <option value="">Select a topic...</option>
                     <option value="speaking">Speaking Engagement</option>
@@ -124,14 +124,14 @@ export default function ContactContent() {
                     rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-[#0F172A] border border-[#FF8737]/20 rounded-xl px-4 py-3 text-[#E2E8F0] focus:outline-none focus:border-[#FF8737]/50 resize-none"
+                    className="w-full bg-[#1a0e2e] border border-[#FE9200]/20 rounded-xl px-4 py-3 text-[#E2E8F0] focus:outline-none focus:border-[#FE9200]/50 resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="w-full px-6 py-4 bg-[#FF8737] text-white font-bold rounded-xl hover:bg-[#FF8737]/90 transition-all disabled:opacity-50"
+                  className="w-full px-6 py-4 bg-[#FE9200] text-white font-bold rounded-xl hover:bg-[#FE9200]/90 transition-all disabled:opacity-50"
                 >
                   {status === "loading" ? "Sending..." : "Send Message"}
                 </button>
@@ -150,7 +150,7 @@ export default function ContactContent() {
             <div className="flex justify-center gap-4">
               <a
                 href="mailto:todd@intelligentspm.com"
-                className="px-4 py-2 rounded-lg bg-white/5 text-[#FF8737] hover:bg-white/5/80 transition-colors text-sm"
+                className="px-4 py-2 rounded-lg bg-white/5 text-[#FE9200] hover:bg-white/5/80 transition-colors text-sm"
               >
                 todd@intelligentspm.com
               </a>

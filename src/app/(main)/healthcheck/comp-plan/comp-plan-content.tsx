@@ -227,12 +227,12 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
     const totalIssues = immediate + priority + monitor;
 
     return (
-      <div className="min-h-screen bg-[#0F172A] py-8 px-4">
+      <div className="min-h-screen bg-[#1a0e2e] py-8 px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-[#8241C8] flex items-center justify-center text-sm font-bold text-white">
+              <div className="w-10 h-10 rounded-lg bg-[#58108E] flex items-center justify-center text-sm font-bold text-white">
                 COMP
               </div>
               <h1 className="text-2xl font-bold text-white">Comp Plan Analysis</h1>
@@ -242,7 +242,7 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
                 onClick={() => setShowDebug(!showDebug)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                   showDebug
-                    ? "bg-[#8241C8]/20 text-[#8241C8] border border-[#8241C8]/50"
+                    ? "bg-[#58108E]/20 text-[#58108E] border border-[#58108E]/50"
                     : "bg-white/10 text-white/60 hover:bg-white/20"
                 }`}
               >
@@ -260,8 +260,8 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
 
           {/* Debug View - Raw API Response */}
           {showDebug && (
-            <div className="mb-6 bg-[#0F172A] rounded-xl p-6 border border-[#8241C8]/30">
-              <h3 className="text-[#8241C8] font-semibold mb-3">Raw API Response</h3>
+            <div className="mb-6 bg-[#1a0e2e] rounded-xl p-6 border border-[#58108E]/30">
+              <h3 className="text-[#58108E] font-semibold mb-3">Raw API Response</h3>
               <pre className="text-white/80 text-sm overflow-auto max-h-96 bg-white/5 rounded-lg p-4">
                 {JSON.stringify(result, null, 2)}
               </pre>
@@ -271,8 +271,8 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
           {/* 4-Quadrant Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             {/* Quadrant 1: Plan Health Score */}
-            <div className="bg-white/5 rounded-2xl p-8 border border-[#8241C8]/20">
-              <h2 className="text-sm font-semibold text-[#8241C8] uppercase tracking-wide mb-6 text-center">Plan Health Score</h2>
+            <div className="bg-white/5 rounded-2xl p-8 border border-[#58108E]/20">
+              <h2 className="text-sm font-semibold text-[#58108E] uppercase tracking-wide mb-6 text-center">Plan Health Score</h2>
               <div className="flex flex-col items-center gap-4">
                 {/* Circular Progress */}
                 <div className="relative w-36 h-36">
@@ -311,8 +311,8 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
             </div>
 
             {/* Quadrant 2: Pillar Breakdown */}
-            <div className="bg-white/5 rounded-2xl p-8 border border-[#8241C8]/20">
-              <h2 className="text-sm font-semibold text-[#8241C8] uppercase tracking-wide mb-4">Pillar Breakdown</h2>
+            <div className="bg-white/5 rounded-2xl p-8 border border-[#58108E]/20">
+              <h2 className="text-sm font-semibold text-[#58108E] uppercase tracking-wide mb-4">Pillar Breakdown</h2>
               <p className="text-white/50 text-sm mb-4">8 Design Dimensions Analyzed</p>
               <div className="space-y-3">
                 {ALL_PILLARS.map((pillar) => {
@@ -335,8 +335,8 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
             </div>
 
             {/* Quadrant 3: Risk Snapshot */}
-            <div className="bg-white/5 rounded-2xl p-8 border border-[#8241C8]/20">
-              <h2 className="text-sm font-semibold text-[#8241C8] uppercase tracking-wide mb-4">Risk Snapshot</h2>
+            <div className="bg-white/5 rounded-2xl p-8 border border-[#58108E]/20">
+              <h2 className="text-sm font-semibold text-[#58108E] uppercase tracking-wide mb-4">Risk Snapshot</h2>
               <p className="text-white/50 text-sm mb-5">Issues by severity</p>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
@@ -379,8 +379,8 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
             </div>
 
             {/* Quadrant 4: Action Plan */}
-            <div className="bg-white/5 rounded-2xl p-8 border border-[#8241C8]/20">
-              <h2 className="text-sm font-semibold text-[#8241C8] uppercase tracking-wide mb-4">Top Issues</h2>
+            <div className="bg-white/5 rounded-2xl p-8 border border-[#58108E]/20">
+              <h2 className="text-sm font-semibold text-[#58108E] uppercase tracking-wide mb-4">Top Issues</h2>
               <p className="text-white/50 text-sm mb-4">Priority areas to address</p>
               <div className="space-y-3 mb-5">
                 {(result.quickCard.topGaps || []).slice(0, 3).map((gap, i) => {
@@ -401,9 +401,9 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
               {(() => {
                 const cta =
                   score >= 70
-                    ? { text: "Fine-Tune Plan", bg: "bg-[#8241C8]", textColor: "text-white" }
+                    ? { text: "Fine-Tune Plan", bg: "bg-[#58108E]", textColor: "text-white" }
                     : score >= 40
-                    ? { text: "Get Expert Review", bg: "bg-[#F59E0B]", textColor: "text-[#0F172A]" }
+                    ? { text: "Get Expert Review", bg: "bg-[#F59E0B]", textColor: "text-[#1a0e2e]" }
                     : { text: "Request Plan Redesign", bg: "bg-[#DC2626]", textColor: "text-white" };
                 return (
                   <button className={`w-full py-3.5 rounded-xl font-bold text-base ${cta.bg} ${cta.textColor} hover:opacity-90 transition-opacity`}>
@@ -415,7 +415,7 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
           </div>
 
           {/* Consulting CTA Section */}
-          <div className="bg-gradient-to-br from-[#1E293B] to-[#0F172A] rounded-2xl p-8 border border-[#8241C8]/30">
+          <div className="bg-gradient-to-br from-[#1E293B] to-[#1a0e2e] rounded-2xl p-8 border border-[#58108E]/30">
             <h2 className="text-2xl font-bold text-white mb-2">
               Poorly Designed Plans Cost <span className="text-[#DC2626]">15-25%</span> of Sales Comp Spend
             </h2>
@@ -425,7 +425,7 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
 
             <div className="grid md:grid-cols-2 gap-8 mb-6">
               <div>
-                <h3 className="text-[#8241C8] font-semibold mb-3">A Comp Plan Redesign Delivers:</h3>
+                <h3 className="text-[#58108E] font-semibold mb-3">A Comp Plan Redesign Delivers:</h3>
                 <ul className="space-y-2 text-white/80">
                   <li className="flex items-center gap-2">
                     <span className="text-[#10B981]">✓</span> Pay mix optimization by role
@@ -442,14 +442,14 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
                 </ul>
               </div>
               <div>
-                <h3 className="text-[#8241C8] font-semibold mb-3">Typical Outcomes:</h3>
+                <h3 className="text-[#58108E] font-semibold mb-3">Typical Outcomes:</h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-white/5 rounded-xl p-4 text-center">
                     <div className="text-3xl font-bold text-[#10B981]">12%</div>
                     <div className="text-white/50 text-sm">Comp Cost Savings</div>
                   </div>
                   <div className="bg-white/5 rounded-xl p-4 text-center">
-                    <div className="text-3xl font-bold text-[#8241C8]">23%</div>
+                    <div className="text-3xl font-bold text-[#58108E]">23%</div>
                     <div className="text-white/50 text-sm">Quota Attainment Lift</div>
                   </div>
                 </div>
@@ -458,7 +458,7 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
 
             <a
               href="/toddfather/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#8241C8] text-white font-bold rounded-xl hover:bg-[#9333EA] transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#58108E] text-white font-bold rounded-xl hover:bg-[#9333EA] transition-colors"
             >
               Schedule a Comp Plan Review →
             </a>
@@ -470,10 +470,10 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
 
   // Upload view
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="w-20 h-20 rounded-2xl bg-[#8241C8] flex items-center justify-center text-2xl font-bold text-white mx-auto mb-8">
+          <div className="w-20 h-20 rounded-2xl bg-[#58108E] flex items-center justify-center text-2xl font-bold text-white mx-auto mb-8">
             COMP
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-[#E2E8F0] mb-6">
@@ -483,8 +483,8 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
             Upload your compensation plan document. We&apos;ll analyze it across 8 design pillars and identify risks, gaps, and optimization opportunities.
           </p>
 
-          <div className="max-w-2xl mx-auto mb-10 rounded-2xl border border-[#38BDF8]/30 bg-[#0B1220] p-5 text-left">
-            <p className="text-sm text-[#CBD5F5]">
+          <div className="max-w-2xl mx-auto mb-10 rounded-2xl border border-[#38BDF8]/30 bg-[#130a24] p-5 text-left">
+            <p className="text-sm text-[#CBD5E1]">
               The automated analyzer is temporarily offline. If you need a readout now, email your plan to
               {" "}
               <a href="mailto:todd@intelligentspm.com" className="text-[#38BDF8] font-semibold hover:underline">
@@ -501,7 +501,7 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
               onClick={() => setInputMode("upload")}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 inputMode === "upload"
-                  ? "bg-[#8241C8] text-white"
+                  ? "bg-[#58108E] text-white"
                   : "bg-white/5 text-[#94A3B8] hover:bg-[#334155]"
               }`}
             >
@@ -511,7 +511,7 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
               onClick={() => setInputMode("paste")}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 inputMode === "paste"
-                  ? "bg-[#8241C8] text-white"
+                  ? "bg-[#58108E] text-white"
                   : "bg-white/5 text-[#94A3B8] hover:bg-[#334155]"
               }`}
             >
@@ -525,12 +525,12 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
               onDragOver={(e) => e.preventDefault()}
               onDrop={handleFileDrop}
               className={`bg-white/5 rounded-xl p-10 border-2 border-dashed transition-colors mb-8 ${
-                file ? "border-[#8241C8]" : "border-[#334155] hover:border-[#8241C8]/50"
+                file ? "border-[#58108E]" : "border-[#334155] hover:border-[#58108E]/50"
               }`}
             >
               {file ? (
                 <div className="flex items-center justify-center gap-4">
-                  <FileTextIcon className="w-12 h-12 text-[#8241C8]" />
+                  <FileTextIcon className="w-12 h-12 text-[#58108E]" />
                   <div className="text-left">
                     <p className="text-[#E2E8F0] font-medium">{file.name}</p>
                     <p className="text-[#64748B] text-sm">{(file.size / 1024).toFixed(1)} KB</p>
@@ -563,7 +563,7 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
                 value={textInput}
                 onChange={(e) => setTextInput(e.target.value)}
                 placeholder="Paste your compensation plan text here..."
-                className="w-full h-64 bg-white/5 rounded-xl p-6 text-[#E2E8F0] placeholder-[#64748B] border-2 border-[#334155] focus:border-[#8241C8] focus:outline-none resize-none"
+                className="w-full h-64 bg-white/5 rounded-xl p-6 text-[#E2E8F0] placeholder-[#64748B] border-2 border-[#334155] focus:border-[#58108E] focus:outline-none resize-none"
               />
               <p className="text-[#64748B] text-sm mt-2 text-right">{textInput.length} characters</p>
             </div>
@@ -583,7 +583,7 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
             className={`px-8 py-4 rounded-xl font-bold text-lg transition-all ${
               isAnalyzing || (inputMode === "upload" ? !file : !textInput.trim())
                 ? "bg-[#334155] text-[#64748B] cursor-not-allowed"
-                : "bg-[#8241C8] text-white hover:bg-[#9333EA] hover:scale-105"
+                : "bg-[#58108E] text-white hover:bg-[#9333EA] hover:scale-105"
             }`}
           >
             {isAnalyzing ? (
@@ -597,14 +597,14 @@ export default function CompPlanContent({ userEmail }: CompPlanContentProps) {
           </button>
 
           {/* What We Analyze */}
-          <div className="mt-12 bg-white/5 rounded-xl p-6 border border-[#8241C8]/10">
-            <h4 className="text-sm font-semibold text-[#8241C8] uppercase tracking-wider mb-4">
+          <div className="mt-12 bg-white/5 rounded-xl p-6 border border-[#58108E]/10">
+            <h4 className="text-sm font-semibold text-[#58108E] uppercase tracking-wider mb-4">
               8 Pillars We Analyze
             </h4>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm text-[#94A3B8]">
               {ALL_PILLARS.map((pillar) => (
                 <div key={pillar.id} className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-[#8241C8]" />
+                  <div className="w-2 h-2 rounded-full bg-[#58108E]" />
                   {pillar.short}
                 </div>
               ))}

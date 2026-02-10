@@ -21,10 +21,10 @@ interface PrimaryButtonProps {
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
-  orange: "bg-[#FF8737] hover:bg-[#FF8737]/90 text-white",
+  orange: "bg-[#FE9200] hover:bg-[#FE9200]/90 text-white",
   cyan: "bg-[#38BDF8] hover:bg-[#38BDF8]/90 text-white",
-  green: "bg-[#A3E635] hover:bg-[#A3E635]/90 text-[#0F172A]",
-  purple: "bg-[#8241C8] hover:bg-[#8241C8]/90 text-white",
+  green: "bg-[#A3E635] hover:bg-[#A3E635]/90 text-[#1a0e2e]",
+  purple: "bg-[#58108E] hover:bg-[#58108E]/90 text-white",
 };
 
 export function PrimaryButton({

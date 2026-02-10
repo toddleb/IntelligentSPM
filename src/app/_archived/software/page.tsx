@@ -59,7 +59,7 @@ const painPoints = [
 
 export default function SoftwarePage() {
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="min-h-screen bg-[#1a0e2e]">
       {/* Hero Section */}
       <section className="py-20 px-6 relative overflow-hidden">
         {/* Background gradient */}
@@ -88,7 +88,7 @@ export default function SoftwarePage() {
       {/* The Problem Section */}
       <section className="py-16 px-6 border-t border-white/10">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-[#1E293B] to-[#0F172A] rounded-2xl p-8 md:p-12 border border-[#38BDF8]/20">
+          <div className="bg-gradient-to-br from-[#1E293B] to-[#1a0e2e] rounded-2xl p-8 md:p-12 border border-[#38BDF8]/20">
             <h2 className="text-2xl md:text-3xl font-bold text-[#E2E8F0] mb-6">
               I&apos;m Building Intelligent Software for People Who Get Blamed When It Breaks...
             </h2>
@@ -103,10 +103,10 @@ export default function SoftwarePage() {
               {painPoints.map((point, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-4 p-4 rounded-xl bg-[#0F172A]/50 border border-[#64748B]/10 hover:border-[#FF8737]/30 transition-all"
+                  className="flex items-start gap-4 p-4 rounded-xl bg-[#1a0e2e]/50 border border-[#64748B]/10 hover:border-[#FE9200]/30 transition-all"
                 >
-                  <div className="w-8 h-8 rounded-full bg-[#FF8737]/20 flex items-center justify-center shrink-0 mt-0.5">
-                    <AlertTriangleIcon className="w-4 h-4 text-[#FF8737]" />
+                  <div className="w-8 h-8 rounded-full bg-[#FE9200]/20 flex items-center justify-center shrink-0 mt-0.5">
+                    <AlertTriangleIcon className="w-4 h-4 text-[#FE9200]" />
                   </div>
                   <p className="text-[#94A3B8] leading-relaxed">{point}</p>
                 </div>
@@ -234,7 +234,7 @@ export default function SoftwarePage() {
       </section>
 
       {/* Features Overview */}
-      <section className="py-16 px-6 border-t border-white/10 bg-[#0F172A]/50">
+      <section className="py-16 px-6 border-t border-white/10 bg-[#1a0e2e]/50">
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white/5 rounded-xl p-6 border border-[#38BDF8]/20">

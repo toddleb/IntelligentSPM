@@ -106,12 +106,12 @@ function getEmailHtml(list: string, email: string): string {
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0F172A; color: #E2E8F0; padding: 40px 20px;">
+    <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #1a0e2e; color: #E2E8F0; padding: 40px 20px;">
       <div style="max-width: 500px; margin: 0 auto;">
         <h1 style="color: #E2E8F0; font-size: 24px; margin-bottom: 20px;">You're on the list.</h1>
 
         <p style="color: #94A3B8; line-height: 1.6;">
-          Thanks for signing up for <strong style="color: #FF8737;">${productName}</strong>.
+          Thanks for signing up for <strong style="color: #FE9200;">${productName}</strong>.
           We'll notify you at <strong>${email}</strong> as soon as it's ready.
         </p>
 

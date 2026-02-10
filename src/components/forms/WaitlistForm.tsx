@@ -68,7 +68,7 @@ export default function WaitlistForm({
             }}
             placeholder="work@company.com"
             required
-            className="w-full bg-[#0F172A] border rounded-xl px-4 py-3 text-[#E2E8F0] placeholder-[#64748B] focus:outline-none transition-colors"
+            className="w-full bg-[#1a0e2e] border rounded-xl px-4 py-3 text-[#E2E8F0] placeholder-[#64748B] focus:outline-none transition-colors"
             style={{
               borderColor: status === "personal" ? "#EA1B85" : `${accentColor}30`,
             }}
